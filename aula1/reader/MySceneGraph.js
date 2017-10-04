@@ -1326,7 +1326,6 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 			numArgs["cylinder"] = 5;
 			numArgs["sphere"] = 3;
 			numArgs["triangle"] = 9;
-            numArgs["quad"] = 4;
 
             for (var j = 0; j < descendants.length; j++) {
                 if (descendants[j].nodeName == "NODEREF")
@@ -1348,7 +1347,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                 else
 					if (descendants[j].nodeName == "LEAF")
 					{
-						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle', 'quad']);
+						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle']);
 
 						if (type != null)
 							this.log("   Leaf: "+ type);

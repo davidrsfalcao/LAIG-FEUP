@@ -14,7 +14,7 @@
 
 <!-- Illumination and clear colour -->
 <ILLUMINATION>
-    <ambient r="0.5" g="0.8" b="0.95" a="1" />       
+    <ambient r="0.5" g="0.8" b="0.95" a="1" />
     <background r="0" g="0" b="0" a="1" />
 </ILLUMINATION>
 

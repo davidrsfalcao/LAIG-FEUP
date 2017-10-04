@@ -22,10 +22,6 @@ function MyGraphLeaf(scene,type,args) {
 			this.primitive=new Cylinder(scene, args[1], args[2], args[0],args[3], args[4]);
 			break;
 
-		case 'quad':
-			this.primitive= new Quad(scene, args[0], args[1], args[2], args[3]);
-		break;
-
 		default:
 		break;
 	}

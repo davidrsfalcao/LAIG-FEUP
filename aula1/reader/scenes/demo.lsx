@@ -23,7 +23,7 @@
 <LIGHTS>
 	<LIGHT id="light0">
         <enable value ="1" />
-        <position  x="0" y="10" z="0" w="1" />
+        <position  x="20" y="30" z="20" w="1" />
         <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
         <specular r="1.0" g="1.0" b="1.0" a="1.0" />
@@ -31,7 +31,7 @@
 
 	<LIGHT id="light1">
         <enable value ="1" />
-        <position x="30" y="10" z="0" w="1" />
+        <position x="-20" y="30" z="20" w="1" />
         <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
         <specular r="1.0" g="1.0" b="1.0" a="1.0" />
@@ -39,7 +39,7 @@
 
 	<LIGHT id="light2">
         <enable value ="1" />
-        <position x="0" y="10" z="20" w="1" />
+        <position x="-20" y="30" z="20" w="1" />
         <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
         <specular r="1.0" g="1.0" b="1.0" a="1.0" />
@@ -47,7 +47,7 @@
 
     <LIGHT id="light3">
         <enable value ="1" />
-        <position x="30" y="10" z="20" w="1" />
+        <position x="-20" y="30" z="-20" w="1" />
         <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
         <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
         <specular r="0.6" g="0.6" b="0.6" a="1.0" />
@@ -90,7 +90,7 @@
     <!-- Street bench -->
     <TEXTURE id="river">
         <file path="images/river.jpg" />
-        <amplif_factor s="1" t="1" />
+        <amplif_factor s="5" t="5" />
     </TEXTURE>
 
     <TEXTURE id="ribeira">
@@ -100,6 +100,11 @@
 
     <TEXTURE id="passeio">
         <file path="images/passeio.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="boia">
+        <file path="images/boia.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
@@ -139,6 +144,7 @@
             <NODEREF id="porto" />
             <NODEREF id="passPorto" />
             <NODEREF id="passGaia" />
+            <NODEREF id="obstaculos" />
         </DESCENDANTS>
 
     </NODE>
@@ -153,7 +159,7 @@
         <SCALE sx="50" sy="50" sz="1" />
 
         <DESCENDANTS>
-					<LEAF  type="quad" args="0 5 0 5" />
+					<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
 				</DESCENDANTS>
 
     </NODE>
@@ -168,7 +174,7 @@
         <SCALE sx="50" sy="40" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 0.8 0 0.87" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
 
     </NODE>
@@ -230,7 +236,7 @@
         <SCALE sx="50" sy="8" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 1 0 1" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
 
@@ -244,7 +250,7 @@
         <SCALE sx="50" sy="8" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 1 0 1" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
 
@@ -258,7 +264,7 @@
         <SCALE sx="50" sy="1" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 1 0 0.3" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
 
@@ -272,7 +278,7 @@
         <SCALE sx="50" sy="1" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 1 0 0.3" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
 
@@ -286,7 +292,7 @@
         <SCALE sx="8" sy="1" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 0.4 0 0.3" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
 
@@ -300,9 +306,191 @@
         <SCALE sx="8" sy="1" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="quad" args="0 0.4 0 0.3" />
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
                 </DESCENDANTS>
     </NODE>
+
+
+    <!-- Obstaculos -->
+    <NODE id="obstaculos">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="0.7" sy="1" sz="0.7" />
+
+        <DESCENDANTS>
+                    <NODEREF id="obstaculol" />
+                    <NODEREF id="obstaculor" />
+                                    </DESCENDANTS>
+    </NODE>
+
+    <!-- Obstaculo esquerda -->
+    <NODE id="obstaculol">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="passeio" />
+
+        <TRANSLATION x="-5" y="0" z="15" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="obsbase" />
+                    <NODEREF id="obsmid" />
+                    <NODEREF id="obstop" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Obstaculo direita -->
+    <NODE id="obstaculor">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="passeio" />
+
+        <TRANSLATION x="5" y="0" z="15" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="obsbase" />
+                    <NODEREF id="obsmid" />
+                    <NODEREF id="obstop" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Base Obstaculo -->
+    <NODE id="obsbase">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="2" sy="1" sz="2" />
+
+        <DESCENDANTS>
+                    <NODEREF id="obsbase1" />
+                    <NODEREF id="obsbase2" />
+                    <NODEREF id="obsbase3" />
+                    <NODEREF id="obsbase4" />
+                    <NODEREF id="obsbase5" />
+                    <NODEREF id="obsbase6" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 1 Base Obstaculo -->
+    <NODE id="obsbase1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="2" sy="0.5" sz="2" />
+        <TRANSLATION x="0" y="0.5" z="0.5" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 2 Base Obstaculo -->
+    <NODE id="obsbase2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="1" y="0.25" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="2" sy="0.5" sz="2" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 3 Base Obstaculo -->
+    <NODE id="obsbase3">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.25" z="-1" />
+        <ROTATION axis="y" angle="180" />
+        <SCALE sx="2" sy="0.5" sz="2" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 4 Base Obstaculo -->
+    <NODE id="obsbase4">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-1" y="0.25" z="0" />
+        <ROTATION axis="y" angle="270" />
+        <SCALE sx="2" sy="0.5" sz="2" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 5 Base Obstaculo -->
+    <NODE id="obsbase5">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="x" angle="90" />
+        <SCALE sx="2" sy="2" sz="2" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- face 6 Base Obstaculo -->
+    <NODE id="obsbase6">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.5" z="0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="2" sy="2" sz="2" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- meio Obstaculo -->
+    <NODE id="obsmid">
+        <MATERIAL id="null" />
+        <TEXTURE id="boia" />
+
+        <TRANSLATION x="0" y="0.5" z="0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="cylinder" args="7 1.7 0.5 20 20" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- meio Obstaculo -->
+    <NODE id="obstop">
+        <MATERIAL id="null" />
+        <TEXTURE id="boia" />
+
+        <TRANSLATION x="0" y="7.5" z="0" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="sphere" args="0.5 20 20" />
+                </DESCENDANTS>
+    </NODE>
+
 
 
 </NODES>
