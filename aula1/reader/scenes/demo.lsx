@@ -1,0 +1,310 @@
+<SCENE>
+
+<!-- Initial values -->
+<INITIALS>
+    <frustum near="0.1" far="500"/>
+    <translation x="-1" y="1" z="0" />
+    <rotation axis="x" angle="0" />
+    <rotation axis="y" angle="0" />
+    <rotation axis="z" angle="0" />
+    <scale sx="0.15" sy="0.15" sz="0.15" />
+    <reference length="5" />
+</INITIALS>
+
+
+<!-- Illumination and clear colour -->
+<ILLUMINATION>
+    <ambient r="0.2" g="0.2" b="0.2" a="1" />
+    <background r="0.5" g="0.8" b="0.95" a="1" />
+</ILLUMINATION>
+
+
+<!-- Lights -->
+<LIGHTS>
+	<LIGHT id="light0">
+        <enable value ="1" />
+        <position  x="0" y="10" z="0" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+	<LIGHT id="light1">
+        <enable value ="1" />
+        <position x="30" y="10" z="0" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+	<LIGHT id="light2">
+        <enable value ="1" />
+        <position x="0" y="10" z="20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+    <LIGHT id="light3">
+        <enable value ="1" />
+        <position x="30" y="10" z="20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+        <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+    </LIGHT>
+
+</LIGHTS>
+
+<!-- Textures -->
+<TEXTURES>
+	<!-- Tree trunk -->
+    <TEXTURE id="trunk">
+        <file path="images/trunk-image.jpg" />
+        <amplif_factor s="2" t="2" />
+    </TEXTURE>
+
+     <!-- Tree leaves -->
+    <TEXTURE id="folhas">
+        <file path="images/leaves.jpg" />
+        <amplif_factor s="3" t="4" />
+    </TEXTURE>
+
+    <!-- Rocks -->
+    <TEXTURE id="rocks">
+        <file path="images/rocks.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <!-- Glass work -->
+    <TEXTURE id="vidral">
+        <file path="images/vidral.jpg" />
+        <amplif_factor s="15" t="10" />
+    </TEXTURE>
+
+    <!-- Street bench -->
+    <TEXTURE id="banco">
+        <file path="images/bank.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <!-- Street bench -->
+    <TEXTURE id="river">
+        <file path="images/river.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="ribeira">
+        <file path="images/porto.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="passeio">
+        <file path="images/passeio.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+</TEXTURES>
+
+
+<MATERIALS>
+    <!-- A default material -->
+    <MATERIAL id="defaultMaterial">
+        <shininess value="1" />
+        <specular r="0.0" g="0.0" b="0.0" a="1" />
+        <diffuse r="0.4" g="0.4" b="0.4" a="1" />
+        <ambient r="0.4" g="0.4" b="0.4" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+</MATERIALS>
+
+
+<!-- The leaves -->
+<LEAVES>
+</LEAVES>
+
+
+<!-- The nodes -->
+<NODES>
+
+    <ROOT id="root" />
+
+    <!-- The root node -->
+    <NODE id="root">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <NODEREF id="rio" />
+            <NODEREF id="porto" />
+            <NODEREF id="passPorto" />
+            <NODEREF id="passGaia" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!-- Rio -->
+    <NODE id="rio">
+        <MATERIAL id="null" />
+        <TEXTURE id="river" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="50" sy="50" sz="1" />
+
+        <DESCENDANTS>
+					<LEAF  type="quad" args="0 5 0 5" />
+				</DESCENDANTS>
+
+    </NODE>
+
+    <!-- Porto -->
+    <NODE id="porto">
+        <MATERIAL id="null" />
+        <TEXTURE id="ribeira" />
+
+        <TRANSLATION x="-26" y="20" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="50" sy="40" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 0.8 0 0.87" />
+                </DESCENDANTS>
+
+    </NODE>
+
+    <!-- Passadiço Porto -->
+    <NODE id="passPorto">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-22" y="0" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="passadico" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Passadiço Gaia -->
+    <NODE id="passGaia">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="22" y="0" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="passadico" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Passadiço -->
+    <NODE id="passadico">
+        <MATERIAL id="null" />
+        <TEXTURE id="passeio" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="passadicoTop" />
+                    <NODEREF id="passadicoBottom" />
+                    <NODEREF id="passadicol1" />
+                    <NODEREF id="passadicol2" />
+                    <NODEREF id="passadicol3" />
+                    <NODEREF id="passadicol4" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Base cima Passadiço -->
+    <NODE id="passadicoTop">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="1" z="0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="50" sy="8" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 1 0 1" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Base baixo Passadiço -->
+    <NODE id="passadicoBottom">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="x" angle="90" />
+        <SCALE sx="50" sy="8" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 1 0 1" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- lateral 1 Passadiço -->
+    <NODE id="passadicol1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.5" z="4" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="50" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 1 0 0.3" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- lateral 2 Passadiço -->
+    <NODE id="passadicol2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.5" z="-4" />
+        <ROTATION axis="y" angle="180" />
+        <SCALE sx="50" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 1 0 0.3" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- lateral 3 Passadiço -->
+    <NODE id="passadicol3">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="25" y="0.5" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="8" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 0.4 0 0.3" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- lateral 4 Passadiço -->
+    <NODE id="passadicol4">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-25" y="0.5" z="0" />
+        <ROTATION axis="y" angle="-90" />
+        <SCALE sx="8" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="quad" args="0 0.4 0 0.3" />
+                </DESCENDANTS>
+    </NODE>
+
+
+</NODES>
+
+</SCENE>
