@@ -45,15 +45,25 @@ Rectangle.prototype.initBuffers = function() {
       0, 0, 1
       ];
 
-    this.texCoords = [
+    this.originalTexCoords = [
         0,0,
         1,0,
         1,1,
         0,1,
     ];
 
+    this.texCoords = this.originalTexCoords.slice();
     this.primitiveType = this.scene.gl.TRIANGLES;
 
 
     this.initGLBuffers();
+};
+
+Rectangle.prototype.amplifyTexture = function(amplifierS, amplifierT) {
+    for (let i = 0; i < this.originalTexCoords.length; i += 2) {
+        this.texCoords[i] = this.originalTexCoords[i] / amplifierS;
+        this.texCoords[i + 1] = this.originalTexCoords[i + 1] / amplifierT;
+    }
+
+    this.updateTexCoordsGLBuffers();
 };

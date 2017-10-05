@@ -20,7 +20,7 @@ Sphere.prototype.initBuffers = function() {
     this.vertices = [];
     this.normals = [];
     this.indices = [];
-    this.texCoords = [];
+    this.originalTexCoords = [];
 
     var theta = (2 * Math.PI) / this.slices; // 0-360 deg -- longitude
     var phi = (Math.PI) / this.stacks; // 0-180 deg -- latitude
@@ -44,11 +44,21 @@ Sphere.prototype.initBuffers = function() {
                 this.indices.push(n_verts - 1, n_verts - 2, n_verts - this.stacks - 2);
             }
 
-            this.texCoords.push(0.5 * x + 0.5, 0.5 - 0.5 * y);
+            this.originalTexCoords.push(0.5 * x + 0.5, 0.5 - 0.5 * y);
         }
 
     }
 
+    this.texCoords = this.originalTexCoords.slice();
     this.primitiveType = this.scene.gl.TRIANGLES;
     this.initGLBuffers();
 };
+
+Sphere.prototype.amplifyTexture = function(amplifierS, amplifierT) {
+    for (let i = 0; i < this.originalTexCoords.length; i += 2) {
+        this.texCoords[i] = this.originalTexCoords[i] / amplifierS;
+        this.texCoords[i + 1] = this.originalTexCoords[i + 1] / amplifierT;
+    }
+
+    this.updateTexCoordsGLBuffers();
+}

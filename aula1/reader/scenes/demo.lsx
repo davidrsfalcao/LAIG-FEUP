@@ -75,12 +75,6 @@
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
-    <!-- Glass work -->
-    <TEXTURE id="vidral">
-        <file path="images/vidral.jpg" />
-        <amplif_factor s="15" t="10" />
-    </TEXTURE>
-
     <!-- Street bench -->
     <TEXTURE id="banco">
         <file path="images/bank.jpg" />
@@ -90,12 +84,12 @@
     <!-- Street bench -->
     <TEXTURE id="river">
         <file path="images/river.jpg" />
-        <amplif_factor s="5" t="5" />
+        <amplif_factor s="0.2" t="0.2" />
     </TEXTURE>
 
     <TEXTURE id="ribeira">
         <file path="images/porto.jpg" />
-        <amplif_factor s="1" t="1" />
+        <amplif_factor s="1.1" t="1.15" />
     </TEXTURE>
 
     <TEXTURE id="passeio">
@@ -234,7 +228,7 @@
     <!-- Base cima Passadiço -->
     <NODE id="passadicoTop">
         <MATERIAL id="null" />
-        <TEXTURE id="null" />
+        <TEXTURE id="passeio" />
 
         <TRANSLATION x="0" y="1" z="0" />
         <ROTATION axis="x" angle="-90" />

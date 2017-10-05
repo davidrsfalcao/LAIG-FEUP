@@ -4,7 +4,7 @@
 **/
 
 function MyGraphLeaf(scene,type,args) {
-//	this.nodeID=no;
+	//	this.nodeID=no;
 	switch (type){
 		case 'rectangle':
 			this.primitive= new Rectangle(scene, args[0], args[1], args[2], args[3]);
@@ -29,4 +29,8 @@ function MyGraphLeaf(scene,type,args) {
 
 MyGraphLeaf.prototype.display = function() {
 	this.primitive.display();
+}
+
+MyGraphLeaf.prototype.amplifyTex = function(amplifierS, amplifierT) {
+	this.primitive.amplifyTexture(amplifierS, amplifierT);
 }
