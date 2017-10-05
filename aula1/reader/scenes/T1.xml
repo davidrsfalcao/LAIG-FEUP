@@ -581,13 +581,9 @@
                          <NODEREF id="hel2" />
                          <NODEREF id="hel3" />
                          <NODEREF id="hel4" />
-                     <!-->   <NODEREF id="asap2" />
-                       
-                        <NODEREF id="asap4" />
-                        <NODEREF id="asap5" />
-                        <NODEREF id="asap6" />
-                        <NODEREF id="asap7" />
-                        <NODEREF id="asap8" /> -->
+                       <!-->  <NODEREF id="hel5" />
+                         <NODEREF id="hel6" />
+                         <NODEREF id="hel7" />-->
                     </DESCENDANTS>
         </NODE>
 
@@ -636,9 +632,8 @@
         <NODE id="hel3">
             <MATERIAL id="null" />
             <TEXTURE id="vidro" />
-            <TRANSLATION x="-1.5" y="0" z="1" />
+            <TRANSLATION x="-1.5" y="-0.15" z="1" />
             <ROTATION axis="x" angle="-180" />
-            <ROTATION axis="z" angle="0" />
             <SCALE sx="1" sy="1" sz="1" />
 
                 <DESCENDANTS>
@@ -649,15 +644,43 @@
         <NODE id="hel4">
             <MATERIAL id="null" />
             <TEXTURE id="vidro" />
-            <TRANSLATION x="-1.5" y="0" z="1" />
+            <TRANSLATION x="-1.5" y="-0.15" z="1" />
             <ROTATION axis="x" angle="0" />
-            <ROTATION axis="z" angle="0" />
             <SCALE sx="1" sy="1" sz="1" />
 
                 <DESCENDANTS>
                         <LEAF  type="rectangle" args= "0 0.3 3 0.0" />
                     </DESCENDANTS>
         </NODE>
+
+<!--
+        <NODE id="hel5">
+            <MATERIAL id="null" />
+            <TEXTURE id="azul" />
+            <TRANSLATION x="-1.5" y="0" z="1" />
+            <ROTATION axis="x" angle="90" />
+            <SCALE sx="1" sy="1" sz="1" />
+
+                <DESCENDANTS>
+                        <LEAF  type="rectangle" args= "0 0.05 3 0.0" />
+                    </DESCENDANTS>
+        </NODE>
+
+        <NODE id="hel6">
+        <MATERIAL id="null" />
+        <TEXTURE id="azul" />
+        <TRANSLATION x="-1.5" y="0" z="1" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+            <DESCENDANTS>
+                    <LEAF  type="rectangle" args= "0 0.05 3 0.0" />
+                </DESCENDANTS>
+        </NODE>
+
+        -->
+
+  
 
     <NODE id="asa">
         <MATERIAL id="null" />
