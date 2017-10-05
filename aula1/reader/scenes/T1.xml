@@ -57,29 +57,6 @@
 
 <!-- Textures -->
 <TEXTURES>
-	<!-- Tree trunk -->
-    <TEXTURE id="trunk">
-        <file path="images/trunk-image.jpg" />
-        <amplif_factor s="2" t="2" />
-    </TEXTURE>
-
-     <!-- Tree leaves -->
-    <TEXTURE id="folhas">
-        <file path="images/leaves.jpg" />
-        <amplif_factor s="3" t="4" />
-    </TEXTURE>
-
-    <!-- Rocks -->
-    <TEXTURE id="rocks">
-        <file path="images/rocks.jpg" />
-        <amplif_factor s="1" t="1" />
-    </TEXTURE>
-
-    <!-- Street bench -->
-    <TEXTURE id="banco">
-        <file path="images/bank.jpg" />
-        <amplif_factor s="1" t="1" />
-    </TEXTURE>
 
     <!-- Street bench -->
     <TEXTURE id="river">
@@ -144,6 +121,7 @@
             <NODEREF id="passPorto" />
             <NODEREF id="passGaia" />
             <NODEREF id="obstaculos" />
+            <NODEREF id="aviao" />
         </DESCENDANTS>
 
     </NODE>
@@ -462,7 +440,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <!-- meio Obstaculo -->
+    <!-- meio do Obstaculo -->
     <NODE id="obsmid">
         <MATERIAL id="null" />
         <TEXTURE id="boia" />
@@ -476,7 +454,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <!-- meio Obstaculo -->
+    <!-- topo do Obstaculo -->
     <NODE id="obstop">
         <MATERIAL id="null" />
         <TEXTURE id="boia" />
@@ -487,6 +465,172 @@
 
         <DESCENDANTS>
                     <LEAF  type="sphere" args="0.5 20 20" />
+                </DESCENDANTS>
+    </NODE>
+
+    <!-- Aviao -->
+    <NODE id="aviao">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="asa1" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asa1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="asa" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asa">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="0" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="asap1" />
+                    <NODEREF id="asap2" />
+                    <NODEREF id="asap3" />
+                    <NODEREF id="asap4" />
+                    <NODEREF id="asap5" />
+                    <NODEREF id="asap6" />
+                    <NODEREF id="asap7" />
+                    <NODEREF id="asap8" />
+                </DESCENDANTS>
+    </NODE>
+
+
+
+    <NODE id="asap1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0.2" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 0.5 2 0.0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap2">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.5" z="0.2" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="triangle" args="0 0 0 2 0 0 0 0.5 0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap3">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="2" y="0" z="-0.2" />
+        <ROTATION axis="y" angle="180" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 0.5 2 0.0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap4">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="2" y="0.5" z="-0.2" />
+        <ROTATION axis="y" angle="180" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="triangle" args="0 0 0 2 0 0 2 0.5 0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap5">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="-0.2" />
+        <ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 0.4 2 0.0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap6">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="-0.2" />
+        <ROTATION axis="y" angle="-90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 1 0.4 0.0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap7">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="2" y="0" z="0.2" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 0.5 0.4 0.0" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap8">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="2" y="0.5" z="-0.2" />
+        <ROTATION axis="z" angle="-14.04"  />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="asap8.1" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="asap8.1">
+        <MATERIAL id="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="0 0.4 -2.06155281281 0.0" />
                 </DESCENDANTS>
     </NODE>
 
