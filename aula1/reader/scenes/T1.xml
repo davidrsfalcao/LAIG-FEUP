@@ -119,6 +119,11 @@
         <amplif_factor s="1" t="1.3" />
     </TEXTURE>
 
+    <TEXTURE id="cimento">
+        <file path="images/cimento.jpg" />
+        <amplif_factor s="1" t="1.3" />
+    </TEXTURE>
+
 </TEXTURES>
 
 
@@ -148,6 +153,14 @@
         <emission r="0.0" g="0.0" b="0.0" a="1" />
     </MATERIAL>
 
+    <MATERIAL id="agua">
+        <shininess value="50" />
+        <specular r="1.0" g="1.0" b="1.0" a="1" />
+        <diffuse r="0.6" g="0.6" b="0.6" a="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
 
 </MATERIALS>
 
@@ -174,13 +187,14 @@
             <NODEREF id="passGaia" />
             <NODEREF id="obstaculos" />
             <NODEREF id="aviao" />
+            <NODEREF id="ponte" />
         </DESCENDANTS>
 
     </NODE>
 
     <!-- Rio -->
     <NODE id="rio">
-        <MATERIAL id="null" />
+        <MATERIAL id="agua" />
         <TEXTURE id="river" />
 
         <TRANSLATION x="0" y="0" z="0" />
@@ -343,7 +357,7 @@
     <!-- Obstaculos -->
     <NODE id="obstaculos">
         <MATERIAL id="defaultMaterial" />
-        <TEXTURE id="null" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="0" y="0" z="16" />
         <ROTATION axis="y" angle="0" />
@@ -358,7 +372,7 @@
     <!-- Obstaculo esquerda -->
     <NODE id="obstaculol">
         <MATERIAL id="defaultMaterial" />
-        <TEXTURE id="passeio" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="-5" y="0" z="0" />
         <ROTATION axis="y" angle="0" />
@@ -374,7 +388,7 @@
     <!-- Obstaculo direita -->
     <NODE id="obstaculor">
         <MATERIAL id="defaultMaterial" />
-        <TEXTURE id="passeio" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="5" y="0" z="0" />
         <ROTATION axis="y" angle="0" />
@@ -611,7 +625,7 @@
 
     <NODE id="helice">
             <MATERIAL id="null" />
-            <TEXTURE id="null" />
+            <TEXTURE id="clear" />
 
             <TRANSLATION x="0" y="0" z="0" />
             <ROTATION axis="y" angle="0" />
@@ -698,7 +712,7 @@
 
     <NODE id="asa">
         <MATERIAL id="null" />
-        <TEXTURE id="null" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="0" y="0" z="0" />
         <ROTATION axis="y" angle="0" />
@@ -900,6 +914,234 @@
                     <LEAF  type="sphere" args="0.8 20 20" />
                 </DESCENDANTS>
     </NODE>
+
+
+    <NODE id="cubo">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo_face1" />
+                    <NODEREF id="cubo_face2" />
+                    <NODEREF id="cubo_face3" />
+                    <NODEREF id="cubo_face4" />
+                    <NODEREF id="cubo_face5" />
+                    <NODEREF id="cubo_face6" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face1">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0.5" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face2">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0.5" y="0" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face3">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="-0.5" />
+        <ROTATION axis="y" angle="180" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face4">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-0.5" y="0" z="0" />
+        <ROTATION axis="y" angle="270" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face5">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0.5" z="0.0" />
+        <ROTATION axis="x" angle="-90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="cubo_face6">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="-0.5" z="0" />
+        <ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="1" z="-20" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1.2" sy="1.7" sz="1.2" />
+
+        <DESCENDANTS>
+                    <NODEREF id="ponte_tabuleiro" />
+                    <NODEREF id="ponte_pilares" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_tabuleiro">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="11" z="0" />
+        <ROTATION axis="y" angle="90" />
+        <SCALE sx="5" sy="0.2" sz="50" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilares">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="cimento" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="ponte_pilar_1" />
+                    <NODEREF id="ponte_pilar_2" />
+                    <NODEREF id="ponte_pilar_3" />
+                    <NODEREF id="ponte_pilar_4" />
+                    <NODEREF id="ponte_pilar_5" />
+                    <NODEREF id="ponte_pilar_6" />
+
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_1">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-20" y="7.5" z="3" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="15" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_2">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-20" y="7.5" z="-3" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="15" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_3">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="20" y="7.5" z="3" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="15" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_4">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="20" y="7.5" z="-3" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="15" sz="1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_5">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-20" y="10.5" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="5" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+    <NODE id="ponte_pilar_6">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="20" y="10.5" z="0" />
+        <ROTATION axis="y" angle="0" />
+        <SCALE sx="1" sy="1" sz="5" />
+
+        <DESCENDANTS>
+                    <NODEREF id="cubo" />
+                </DESCENDANTS>
+    </NODE>
+
+
+
+
 
 
 
