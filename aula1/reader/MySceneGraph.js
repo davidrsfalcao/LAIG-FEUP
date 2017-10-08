@@ -1323,7 +1323,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 
 			var numArgs = [];
 			numArgs["rectangle"] = 4;
-			numArgs["cylinder"] = 5;
+			numArgs["cylinder"] = 7;
 			numArgs["sphere"] = 3;
 			numArgs["triangle"] = 9;
 

@@ -2,7 +2,7 @@
  * BaselessCylinder
  * @constructor
  */
-function BaselessCylinder(scene, base, top, height, slices, stacks) {
+function BaselessCylinder(scene, height, base, top, slices, stacks) {
     CGFobject.call(this, scene);
 
     this.slices = slices;

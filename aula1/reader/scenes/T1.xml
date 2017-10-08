@@ -521,7 +521,7 @@
         <SCALE sx="1" sy="1" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="cylinder" args="7 1.4 0.5 20 20" />
+                    <LEAF  type="cylinder" args="7 1.4 0.5 20 20 0 0" />
                 </DESCENDANTS>
     </NODE>
 
@@ -877,7 +877,7 @@
         <SCALE sx="1" sy="1.5" sz="1" />
 
         <DESCENDANTS>
-                    <LEAF  type="cylinder" args="5 0.8 0.5 20 20" />
+                    <LEAF  type="cylinder" args="5 0.8 0.5 20 20 0 0" />
                 </DESCENDANTS>
     </NODE>
 
