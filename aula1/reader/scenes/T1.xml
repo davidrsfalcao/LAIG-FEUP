@@ -550,8 +550,8 @@
 
         <DESCENDANTS>
                     <NODEREF id="aviao_corpo" />
-                    <NODEREF id="aviao_frente" />
                     <NODEREF id="aviao_cockpit" />
+                    <NODEREF id="aviao_frente" />
                     <NODEREF id="asa1" />
                     <NODEREF id="asa2" />
                     <NODEREF id="asa3" />
@@ -881,6 +881,7 @@
                 </DESCENDANTS>
     </NODE>
 
+
     <NODE id="aviao_corpo2">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
@@ -894,6 +895,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Frente do avião -->
     <NODE id="aviao_frente">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
@@ -907,6 +909,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Cockpit do avião -->
     <NODE id="aviao_cockpit">
         <MATERIAL id="vidral" />
         <TEXTURE id="vidro" />
@@ -920,7 +923,7 @@
                 </DESCENDANTS>
     </NODE>
 
-
+    <!-- Cubo unitário -->
     <NODE id="cubo">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -940,6 +943,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face frente cubo -->
     <NODE id="cubo_face1">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -953,6 +957,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face direita cubo -->
     <NODE id="cubo_face2">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -966,6 +971,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face trás cubo -->
     <NODE id="cubo_face3">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -979,6 +985,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face esquerda cubo -->
     <NODE id="cubo_face4">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -992,6 +999,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face cima cubo -->
     <NODE id="cubo_face5">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1005,6 +1013,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Face baixo cubo -->
     <NODE id="cubo_face6">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1018,6 +1027,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Ponte da Arrábida -->
     <NODE id="ponte">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
@@ -1036,6 +1046,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Tabuleiro Superior da Ponte -->
     <NODE id="ponte_tabuleiro">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
@@ -1050,6 +1061,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Estrada do tabuleiro superior da Ponte -->
     <NODE id="ponte_estrada">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="estrada" />
@@ -1063,6 +1075,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Barreiras de proteção da Ponte -->
     <NODE id="ponte_barreiras">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1078,6 +1091,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Barreira de proteção esquerda da Ponte -->
     <NODE id="ponte_barreira_esq">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1092,6 +1106,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Barreira de proteção direita da Ponte -->
     <NODE id="ponte_barreira_dir">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1106,6 +1121,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Conjunto pilares da Ponte -->
     <NODE id="ponte_pilares">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1133,6 +1149,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Pilares da Ponte -->
     <NODE id="ponte_pilar_1">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1315,7 +1332,7 @@
                 </DESCENDANTS>
     </NODE>
 
-
+    <!-- Arco completo da Ponte -->
     <NODE id="ponte_arco">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1330,6 +1347,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Metade esquerda do arco da Ponte-->
     <NODE id="ponte_arco_2">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1343,6 +1361,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- Metade direita do arco da Ponte-->
     <NODE id="ponte_arco_1">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1394,6 +1413,7 @@
                 </DESCENDANTS>
     </NODE>
 
+    <!-- 39 peças de metade do arco da Ponte -->
     <NODE id="ponte_arco_p1">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
@@ -1902,7 +1922,7 @@
                 </DESCENDANTS>
     </NODE>
 
-
+    <!-- Peça base do arco da Ponte -->
     <NODE id="peca_arco">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
