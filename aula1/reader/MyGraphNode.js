@@ -41,7 +41,7 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
 /**
  * Adds a leaf to this node's leaves array.
  */
-MyGraphNode.prototype.display = function(fatherMaterial) {
+MyGraphNode.prototype.display = function(fatherMaterial, s, t) {
 	this.graph.scene.pushMatrix();
     this.graph.scene.multMatrix(this.transformMatrix);
 	var materialToUse = fatherMaterial;
@@ -61,6 +61,10 @@ MyGraphNode.prototype.display = function(fatherMaterial) {
             amplifierT = this.graph.textures[this.textureID][2];
 		}
 	}
+    else {
+        amplifierS = s;
+        amplifierT = t;
+    }
 	this.graph.materials[materialToUse].apply();
 
 	for(var i=0; i<this.leaves.length; i++){
@@ -76,7 +80,7 @@ MyGraphNode.prototype.display = function(fatherMaterial) {
 		this.leaves[i].display();
 	}
 	for(var i=0; i<this.children.length; i++){
-		this.graph.nodes[this.children[i]].display(materialToUse);
+		this.graph.nodes[this.children[i]].display(materialToUse, amplifierS, amplifierT);
 	}
 	this.graph.scene.popMatrix();
 }

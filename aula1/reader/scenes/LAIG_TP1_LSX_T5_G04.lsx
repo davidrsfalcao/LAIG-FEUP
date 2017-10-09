@@ -116,7 +116,7 @@
 
     <TEXTURE id="red-bull">
         <file path="images/red-bull.png" />
-        <amplif_factor s="1" t="1.3" />
+        <amplif_factor s="1.4" t="0.6" />
     </TEXTURE>
 
     <TEXTURE id="cimento">

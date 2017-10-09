@@ -16,6 +16,9 @@ function Rectangle(scene, left_top_x, left_top_y, right_bottom_x, right_bottom_y
     this.right_bottom_x = right_bottom_x;
     this.right_bottom_y = right_bottom_y;
 
+    this.width = right_bottom_x - left_top_x;
+    this.height = left_top_y - right_bottom_y;
+
     this.initBuffers();
 };
 
@@ -47,9 +50,9 @@ Rectangle.prototype.initBuffers = function() {
 
     this.originalTexCoords = [
         0,0,
-        1,0,
-        1,1,
-        0,1,
+        this.width,0,
+        this.width,this.height,
+        0,this.height,
     ];
 
     this.texCoords = this.originalTexCoords.slice();
