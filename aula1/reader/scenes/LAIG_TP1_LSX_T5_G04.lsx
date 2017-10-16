@@ -81,7 +81,7 @@
 
     <TEXTURE id="passeio2">
         <file path="images/passeio.png" />
-        <amplif_factor s="2" t="8" />
+        <amplif_factor s="5" t="8" />
     </TEXTURE>
 
     <TEXTURE id="boia">
