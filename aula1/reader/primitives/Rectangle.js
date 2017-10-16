@@ -30,8 +30,9 @@ Rectangle.prototype.initBuffers = function() {
       ];
 
       this.indices = [
+          0, 3, 2,
           2, 1, 0,
-          0, 3, 2
+
       ];
 
       this.primitiveType = this.scene.gl.TRIANGLES;
@@ -44,10 +45,10 @@ Rectangle.prototype.initBuffers = function() {
       ];
 
     this.originalTexCoords = [
-        0,this.height,
-        this.width,this.height,
-        this.width,0,
         0,0,
+        this.width,0,
+        this.width,this.height,
+        0,this.height,
     ];
 
     this.texCoords = this.originalTexCoords.slice();

@@ -229,7 +229,6 @@
         <TEXTURE id="ribeira" />
 
         <TRANSLATION x="-26" y="20" z="0" />
-        <ROTATION axis="x" angle="180" />
         <ROTATION axis="y" angle="90" />
         <SCALE sx="50" sy="40" sz="1" />
 
