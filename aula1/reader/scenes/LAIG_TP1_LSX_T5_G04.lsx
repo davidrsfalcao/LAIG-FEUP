@@ -66,22 +66,22 @@
 
     <TEXTURE id="ribeira">
         <file path="images/porto.jpg" />
-        <amplif_factor s="1.1" t="1.15" />
+        <amplif_factor s="1.2" t="1.1" />
     </TEXTURE>
 
     <TEXTURE id="passeio">
         <file path="images/passeio.png" />
-        <amplif_factor s="1" t="1" />
+        <amplif_factor s="1" t="1.2" />
     </TEXTURE>
 
     <TEXTURE id="passeio1">
         <file path="images/passeio.png" />
-        <amplif_factor s="1" t="6" />
+        <amplif_factor s="1" t="8" />
     </TEXTURE>
 
     <TEXTURE id="passeio2">
         <file path="images/passeio.png" />
-        <amplif_factor s="2" t="6" />
+        <amplif_factor s="2" t="8" />
     </TEXTURE>
 
     <TEXTURE id="boia">
@@ -99,11 +99,6 @@
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
-    <TEXTURE id="preto">
-        <file path="images/preto.png" />
-        <amplif_factor s="1" t="1" />
-    </TEXTURE>
-
     <TEXTURE id="cinza">
         <file path="images/cinza.png" />
         <amplif_factor s="1" t="1" />
@@ -116,7 +111,7 @@
 
     <TEXTURE id="red-bull">
         <file path="images/red-bull.png" />
-        <amplif_factor s="1.4" t="0.6" />
+        <amplif_factor s="2" t="0.6" />
     </TEXTURE>
 
     <TEXTURE id="cimento">
@@ -174,6 +169,14 @@
         <emission r="0.0" g="0.0" b="0.0" a="1" />
     </MATERIAL>
 
+    <MATERIAL id="preto_mat">
+        <shininess value="1" />
+        <specular r="0.0" g="0.0" b="0.0" a="1" />
+        <diffuse r="0.0" g="0.0" b="0.0" a="1" />
+        <ambient r="0.0" g="0.0" b="0.0" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
 
 </MATERIALS>
 
@@ -226,6 +229,7 @@
         <TEXTURE id="ribeira" />
 
         <TRANSLATION x="-26" y="20" z="0" />
+        <ROTATION axis="x" angle="180" />
         <ROTATION axis="y" angle="90" />
         <SCALE sx="50" sy="40" sz="1" />
 
@@ -550,7 +554,7 @@
     <!-- Aviao -->
     <NODE id="aviao">
         <MATERIAL id="aluminio" />
-        <TEXTURE id="null" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="0" y="2" z="0" />
         <ROTATION axis="y" angle="0" />
@@ -668,8 +672,8 @@
     </NODE>
 
     <NODE id="hel1">
-        <MATERIAL id="null" />
-        <TEXTURE id="preto" />
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
 
         <TRANSLATION x="0.15" y="-1.5" z="0.9" />
         <ROTATION axis="y" angle="0" />
@@ -682,8 +686,8 @@
     </NODE>
 
     <NODE id="hel2">
-            <MATERIAL id="null" />
-            <TEXTURE id="preto" />
+            <MATERIAL id="preto_mat" />
+            <TEXTURE id="clear" />
 
             <TRANSLATION x="0.15" y="1.5" z="0.9" />
             <ROTATION axis="x" angle="-180" />
@@ -697,8 +701,8 @@
 
 
         <NODE id="hel3">
-            <MATERIAL id="null" />
-            <TEXTURE id="preto" />
+            <MATERIAL id="preto_mat" />
+            <TEXTURE id="clear" />
 
             <TRANSLATION x="-1.5" y="-0.15" z="0.9" />
             <ROTATION axis="x" angle="-180" />
@@ -710,8 +714,8 @@
         </NODE>
 
         <NODE id="hel4">
-            <MATERIAL id="null" />
-            <TEXTURE id="preto" />
+            <MATERIAL id="preto_mat" />
+            <TEXTURE id="clear" />
 
             <TRANSLATION x="-1.5" y="-0.15" z="0.9" />
             <ROTATION axis="x" angle="0" />
@@ -727,8 +731,6 @@
         <MATERIAL id="null" />
         <TEXTURE id="clear" />
 
-        <TRANSLATION x="0" y="0" z="0" />
-        <ROTATION axis="y" angle="0" />
         <SCALE sx="1" sy="1" sz="0.5" />
 
         <DESCENDANTS>
@@ -750,8 +752,6 @@
         <TEXTURE id="red-bull" />
 
         <TRANSLATION x="0" y="0" z="0.2" />
-        <ROTATION axis="y" angle="0" />
-        <SCALE sx="1" sy="1" sz="1" />
 
         <DESCENDANTS>
                     <LEAF  type="rectangle" args="0 0.5 2 0.0" />
@@ -763,8 +763,6 @@
         <TEXTURE id="azul" />
 
         <TRANSLATION x="0" y="0.5" z="0.2" />
-        <ROTATION axis="y" angle="0" />
-        <SCALE sx="1" sy="1" sz="1" />
 
         <DESCENDANTS>
                     <LEAF  type="triangle" args="0 0 0 2 0 0 0 0.5 0" />
@@ -790,7 +788,6 @@
 
         <TRANSLATION x="2" y="0.5" z="-0.2" />
         <ROTATION axis="y" angle="180" />
-        <SCALE sx="1" sy="1" sz="1" />
 
         <DESCENDANTS>
                     <LEAF  type="triangle" args="0 0 0 2 0 0 2 0.5 0" />
@@ -803,7 +800,7 @@
 
         <TRANSLATION x="0" y="0" z="-0.2" />
         <ROTATION axis="x" angle="90" />
-        <SCALE sx="1" sy="1" sz="1" />
+
 
         <DESCENDANTS>
                     <LEAF  type="rectangle" args="0 0.4 2 0.0" />

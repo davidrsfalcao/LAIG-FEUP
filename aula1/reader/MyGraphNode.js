@@ -55,8 +55,6 @@ MyGraphNode.prototype.display = function(fatherMaterial, s, t) {
 			this.graph.materials[materialToUse].setTexture(null);
 		} else {
 			this.graph.materials[materialToUse].setTexture(this.graph.textures[this.textureID][0]);
-			//this.graph.materials[materialToUse].setTextureWrap(this.graph.textures[this.textureID][1], this.graph.textures[this.textureID][2]);
-            //console.log("HERE       S: " + amplifierS + "     T: " + amplifierT);
             amplifierS = this.graph.textures[this.textureID][1];
             amplifierT = this.graph.textures[this.textureID][2];
 		}

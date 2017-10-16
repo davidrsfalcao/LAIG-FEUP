@@ -6,11 +6,6 @@
 function Rectangle(scene, left_top_x, left_top_y, right_bottom_x, right_bottom_y) {
     CGFobject.call(this,scene);
 
-    left_top_x = typeof left_top_x !== 'undefined' ? left_top_x : -0.5;
-    left_top_y = typeof left_top_y !== 'undefined' ? left_top_y : 0.5;
-    right_bottom_x = typeof right_bottom_x !== 'undefined' ? right_bottom_x : 0.5;
-    right_bottom_y = typeof right_bottom_y !== 'undefined' ? right_bottom_y : -0.5;
-
     this.left_top_x = left_top_x;
     this.left_top_y = left_top_y;
     this.right_bottom_x = right_bottom_x;
@@ -49,10 +44,10 @@ Rectangle.prototype.initBuffers = function() {
       ];
 
     this.originalTexCoords = [
-        0,0,
-        this.width,0,
-        this.width,this.height,
         0,this.height,
+        this.width,this.height,
+        this.width,0,
+        0,0,
     ];
 
     this.texCoords = this.originalTexCoords.slice();
