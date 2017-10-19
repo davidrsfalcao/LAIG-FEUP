@@ -82,3 +82,7 @@ MyGraphNode.prototype.display = function(fatherMaterial, s, t) {
 	}
 	this.graph.scene.popMatrix();
 }
+
+
+
+//teste
