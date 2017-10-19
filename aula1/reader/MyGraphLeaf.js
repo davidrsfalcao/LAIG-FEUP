@@ -22,6 +22,10 @@ function MyGraphLeaf(scene,type,args) {
 			this.primitive=new Cylinder(scene, args[0], args[1], args[2],args[3], args[4], args[5], args[6]);
 			break;
 
+		case 'patch':
+			this.primitive = new Patch (scene, args[0], arg[1]);
+			break;
+
 		default:
 		break;
 	}

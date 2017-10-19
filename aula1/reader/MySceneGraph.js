@@ -1325,7 +1325,8 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 			numArgs["rectangle"] = 4;
 			numArgs["cylinder"] = 7;
 			numArgs["sphere"] = 3;
-			numArgs["triangle"] = 9;
+            numArgs["triangle"] = 9;
+            numArgs["patch"] = 2;
 
             for (var j = 0; j < descendants.length; j++) {
                 if (descendants[j].nodeName == "NODEREF")
@@ -1347,7 +1348,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                 else
 					if (descendants[j].nodeName == "LEAF")
 					{
-						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle']);
+						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle', 'patch']);
 
 						if (type != null)
 							this.log("   Leaf: "+ type);
@@ -1378,12 +1379,18 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 							return "incorrect number of arguments for type " + type + " (ID = " + nodeID + ")";
 
 						// Checks valid cylinder and sphere parameters.
-						if (type === 'cylinder' || type == 'sphere') {
+						if (type === 'cylinder' || type == 'sphere' || type ==='patch') {
 							for (var j = 0; j < args.length; j++) {
 								if (args[j] < 0)
 									return "all arguments for a " +  type + " must be positive";
 							}
-						}
+                        }
+                        
+
+                        if (type === 'patch'){
+                            for (var j = 0; j < args.length; j++) {
+                            console.log(args[j]);
+                        }
 
 							//add leaf
 						this.nodes[nodeID].addLeaf(new MyGraphLeaf(this.scene,type,args));
