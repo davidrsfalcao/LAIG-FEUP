@@ -1379,17 +1379,15 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 							return "incorrect number of arguments for type " + type + " (ID = " + nodeID + ")";
 
 						// Checks valid cylinder and sphere parameters.
-						if (type === 'cylinder' || type == 'sphere' || type ==='patch') {
+						if (type === 'cylinder' || type == 'sphere' || type == 'patch') {
 							for (var j = 0; j < args.length; j++) {
 								if (args[j] < 0)
 									return "all arguments for a " +  type + " must be positive";
 							}
                         }
                         
-
-                        if (type === 'patch'){
-                            for (var j = 0; j < args.length; j++) {
-                            console.log(args[j]);
+                        if ( type == 'patch'){
+                            console.log("patch");
                         }
 
 							//add leaf

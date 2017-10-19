@@ -14,6 +14,7 @@ function MyGraphNode(graph, nodeID) {
     // IDs of child nodes.
     this.leaves = [];
 
+
     // The material ID.
     this.materialID = null ;
 

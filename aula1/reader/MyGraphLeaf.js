@@ -23,7 +23,7 @@ function MyGraphLeaf(scene,type,args) {
 			break;
 
 		case 'patch':
-			this.primitive = new Patch (scene, args[0], arg[1]);
+			this.primitive = new Patch (scene, args[0], args[1]);
 			break;
 
 		default:
