@@ -6,13 +6,14 @@
 function Patch(scene, degree1, degree2, controlvertexes) {
   	var knots1 = this.getKnotsVector(degree1); // to be built inside webCGF in later versions ()
 	var knots2 = this.getKnotsVector(degree2); // to be built inside webCGF in later versions
-		
+	this.surfaces = [];
+	
 	var nurbsSurface = new CGFnurbsSurface(degree1, degree2, knots1, knots2, controlvertexes); // TODO  (CGF 0.19.3): remove knots1 and knots2 from CGFnurbsSurface method call. Calculate inside method.
 	getSurfacePoint = function(u, v) {
 		return nurbsSurface.getPoint(u, v);
 	};
 
-	var obj = new CGFnurbsObject(this, getSurfacePoint, degree1, degree2);
+	var obj = new CGFnurbsObject(scene, getSurfacePoint, degree1, degree2);
 	this.surfaces.push(obj);
 };
 
@@ -27,4 +28,5 @@ Patch.prototype.getKnotsVector = function(degree) { // TODO (CGF 0.19.3): add to
 	}
 	return v;
 }
+
 

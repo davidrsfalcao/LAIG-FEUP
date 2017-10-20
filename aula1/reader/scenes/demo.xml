@@ -617,11 +617,11 @@
                     <CPOINT xx="1" yy="1" zz="2" ww="1"   />
                     <CPOINT xx="2" yy="3" zz="2" ww="1"   />
                 </CPLINE>
-                    <CPLINE>
+                <CPLINE>
                     <CPOINT xx="3" yy="3" zz="4" ww="1"   />
                     <CPOINT xx="4" yy="2" zz="5" ww="1"   />
                 </CPLINE>
-                    <CPLINE>
+                <CPLINE>
                     <CPOINT xx="1" yy="2" zz="5" ww="1"   />
                     <CPOINT xx="6" yy="3" zz="6" ww="1"   />
                 </CPLINE>
