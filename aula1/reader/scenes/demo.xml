@@ -612,20 +612,20 @@
        	<ROTATION axis="y" angle="45" />
 
         <DESCENDANTS>
-					<LEAF id="triangle1" type="patch" args="2 1" > <!--2-U-2+1CPLINE 1-v-2CPOINT -->
+            <LEAF id="triangle1" type="patch" args="2 1" > <!--2-U-2+1CPLINE 1-v-2CPOINT -->
+                <CPLINE>
+                    <CPOINT xx="1" yy="1" zz="2" ww="1"   />
+                    <CPOINT xx="2" yy="3" zz="2" ww="1"   />
+                </CPLINE>
                     <CPLINE>
-                        <CPOINT xx="1" yy="1" zz="2" ww="1"   />
-                        <CPOINT xx="2" yy="3" zz="2" ww="1"   />
-                    </CPLINE>
-                     <CPLINE>
-                        <CPOINT xx="3" yy="3" zz="4" ww="1"   />
-                        <CPOINT xx="4" yy="2" zz="5" ww="1"   />
-                    </CPLINE>
-                     <CPLINE>
-                        <CPOINT xx="1" yy="2" zz="5" ww="1"   />
-                        <CPOINT xx="6" yy="3" zz="6" ww="1"   />
-                    </CPLINE>
-                    </LEAF>
+                    <CPOINT xx="3" yy="3" zz="4" ww="1"   />
+                    <CPOINT xx="4" yy="2" zz="5" ww="1"   />
+                </CPLINE>
+                    <CPLINE>
+                    <CPOINT xx="1" yy="2" zz="5" ww="1"   />
+                    <CPOINT xx="6" yy="3" zz="6" ww="1"   />
+                </CPLINE>
+            </LEAF>
 
         </DESCENDANTS>
 

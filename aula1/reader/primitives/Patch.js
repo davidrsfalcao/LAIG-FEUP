@@ -12,7 +12,7 @@ function Patch(scene, degree1, degree2, controlvertexes) {
 		return nurbsSurface.getPoint(u, v);
 	};
 
-	var obj = new CGFnurbsObject(this, getSurfacePoint, uDivisions, vDivisions);
+	var obj = new CGFnurbsObject(this, getSurfacePoint, degree1, degree2);
 	this.surfaces.push(obj);
 };
 

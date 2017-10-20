@@ -1388,6 +1388,43 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                         
                         if ( type == 'patch'){
                             console.log("patch");
+                            var cplines = descendants[0].children;
+                            var controlVertex = new Array();
+                            for(var i=0; i < cplines.length; i++) {
+                                var cpLineArray = new Array();                                
+                                var cpLinesChildren = cplines[i].children;
+                                for(var j=0; j < cpLinesChildren.length; j++ ) {
+                                    var cpPoint = new Array();
+                                    var xx = this.reader.getFloat(cpLinesChildren[j], 'xx');
+                                    if (xx == null ) {
+                                        this.onXMLMinorError("unable to parse xx component of ccpoint");
+                                    } else {
+                                        cpPoint.push(xx);
+                                    }
+                                    var yy = this.reader.getFloat(cpLinesChildren[j], 'yy');
+                                    if (yy == null ) {
+                                        this.onXMLMinorError("unable to parse yy component of ccpoint");
+                                    } else {
+                                        cpPoint.push(yy);
+                                    }
+                                    var zz = this.reader.getFloat(cpLinesChildren[j], 'zz');
+                                    if (zz == null ) {
+                                        this.onXMLMinorError("unable to parse zz component of ccpoint");
+                                    } else {
+                                        cpPoint.push(zz);
+                                    }
+                                    var ww = this.reader.getFloat(cpLinesChildren[j], 'ww');
+                                    if (ww == null ) {
+                                        this.onXMLMinorError("unable to parse ww component of ccpoint");
+                                    } else {
+                                        cpPoint.push(ww);
+                                    }
+                                    cpLineArray.push(cpPoint);
+                                }
+                                controlVertex.push(cpLineArray);
+                            }
+
+                            args[2] = controlVertex;
                         }
 
 							//add leaf
