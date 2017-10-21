@@ -61,7 +61,12 @@
     <!-- Street bench -->
     <TEXTURE id="river">
         <file path="images/river.jpg" />
-        <amplif_factor s="0.2" t="0.2" />
+        <amplif_factor s="0.25" t="0.25" />
+    </TEXTURE>
+
+    <TEXTURE id="river1">
+        <file path="images/river1.png" />
+        <amplif_factor s="0.25" t="0.25" />
     </TEXTURE>
 
     <TEXTURE id="ribeira">
@@ -204,6 +209,7 @@
             <NODEREF id="obstaculos" />
             <NODEREF id="aviao" />
             <NODEREF id="ponte" />
+            <NODEREF id="ondas" />
         </DESCENDANTS>
 
     </NODE>
@@ -2010,6 +2016,156 @@
         <DESCENDANTS>
                     <NODEREF id="cubo" />
                 </DESCENDANTS>
+    </NODE>
+
+    <!-- Ondas no rio :) -->
+    <NODE id="ondas">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="river1" />
+
+        <DESCENDANTS>
+                    <NODEREF id="onda1" />
+                    <NODEREF id="onda2" />
+                    <NODEREF id="onda3" />
+                    <NODEREF id="onda4" />
+                    <NODEREF id="onda5" />
+                </DESCENDANTS>
+    </NODE>
+
+
+    <NODE id="onda1">
+        <MATERIAL id="null" />
+        <TEXTURE id="river1" />
+
+        <SCALE sx="1.8" sy="0.4" sz="1" />
+        <TRANSLATION x="10" y="3" z="-20" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+          <LEAF type="patch" args="30 30" >
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="0" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="0" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="0" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="0" ww="0.3"/>
+            </CPLINE>
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="20" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="20" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="20" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="20" ww="0.3"/>
+            </CPLINE>
+          </LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="onda2">
+        <MATERIAL id="null" />
+        <TEXTURE id="river1" />
+
+        <SCALE sx="1.8" sy="0.3" sz="1" />
+        <TRANSLATION x="10" y="3" z="-15" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+          <LEAF type="patch" args="30 30" >
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="0" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="0" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="0" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="0" ww="0.3"/>
+            </CPLINE>
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="20" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="20" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="20" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="20" ww="0.3"/>
+            </CPLINE>
+          </LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="onda3">
+        <MATERIAL id="null" />
+        <TEXTURE id="river1" />
+
+        <SCALE sx="1.8" sy="0.2" sz="1" />
+        <TRANSLATION x="10" y="3" z="-10" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+          <LEAF type="patch" args="30 30" >
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="0" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="0" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="0" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="0" ww="0.3"/>
+            </CPLINE>
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="20" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="20" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="20" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="20" ww="0.3"/>
+            </CPLINE>
+          </LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="onda4">
+        <MATERIAL id="null" />
+        <TEXTURE id="river1" />
+
+        <SCALE sx="1.8" sy="0.15" sz="1" />
+        <TRANSLATION x="10" y="3" z="-5" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+          <LEAF type="patch" args="30 30" >
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="0" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="0" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="0" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="0" ww="0.3"/>
+            </CPLINE>
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="20" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="20" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="20" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="20" ww="0.3"/>
+            </CPLINE>
+          </LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="onda5">
+        <MATERIAL id="null" />
+        <TEXTURE id="river1" />
+
+        <SCALE sx="1.8" sy="0.1" sz="1" />
+        <TRANSLATION x="10" y="3" z="0" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+          <LEAF type="patch" args="30 30" >
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="0" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="0" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="0" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="0" ww="0.3"/>
+            </CPLINE>
+            <CPLINE>
+              <CPOINT xx="-5.2" yy="-2.5" zz="20" ww="1"/>
+              <CPOINT xx="2.6" yy="1.8" zz="20" ww="1"/>
+              <CPOINT xx="-5.9" yy="-3.6" zz="20" ww="0.5"/>
+              <CPOINT xx="1.6" yy="-2.5" zz="20" ww="0.3"/>
+            </CPLINE>
+          </LEAF>
+        </DESCENDANTS>
+
     </NODE>
 
 
