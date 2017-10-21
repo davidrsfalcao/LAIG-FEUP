@@ -14,7 +14,7 @@
 
 <!-- Illumination and clear colour -->
 <ILLUMINATION>
-    <ambient r="0.5" g="0.8" b="0.95" a="1" />
+    <ambient r="0.2" g="0.2" b="0.2" a="1" />
     <background r="0" g="0" b="0" a="1" />
 </ILLUMINATION>
 
@@ -170,6 +170,7 @@
             <NODEREF id="arvores" />
             <NODEREF id="chao" />
             <NODEREF id="bancos" />
+            <NODEREF id="PP" />
         </DESCENDANTS>
 
     </NODE>
@@ -612,7 +613,17 @@
        	<ROTATION axis="y" angle="45" />
 
         <DESCENDANTS>
-            <LEAF id="triangle1" type="patch" args="2 1" > <!--2-U-2+1CPLINE 1-v-2CPOINT -->
+					<LEAF id="triangle1" type="triangle" args="2 0 12 12 0 2 0 0 0" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="PP">
+        <MATERIAL id="null" />
+        <TEXTURE id="rocks" />
+
+        <DESCENDANTS>
+            <LEAF type="patch" args="2 1" > <!--2-U-2+1CPLINE 1-v-2CPOINT -->
                 <CPLINE>
                     <CPOINT xx="1" yy="1" zz="2" ww="1"   />
                     <CPOINT xx="2" yy="3" zz="2" ww="1"   />

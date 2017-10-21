@@ -1186,6 +1186,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             if (nodeID == null )
                 return "failed to retrieve node ID";
             // Checks if ID is valid.
+
             if (this.nodes[nodeID] != null )
                 return "node ID must be unique (conflict: ID = " + nodeID + ")";
 
@@ -1385,14 +1386,13 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 									return "all arguments for a " +  type + " must be positive";
 							}
                         }
-                        
+
                         if ( type == 'patch'){
-                            console.log("patch");
                             var cplines = descendants[0].children;
                             var controlVertex = new Array();
-                            for(var i=0; i < cplines.length; i++) {
-                                var cpLineArray = new Array();                                
-                                var cpLinesChildren = cplines[i].children;
+                            for(var k=0; k < cplines.length; k++) {
+                                var cpLineArray = new Array();
+                                var cpLinesChildren = cplines[k].children;
                                 for(var j=0; j < cpLinesChildren.length; j++ ) {
                                     var cpPoint = new Array();
                                     var xx = this.reader.getFloat(cpLinesChildren[j], 'xx');
@@ -1426,6 +1426,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 
                             args[2] = controlVertex;
                         }
+
 
 							//add leaf
 						this.nodes[nodeID].addLeaf(new MyGraphLeaf(this.scene,type,args));
