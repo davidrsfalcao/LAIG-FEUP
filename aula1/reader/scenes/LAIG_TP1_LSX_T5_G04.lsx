@@ -2023,6 +2023,9 @@
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="river1" />
 
+        <TRANSLATION x="0" y="0" z="13" />
+        <SCALE sx="1" sy="1" sz="1.5" />
+
         <DESCENDANTS>
                     <NODEREF id="onda1" />
                     <NODEREF id="onda2" />
@@ -2038,7 +2041,7 @@
         <TEXTURE id="river1" />
 
         <SCALE sx="1.8" sy="0.4" sz="1" />
-        <TRANSLATION x="10" y="3" z="-20" />
+        <TRANSLATION x="10" y="2.6" z="-20" />
         <ROTATION axis="y" angle="-90" />
 
         <DESCENDANTS>
@@ -2065,7 +2068,7 @@
         <TEXTURE id="river1" />
 
         <SCALE sx="1.8" sy="0.3" sz="1" />
-        <TRANSLATION x="10" y="3" z="-15" />
+        <TRANSLATION x="10" y="2.6" z="-15" />
         <ROTATION axis="y" angle="-90" />
 
         <DESCENDANTS>
@@ -2092,7 +2095,7 @@
         <TEXTURE id="river1" />
 
         <SCALE sx="1.8" sy="0.2" sz="1" />
-        <TRANSLATION x="10" y="3" z="-10" />
+        <TRANSLATION x="10" y="2.6" z="-10" />
         <ROTATION axis="y" angle="-90" />
 
         <DESCENDANTS>
@@ -2119,7 +2122,7 @@
         <TEXTURE id="river1" />
 
         <SCALE sx="1.8" sy="0.15" sz="1" />
-        <TRANSLATION x="10" y="3" z="-5" />
+        <TRANSLATION x="10" y="2.6" z="-5" />
         <ROTATION axis="y" angle="-90" />
 
         <DESCENDANTS>
@@ -2146,7 +2149,7 @@
         <TEXTURE id="river1" />
 
         <SCALE sx="1.8" sy="0.1" sz="1" />
-        <TRANSLATION x="10" y="3" z="0" />
+        <TRANSLATION x="10" y="2.6" z="0" />
         <ROTATION axis="y" angle="-90" />
 
         <DESCENDANTS>
