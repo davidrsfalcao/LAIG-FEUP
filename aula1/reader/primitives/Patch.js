@@ -3,7 +3,7 @@
 * @constructor
 */
 
-function Patch(scene, udivs, degree2, controlvertexes) {
+function Patch(scene, udivs, vdivs, controlvertexes) {
 
     var tmp = controlvertexes.slice();
     var a = tmp.length - 1;
