@@ -3,7 +3,7 @@
 * @constructor
 */
 
-function Patch(scene, degree1, degree2, controlvertexes) {
+function Patch(scene, udivs, degree2, controlvertexes) {
 
     var tmp = controlvertexes.slice();
     var a = tmp.length - 1;
@@ -17,7 +17,7 @@ function Patch(scene, degree1, degree2, controlvertexes) {
 		return nurbsSurface.getPoint(u, v);
 	};
 
-		this.surface = new CGFnurbsObject(scene, getSurfacePoint, degree1, degree2);
+	this.surface = new CGFnurbsObject(scene, getSurfacePoint, udivs, vdivs);
 
 };
 
@@ -43,11 +43,7 @@ Patch.prototype.amplifyTexture = function(amplifierS, amplifierT) {
 
 Patch.prototype.display = function() {
 
-    //var i=0;
-    //var length = this.surfaces.length;
 
-    //for(i=0; i< length; i++){
-        this.surface.display();
-    //}
+    this.surface.display();
 
 }
