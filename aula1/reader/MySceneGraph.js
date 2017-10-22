@@ -1511,9 +1511,7 @@ MySceneGraph.prototype.displayScene = function() {
 	//this.scene.loadIdentity();
 	//this.scene.multMatrix(this.initialTransforms);
 
-
-
-	this.nodes[this.idRoot].display(this.defaultMaterialID, 1, 1);
+	this.nodes[this.idRoot].display(this.defaultMaterialID, this.nodes[this.idRoot].textureID, 1, 1);
 
 	this.scene.popMatrix();
 	//this.log("Graph should be rendered here...");
