@@ -42,8 +42,6 @@ Patch.prototype.amplifyTexture = function(amplifierS, amplifierT) {
 }
 
 Patch.prototype.display = function() {
-
-
     this.surface.display();
 
 }
