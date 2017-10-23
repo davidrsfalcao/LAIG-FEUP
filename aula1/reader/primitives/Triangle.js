@@ -1,9 +1,3 @@
-/**
- * Triangle
- * @param {XMLscene} scene - CGFscene where the Cylinder will be displayed
- * @param {String} coords - coordinates parsed from the XML file
- * @constructor
- */
 function Triangle(scene, x1, y1, z1, x2, y2, z2, x3, y3, z3) {
     CGFobject.call(this,scene);
 
@@ -23,13 +17,7 @@ function Triangle(scene, x1, y1, z1, x2, y2, z2, x3, y3, z3) {
 Triangle.prototype = Object.create(CGFobject.prototype);
 Triangle.prototype.constructor=Triangle;
 
-/**
-    * Creates all the vertexes needed for the trianle. Initiates GL Buffers
-    * @function
-    * @param {String} coords - coordinates parsed from the XML file
-    *   @memberof Triangle
-    * @name initBuffers
-*/
+
 Triangle.prototype.initBuffers = function () {
 
     this.vertices = [
