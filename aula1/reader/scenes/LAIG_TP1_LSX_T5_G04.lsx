@@ -124,6 +124,11 @@
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
+    <TEXTURE id="illuminati">
+        <file path="images/Illuminati.png" />
+        <amplif_factor s="0.9" t="1" />
+    </TEXTURE>
+
     <TEXTURE id="estrada">
         <file path="images/estrada.jpg" />
         <amplif_factor s="0.2" t="1" />
@@ -210,6 +215,7 @@
             <NODEREF id="aviao" />
             <NODEREF id="ponte" />
             <NODEREF id="ondas" />
+            <NODEREF id="teste" />
         </DESCENDANTS>
 
     </NODE>
@@ -2169,6 +2175,19 @@
           </LEAF>
         </DESCENDANTS>
 
+    </NODE>
+
+    <NODE id="teste">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="illuminati" />
+
+        <TRANSLATION x="0" y="0" z="-25" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="18" sy="18" sz="1" />
+
+        <DESCENDANTS>
+                    <LEAF  type="triangle" args="-0.5 0 0 0.5 0 0 0 1 0" />
+                </DESCENDANTS>
     </NODE>
 
 
