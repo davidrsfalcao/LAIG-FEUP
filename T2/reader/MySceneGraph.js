@@ -6,8 +6,9 @@ var ILLUMINATION_INDEX = 1;
 var LIGHTS_INDEX = 2;
 var TEXTURES_INDEX = 3;
 var MATERIALS_INDEX = 4;
-var LEAVES_INDEX = 5;
-var NODES_INDEX = 6;
+var ANIMATIONS_INDEX = 5;
+var LEAVES_INDEX = 6;
+var NODES_INDEX = 7;
 
 /**
  * MySceneGraph class, representing the scene graph.
@@ -136,6 +137,18 @@ MySceneGraph.prototype.parseLSXFile = function(rootElement) {
             this.onXMLMinorError("tag <MATERIALS> out of order");
 
         if ((error = this.parseMaterials(nodes[index])) != null )
+            return error;
+    }
+
+    
+    // <ANIMATIONS>
+    if ((index = nodeNames.indexOf("ANIMATIONS")) == -1) {
+        return "tag <ANIMATIONS> missing";        
+    } else {
+        if (index != ANIMATIONS_INDEX)
+            this.onXMLMinorError("tag <ANIMATIONS> out of order");
+
+        if ((error = this.parseAnimations(nodes[index])) != null )
             return error;
     }
 
@@ -1158,6 +1171,87 @@ MySceneGraph.prototype.parseMaterials = function(materialsNode) {
     console.log("Parsed materials");
 }
 
+/**
+ * Parses the <ANIMATIONS> block.
+ */
+MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
+
+    var children = nodesAnimation.children;
+    // Each animation.
+
+    this.animations = [];
+
+    for (var i = 0; i < children.length; i++) {
+
+        var args = {};
+        
+        if (children[i].nodeName != "ANIMATION") {
+            this.onXMLMinorError("unknown tag name <" + children[i].nodeName + ">");
+            continue;
+        }
+
+        if ((this.reader.getString(children[i], 'type')) != "combo"){
+            var animationID = this.reader.getString(children[i], 'id');
+            if (animationID == null )
+                return "no ID defined for animation";
+
+            
+            var animationSpeed = this.reader.getFloat(children[i], 'speed');
+            if (animationSpeed == null )
+                return "no speed defined for animation";
+
+            var animationType = this.reader.getString(children[i], 'type');
+            if (animationType == null )
+                return "no type defined for animation";
+        } else {
+            var animationID = this.reader.getString(children[i], 'id');
+            if (animationID == null )
+                return "no ID defined for animation";
+
+            
+            var animationType = this.reader.getString(children[i], 'type');
+            if (animationType == null )
+                return "no type defined for animation";
+
+        }
+       
+        var controlPoints = children[i].children;
+        
+        var animationWithControlPoints = new Array();
+        for(var k=0; k < controlPoints.length; k++) {
+            if(controlPoints[k].nodeName === 'controlpoint') {
+                var controlPointsArray = new Array();
+                var cpPoint = new Array();
+                var xx = this.reader.getFloat(controlPoints[k], 'xx');
+                if (xx == null ) {
+                    this.onXMLMinorError("unable to parse xx component of controlPoint" + JSON.stringify(controlPoints[k]));
+                } else {
+                    cpPoint.push(xx);
+                }
+                var yy = this.reader.getFloat(controlPoints[k], 'yy');
+                if (yy == null ) {
+                    this.onXMLMinorError("unable to parse yy component of controlPoint" + JSON.stringify(controlPoints[k]));
+                } else {
+                    cpPoint.push(yy);
+                }
+                var zz = this.reader.getFloat(controlPoints[k], 'zz');
+                if (zz == null ) {
+                    this.onXMLMinorError("unable to parse zz component of controlPoint" + JSON.stringify(controlPoints[k]));
+                } else {
+                    cpPoint.push(zz);
+                }
+                controlPointsArray.push(cpPoint);
+                animationWithControlPoints.push(controlPointsArray);
+            } else {
+                // aqui vai se buscar as cenas do spanRef 
+            }
+        }
+        
+        this.animations[animationID] = new MygraphAnimation(this, animationType, args)
+    }       
+}
+
+    
 
 /**
  * Parses the <NODES> block.
@@ -1183,22 +1277,26 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
         else if (nodeName == "NODE") {
             // Retrieves node ID.
             var nodeID = this.reader.getString(children[i], 'id');
+            var selected = this.reader.getString(children[i], 'selectable');
             if (nodeID == null )
                 return "failed to retrieve node ID";
-            // Checks if ID is valid.
+            if (selected == null )
+                return "failed to retrieve selectable";
 
+            // Checks if ID is valid.
             if (this.nodes[nodeID] != null )
                 return "node ID must be unique (conflict: ID = " + nodeID + ")";
 
-            this.log("Processing node "+nodeID);
+            //this.log("Processing node "+ nodeID);
+            //this.log("selected "+ selected);
 
             // Creates node.
-            this.nodes[nodeID] = new MyGraphNode(this,nodeID);
+            this.nodes[nodeID] = new MyGraphNode(this, nodeID, selected);
 
             // Gathers child nodes.
             var nodeSpecs = children[i].children;
             var specsNames = [];
-            var possibleValues = ["MATERIAL", "TEXTURE", "TRANSLATION", "ROTATION", "SCALE", "DESCENDANTS"];
+            var possibleValues = ["MATERIAL", "TEXTURE", "TRANSLATION", "ROTATION", "SCALE", "ANIMATIONREFS", "DESCENDANTS"];
             for (var j = 0; j < nodeSpecs.length; j++) {
                 var name = nodeSpecs[j].nodeName;
                 specsNames.push(nodeSpecs[j].nodeName);
@@ -1312,6 +1410,29 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                     break;
                 }
             }
+            
+           //Information of Animations
+            var animationsIndex = specsNames.indexOf("ANIMATIONREFS");
+            if(animationsIndex != -1)
+            {
+                var animationDescen = nodeSpecs[animationsIndex].children;
+                var sizeChildren = 0;
+
+                for (var j = 0; j < animationDescen.length; j++) {
+                    if (animationDescen[j].nodeName = "ANIMATIONREF")
+                    {
+                        var curId = this.reader.getString(animationDescen[j], 'id');
+                        this.log(" ANIMATION ID: "+ curId);
+                        
+                        if (curId == null )
+                            this.onXMLMinorError("unable to parse descendant id animation");
+                        else {
+                            this.nodes[nodeID].addAnimation(curId);
+                            sizeChildren++;
+                        }
+                    }
+                }
+            }                
 
             // Retrieves information about children.
             var descendantsIndex = specsNames.indexOf("DESCENDANTS");

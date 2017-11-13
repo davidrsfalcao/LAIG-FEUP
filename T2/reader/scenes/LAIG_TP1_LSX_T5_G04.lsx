@@ -185,11 +185,34 @@
 
 </MATERIALS>
 
+<ANIMATIONS>
+    <ANIMATION id="linarAnim" speed="15" type="linear">
+        <controlpoint xx="10" yy="6" zz="6" /> <!-- repete conforme -->
+        <controlpoint xx="6" yy="6" zz="6" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="circAnim" speed="10" type="circular"
+        centerx="6" centery="6" centerz="6"
+        radius="6" startang="6" rotang="6"
+    />
+
+    <ANIMATION id="bezAnim" speed="10" type="bezier">
+        <controlpoint xx="1" yy="1" zz="1" /> <!-- P1 -->
+        <controlpoint xx="1" yy="1" zz="1" /> <!-- P2 -->
+        <controlpoint xx="1" yy="1" zz="1" /> <!-- P3 -->
+        <controlpoint xx="1" yy="1" zz="1" /> <!-- P4 -->
+    </ANIMATION>
+
+   <ANIMATION id="ss" type="combo">
+        <SPANREF id="ss" />
+    </ANIMATION>
+    
+</ANIMATIONS>
+
 
 <!-- The leaves -->
 <LEAVES>
 </LEAVES>
-
 
 <!-- The nodes -->
 <NODES>
@@ -197,7 +220,7 @@
     <ROOT id="root" />
 
     <!-- The root node -->
-    <NODE id="root">
+    <NODE id="root" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -215,7 +238,7 @@
     </NODE>
 
     <!-- Rio -->
-    <NODE id="rio">
+    <NODE id="rio" selectable="ff">
         <MATERIAL id="agua" />
         <TEXTURE id="river" />
 
@@ -224,13 +247,13 @@
         <SCALE sx="50" sy="50" sz="1" />
 
         <DESCENDANTS>
-					<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
-				</DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
 
     </NODE>
 
     <!-- Porto -->
-    <NODE id="porto">
+    <NODE id="porto"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="ribeira" />
 
@@ -245,7 +268,7 @@
     </NODE>
 
     <!-- Passadiço Porto -->
-    <NODE id="passPorto">
+    <NODE id="passPorto"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -259,7 +282,7 @@
     </NODE>
 
     <!-- Passadiço Gaia -->
-    <NODE id="passGaia">
+    <NODE id="passGaia"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -273,7 +296,7 @@
     </NODE>
 
     <!-- Passadiço -->
-    <NODE id="passadico">
+    <NODE id="passadico" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -292,7 +315,7 @@
     </NODE>
 
     <!-- Base cima Passadiço -->
-    <NODE id="passadicoTop">
+    <NODE id="passadicoTop"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -306,7 +329,7 @@
     </NODE>
 
     <!-- Base baixo Passadiço -->
-    <NODE id="passadicoBottom">
+    <NODE id="passadicoBottom"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -320,7 +343,7 @@
     </NODE>
 
     <!-- lateral 1 Passadiço -->
-    <NODE id="passadicol1">
+    <NODE id="passadicol1"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio1" />
 
@@ -334,7 +357,7 @@
     </NODE>
 
     <!-- lateral 2 Passadiço -->
-    <NODE id="passadicol2">
+    <NODE id="passadicol2"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio1" />
 
@@ -348,7 +371,7 @@
     </NODE>
 
     <!-- lateral 3 Passadiço -->
-    <NODE id="passadicol3">
+    <NODE id="passadicol3"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio2" />
 
@@ -362,7 +385,7 @@
     </NODE>
 
     <!-- lateral 4 Passadiço -->
-    <NODE id="passadicol4">
+    <NODE id="passadicol4"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="passeio2" />
 
@@ -377,7 +400,7 @@
 
 
     <!-- Obstaculos -->
-    <NODE id="obstaculos">
+    <NODE id="obstaculos"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -392,7 +415,7 @@
     </NODE>
 
     <!-- Obstaculo esquerda -->
-    <NODE id="obstaculol">
+    <NODE id="obstaculol"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -408,7 +431,7 @@
     </NODE>
 
     <!-- Obstaculo direita -->
-    <NODE id="obstaculor">
+    <NODE id="obstaculor"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -425,7 +448,7 @@
     </NODE>
 
     <!-- Base Obstaculo -->
-    <NODE id="obsbase">
+    <NODE id="obsbase"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="borracha" />
 
@@ -445,7 +468,7 @@
     </NODE>
 
     <!-- face 1 Base Obstaculo -->
-    <NODE id="obsbase1">
+    <NODE id="obsbase1"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -459,7 +482,7 @@
     </NODE>
 
     <!-- face 2 Base Obstaculo -->
-    <NODE id="obsbase2">
+    <NODE id="obsbase2"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -473,7 +496,7 @@
     </NODE>
 
     <!-- face 3 Base Obstaculo -->
-    <NODE id="obsbase3">
+    <NODE id="obsbase3"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -487,7 +510,7 @@
     </NODE>
 
     <!-- face 4 Base Obstaculo -->
-    <NODE id="obsbase4">
+    <NODE id="obsbase4"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -501,7 +524,7 @@
     </NODE>
 
     <!-- face 5 Base Obstaculo -->
-    <NODE id="obsbase5">
+    <NODE id="obsbase5"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -515,7 +538,7 @@
     </NODE>
 
     <!-- face 6 Base Obstaculo -->
-    <NODE id="obsbase6">
+    <NODE id="obsbase6"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -529,7 +552,7 @@
     </NODE>
 
     <!-- meio do Obstaculo -->
-    <NODE id="obsmid">
+    <NODE id="obsmid"  selectable="ff">
         <MATERIAL id="boia_mat" />
         <TEXTURE id="boia" />
 
@@ -543,7 +566,7 @@
     </NODE>
 
     <!-- topo do Obstaculo -->
-    <NODE id="obstop">
+    <NODE id="obstop"  selectable="ff">
         <MATERIAL id="boia_mat" />
         <TEXTURE id="clear" />
 
@@ -557,13 +580,17 @@
     </NODE>
 
     <!-- Aviao -->
-    <NODE id="aviao">
+    <NODE id="aviao"  selectable="tt">
         <MATERIAL id="aluminio" />
         <TEXTURE id="clear" />
 
         <TRANSLATION x="0" y="2" z="0" />
         <ROTATION axis="y" angle="0" />
         <SCALE sx="0.5" sy="0.5" sz="0.5" />
+        
+        <ANIMATIONREFS>
+            <ANIMATIONREF id="linarAnim" />
+        </ANIMATIONREFS>
 
         <DESCENDANTS>
                     <NODEREF id="aviao_corpo" />
@@ -579,7 +606,7 @@
     </NODE>
 
 
-    <NODE id="helice">
+    <NODE id="helice" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="clear" />
 
@@ -596,7 +623,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="helice_sphere">
+    <NODE id="helice_sphere"  selectable="ff">
         <MATERIAL id="aluminio" />
         <TEXTURE id="cinza" />
 
@@ -611,7 +638,7 @@
 
     </NODE>
 
-    <NODE id="hel1">
+    <NODE id="hel1"  selectable="ff">
         <MATERIAL id="preto_mat" />
         <TEXTURE id="clear" />
 
@@ -625,7 +652,7 @@
         </DESCENDANTS>
     </NODE>
 
-    <NODE id="hel2">
+    <NODE id="hel2"  selectable="ff">
         <MATERIAL id="preto_mat" />
         <TEXTURE id="clear" />
 
@@ -640,7 +667,7 @@
     </NODE>
 
 
-    <NODE id="hel3">
+    <NODE id="hel3"  selectable="ff">
         <MATERIAL id="preto_mat" />
         <TEXTURE id="clear" />
 
@@ -654,7 +681,7 @@
     </NODE>
 
 
-    <NODE id="hel4">
+    <NODE id="hel4"  selectable="ff">
         <MATERIAL id="preto_mat" />
         <TEXTURE id="clear" />
 
@@ -668,7 +695,7 @@
 
 
     <!-- Asa frente esquerda -->
-    <NODE id="asa1">
+    <NODE id="asa1"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -682,7 +709,7 @@
     </NODE>
 
     <!-- Asa frente direita -->
-    <NODE id="asa2">
+    <NODE id="asa2"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -694,7 +721,7 @@
     </NODE>
 
     <!-- Asa trás esquerda -->
-    <NODE id="asa3">
+    <NODE id="asa3"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -708,7 +735,7 @@
     </NODE>
 
     <!-- Asa trás meio -->
-    <NODE id="asa4">
+    <NODE id="asa4"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -723,7 +750,7 @@
     </NODE>
 
     <!-- Asa trás meio -->
-    <NODE id="asa5">
+    <NODE id="asa5"  selectable="ff">
             <MATERIAL id="null" />
             <TEXTURE id="azul" />
 
@@ -738,7 +765,7 @@
         </NODE>
 
     <!-- Objeto em forma de asa -->
-    <NODE id="asa">
+    <NODE id="asa"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="clear" />
 
@@ -763,7 +790,7 @@
 
        parte de cima asa
     -->
-    <NODE id="asap1">
+    <NODE id="asap1"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="red-bull" />
 
@@ -782,7 +809,7 @@
 
        parte de cima asa
     -->
-    <NODE id="asap2">
+    <NODE id="asap2"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -800,7 +827,7 @@
 
        parte de baixo asa
     -->
-    <NODE id="asap3">
+    <NODE id="asap3"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="red-bull" />
 
@@ -821,7 +848,7 @@
 
        parte de baixo asa
     -->
-    <NODE id="asap4">
+    <NODE id="asap4"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -839,7 +866,7 @@
 
        parte lateral asa
     -->
-    <NODE id="asap5">
+    <NODE id="asap5"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -859,7 +886,7 @@
 
         parte lateral asa
     -->
-    <NODE id="asap6">
+    <NODE id="asap6"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -878,7 +905,7 @@
 
         parte lateral asa
     -->
-    <NODE id="asap7">
+    <NODE id="asap7"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -897,7 +924,7 @@
 
         parte lateral asa
     -->
-    <NODE id="asap8">
+    <NODE id="asap8"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -915,7 +942,7 @@
         Objeto que representa o corpo do avião
         Composto por: cilindro e esfera
     -->
-    <NODE id="aviao_corpo">
+    <NODE id="aviao_corpo"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -932,7 +959,7 @@
     <!--
         Cilindro que compõe o corpo do avião
     -->
-    <NODE id="aviao_corpo1">
+    <NODE id="aviao_corpo1"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -948,7 +975,7 @@
     <!--
         Esfera que compõe o corpo do avião
     -->
-    <NODE id="aviao_corpo2">
+    <NODE id="aviao_corpo2"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="null" />
 
@@ -964,7 +991,7 @@
     <!-- Frente do avião
          Esfera achatada
     -->
-    <NODE id="aviao_frente">
+    <NODE id="aviao_frente"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -980,7 +1007,7 @@
     <!-- Cockpit do avião
         Esfera esticada num dos eixos
     -->
-    <NODE id="aviao_cockpit">
+    <NODE id="aviao_cockpit"  selectable="ff">
         <MATERIAL id="vidral" />
         <TEXTURE id="vidro" />
 
@@ -996,7 +1023,7 @@
     <!-- Cubo unitário
         Centro na origem do referencial
     -->
-    <NODE id="cubo">
+    <NODE id="cubo"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1016,7 +1043,7 @@
     </NODE>
 
     <!-- Face frente cubo -->
-    <NODE id="cubo_face1">
+    <NODE id="cubo_face1"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1030,7 +1057,7 @@
     </NODE>
 
     <!-- Face direita cubo -->
-    <NODE id="cubo_face2">
+    <NODE id="cubo_face2"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1044,7 +1071,7 @@
     </NODE>
 
     <!-- Face trás cubo -->
-    <NODE id="cubo_face3">
+    <NODE id="cubo_face3"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1058,7 +1085,7 @@
     </NODE>
 
     <!-- Face esquerda cubo -->
-    <NODE id="cubo_face4">
+    <NODE id="cubo_face4"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1072,7 +1099,7 @@
     </NODE>
 
     <!-- Face cima cubo -->
-    <NODE id="cubo_face5">
+    <NODE id="cubo_face5"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1086,7 +1113,7 @@
     </NODE>
 
     <!-- Face baixo cubo -->
-    <NODE id="cubo_face6">
+    <NODE id="cubo_face6"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1100,7 +1127,7 @@
     </NODE>
 
     <!-- Objeto que representa a Ponte da Arrábida -->
-    <NODE id="ponte">
+    <NODE id="ponte"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -1119,7 +1146,7 @@
     </NODE>
 
     <!-- Tabuleiro Superior da Ponte -->
-    <NODE id="ponte_tabuleiro">
+    <NODE id="ponte_tabuleiro"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -1134,7 +1161,7 @@
     </NODE>
 
     <!-- Estrada do tabuleiro superior da Ponte -->
-    <NODE id="ponte_estrada">
+    <NODE id="ponte_estrada"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="estrada" />
 
@@ -1148,7 +1175,7 @@
     </NODE>
 
     <!-- Barreiras de proteção da Ponte -->
-    <NODE id="ponte_barreiras">
+    <NODE id="ponte_barreiras"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
@@ -1164,7 +1191,7 @@
     </NODE>
 
     <!-- Barreira de proteção esquerda da Ponte -->
-    <NODE id="ponte_barreira_esq">
+    <NODE id="ponte_barreira_esq" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1179,7 +1206,7 @@
     </NODE>
 
     <!-- Barreira de proteção direita da Ponte -->
-    <NODE id="ponte_barreira_dir">
+    <NODE id="ponte_barreira_dir"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1194,7 +1221,7 @@
     </NODE>
 
     <!-- Conjunto pilares da Ponte -->
-    <NODE id="ponte_pilares">
+    <NODE id="ponte_pilares"  selectable="ff"> 
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
@@ -1222,7 +1249,7 @@
     </NODE>
 
     <!-- Pilares da Ponte -->
-    <NODE id="ponte_pilar_1">
+    <NODE id="ponte_pilar_1"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1235,7 +1262,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_2">
+    <NODE id="ponte_pilar_2"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1248,7 +1275,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_3">
+    <NODE id="ponte_pilar_3"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1261,7 +1288,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_4">
+    <NODE id="ponte_pilar_4"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1274,7 +1301,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_5">
+    <NODE id="ponte_pilar_5"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1287,7 +1314,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_6">
+    <NODE id="ponte_pilar_6" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1300,7 +1327,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_7">
+    <NODE id="ponte_pilar_7"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1313,7 +1340,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_8">
+    <NODE id="ponte_pilar_8"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1326,7 +1353,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_9">
+    <NODE id="ponte_pilar_9"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1339,7 +1366,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_10">
+    <NODE id="ponte_pilar_10"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1352,7 +1379,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_11">
+    <NODE id="ponte_pilar_11"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1365,7 +1392,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_12">
+    <NODE id="ponte_pilar_12"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1378,7 +1405,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_13">
+    <NODE id="ponte_pilar_13" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1391,7 +1418,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_pilar_14">
+    <NODE id="ponte_pilar_14"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1405,7 +1432,7 @@
     </NODE>
 
     <!-- Arco completo da Ponte -->
-    <NODE id="ponte_arco">
+    <NODE id="ponte_arco" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
@@ -1420,7 +1447,7 @@
     </NODE>
 
     <!-- Metade esquerda do arco da Ponte-->
-    <NODE id="ponte_arco_2">
+    <NODE id="ponte_arco_2" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
@@ -1437,7 +1464,7 @@
         É aplicada um rotação a cada peça recursivamente, diminuindo o angulo
         em 2.5 de peça em peça.
     -->
-    <NODE id="ponte_arco_1">
+    <NODE id="ponte_arco_1"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
@@ -1489,7 +1516,7 @@
     </NODE>
 
     <!-- 39 peças de metade do arco da Ponte -->
-    <NODE id="ponte_arco_p1">
+    <NODE id="ponte_arco_p1" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1502,7 +1529,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p2">
+    <NODE id="ponte_arco_p2" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1515,7 +1542,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p3">
+    <NODE id="ponte_arco_p3"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1528,7 +1555,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p4">
+    <NODE id="ponte_arco_p4" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1541,7 +1568,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p5">
+    <NODE id="ponte_arco_p5" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1554,7 +1581,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p6">
+    <NODE id="ponte_arco_p6" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1567,7 +1594,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p7">
+    <NODE id="ponte_arco_p7" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1580,7 +1607,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p8">
+    <NODE id="ponte_arco_p8" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1593,7 +1620,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p9">
+    <NODE id="ponte_arco_p9" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1606,7 +1633,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p10">
+    <NODE id="ponte_arco_p10" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1619,7 +1646,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p11">
+    <NODE id="ponte_arco_p11" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1632,7 +1659,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p12">
+    <NODE id="ponte_arco_p12" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1645,7 +1672,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p13">
+    <NODE id="ponte_arco_p13" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1658,7 +1685,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p14">
+    <NODE id="ponte_arco_p14" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1671,7 +1698,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p15">
+    <NODE id="ponte_arco_p15" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1684,7 +1711,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p16">
+    <NODE id="ponte_arco_p16" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1697,7 +1724,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p17">
+    <NODE id="ponte_arco_p17" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1710,7 +1737,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p18">
+    <NODE id="ponte_arco_p18" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1724,7 +1751,7 @@
     </NODE>
 
 
-    <NODE id="ponte_arco_p19">
+    <NODE id="ponte_arco_p19" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1737,7 +1764,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p20">
+    <NODE id="ponte_arco_p20" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1750,7 +1777,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p21">
+    <NODE id="ponte_arco_p21" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1763,7 +1790,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p22">
+    <NODE id="ponte_arco_p22" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1776,7 +1803,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p23">
+    <NODE id="ponte_arco_p23" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1789,7 +1816,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p24">
+    <NODE id="ponte_arco_p24" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1802,7 +1829,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p25">
+    <NODE id="ponte_arco_p25" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1815,7 +1842,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p26">
+    <NODE id="ponte_arco_p26" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1828,7 +1855,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p27">
+    <NODE id="ponte_arco_p27" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1841,7 +1868,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p28">
+    <NODE id="ponte_arco_p28" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1854,7 +1881,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p29">
+    <NODE id="ponte_arco_p29" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1867,7 +1894,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p30">
+    <NODE id="ponte_arco_p30" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1880,7 +1907,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p31">
+    <NODE id="ponte_arco_p31" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1893,7 +1920,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p32">
+    <NODE id="ponte_arco_p32" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1906,7 +1933,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p33">
+    <NODE id="ponte_arco_p33" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1919,7 +1946,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p34">
+    <NODE id="ponte_arco_p34" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1932,7 +1959,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p35">
+    <NODE id="ponte_arco_p35" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1945,7 +1972,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p36">
+    <NODE id="ponte_arco_p36"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1958,7 +1985,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p37">
+    <NODE id="ponte_arco_p37" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1971,7 +1998,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p38">
+    <NODE id="ponte_arco_p38" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -1984,7 +2011,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <NODE id="ponte_arco_p39">
+    <NODE id="ponte_arco_p39" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -2005,7 +2032,7 @@
             /___/ /
             |___|/
     -->
-    <NODE id="peca_arco">
+    <NODE id="peca_arco" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="null" />
 
@@ -2019,7 +2046,7 @@
     </NODE>
 
     <!-- Ondas no rio :) -->
-    <NODE id="ondas">
+    <NODE id="ondas" selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="river1" />
 
@@ -2036,7 +2063,7 @@
     </NODE>
 
 
-    <NODE id="onda1">
+    <NODE id="onda1" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="river1" />
 
@@ -2063,7 +2090,7 @@
 
     </NODE>
 
-    <NODE id="onda2">
+    <NODE id="onda2" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="river1" />
 
@@ -2090,7 +2117,7 @@
 
     </NODE>
 
-    <NODE id="onda3">
+    <NODE id="onda3" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="river1" />
 
@@ -2117,7 +2144,7 @@
 
     </NODE>
 
-    <NODE id="onda4">
+    <NODE id="onda4" selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="river1" />
 
@@ -2144,7 +2171,7 @@
 
     </NODE>
 
-    <NODE id="onda5">
+    <NODE id="onda5"  selectable="ff">
         <MATERIAL id="null" />
         <TEXTURE id="river1" />
 
@@ -2170,9 +2197,6 @@
         </DESCENDANTS>
 
     </NODE>
-
-
-
 
 </NODES>
 

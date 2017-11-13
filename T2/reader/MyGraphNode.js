@@ -3,10 +3,12 @@
  * @constructor
 **/
 
-function MyGraphNode(graph, nodeID) {
+function MyGraphNode(graph, nodeID, selected) {
     this.graph = graph;
 
     this.nodeID = nodeID;
+
+    this.selectable = selected;
 
     // IDs of child nodes.
     this.children = [];
@@ -14,6 +16,8 @@ function MyGraphNode(graph, nodeID) {
     // IDs of child nodes.
     this.leaves = [];
 
+    // IDs of animations
+    this.animations = [];
 
     // The material ID.
     this.materialID = null ;
@@ -37,6 +41,13 @@ MyGraphNode.prototype.addChild = function(nodeID) {
  */
 MyGraphNode.prototype.addLeaf = function(leaf) {
     this.leaves.push(leaf);
+}
+
+/**
+ * Adds a animation to this node's animations array.
+ */
+MyGraphNode.prototype.addAnimation = function(anim) {
+    this.animations.push(anim);
 }
 
 /**
