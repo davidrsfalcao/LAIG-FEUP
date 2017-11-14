@@ -19,6 +19,8 @@ function MyGraphNode(graph, nodeID, selected) {
     // IDs of animations
     this.animations = [];
 
+    this.currAnimation = 0;
+
     // The material ID.
     this.materialID = null ;
 
@@ -47,6 +49,10 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
  * Adds a animation to this node's animations array.
  */
 MyGraphNode.prototype.addAnimation = function(anim) {
+
+    if (this.animations.length == 0)
+        anim.inUse = true;
+
     this.animations.push(anim);
 }
 
@@ -93,7 +99,32 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
 	}
 	for(var i=0; i<this.children.length; i++){
 		this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT);
-	}
+    }
+
 	this.graph.scene.popMatrix();
 }
 
+MyGraphNode.prototype.update = function(deltaT) {
+    this.transformMatrix = this.getMatrix(deltaT);
+
+    for(var i=0; i<this.children.length; i++){
+        this.graph.nodes[this.children[i]].update(deltaT);
+    }
+}
+
+MyGraphNode.prototype.getMatrix = function(deltaT) {
+	if (this.animations.length == 0)
+        return this.transformMatrix;
+
+    if(this.animations[this.currAnimation].inUse == false){
+        if(this.currAnimation + 1 == this.animations.length)
+            return this.transformMatrix;
+        else this.currAnimation++;
+
+        this.animations[this.currAnimation].inUse = true;
+    }
+	var result = mat4.create();
+	mat4.multiply(result, this.animations[this.currAnimation].getMatrix(deltaT), this.transformMatrix);
+
+	return result;
+}

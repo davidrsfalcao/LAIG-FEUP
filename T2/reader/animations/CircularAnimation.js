@@ -12,6 +12,9 @@ function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngl
     this.centerY = center[1];
     this.centerZ = center[2];
 
+    console.log("OLAA");
+    console.log(this.scene);
+
 }
 
 CircularAnimation.prototype = Object.create(Animation.prototype);
@@ -26,6 +29,11 @@ CircularAnimation.prototype.updateAnimation = function(deltaTime){
         this.inUse = false;
     }
 }
+CircularAnimation.prototype.getMatrix = function(t){
+
+    return mat4.create();
+}
+
 
 CircularAnimation.prototype.display = function(){
     this.scene.translate(this.centerX, this.centerY, this.centerZ);

@@ -5,7 +5,6 @@ function Animation(scene, id) {
 }
 
 Animation.prototype.constructor = Animation;
-
-Animation.prototype.setState = function(state) {
-    this.inUse = state;
+Animation.prototype.getState = function(){
+    return this.inUse;
 }

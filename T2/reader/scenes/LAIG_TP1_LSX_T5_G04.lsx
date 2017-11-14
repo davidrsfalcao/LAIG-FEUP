@@ -186,27 +186,20 @@
 </MATERIALS>
 
 <ANIMATIONS>
-    <ANIMATION id="linarAnim" speed="15" type="linear">
-        <controlpoint xx="10" yy="6" zz="6" /> <!-- repete conforme -->
-        <controlpoint xx="6" yy="6" zz="6" /> <!-- seja necessário -->
+    <ANIMATION id="linearAnim" speed="1" type="linear">
+        <controlpoint xx="0" yy="0" zz="0" /> <!-- repete conforme -->
+        <controlpoint xx="3" yy="1" zz="3" /> <!-- seja necessário -->
     </ANIMATION>
 
     <ANIMATION id="circAnim" speed="10" type="circular"
-        centerx="6" centery="6" centerz="6"
-        radius="6" startang="6" rotang="6"
+        centerx="6" centery="5" centerz="8"
+        radius="3" startang="45" rotang="90"
     />
-
-    <ANIMATION id="bezAnim" speed="10" type="bezier">
-        <controlpoint xx="1" yy="1" zz="1" /> <!-- P1 -->
-        <controlpoint xx="1" yy="1" zz="1" /> <!-- P2 -->
-        <controlpoint xx="1" yy="1" zz="1" /> <!-- P3 -->
-        <controlpoint xx="1" yy="1" zz="1" /> <!-- P4 -->
-    </ANIMATION>
 
    <ANIMATION id="ss" type="combo">
         <SPANREF id="ss" />
     </ANIMATION>
-    
+
 </ANIMATIONS>
 
 
@@ -231,8 +224,8 @@
             <NODEREF id="passGaia" />
             <NODEREF id="obstaculos" />
             <NODEREF id="aviao" />
-            <NODEREF id="ponte" />
-            <NODEREF id="ondas" />
+            <!-- <NODEREF id="ponte" />
+            <NODEREF id="ondas" /> -->
         </DESCENDANTS>
 
     </NODE>
@@ -587,9 +580,9 @@
         <TRANSLATION x="0" y="2" z="0" />
         <ROTATION axis="y" angle="0" />
         <SCALE sx="0.5" sy="0.5" sz="0.5" />
-        
+
         <ANIMATIONREFS>
-            <ANIMATIONREF id="linarAnim" />
+            <ANIMATIONREF id="linearAnim" />
         </ANIMATIONREFS>
 
         <DESCENDANTS>
@@ -1221,7 +1214,7 @@
     </NODE>
 
     <!-- Conjunto pilares da Ponte -->
-    <NODE id="ponte_pilares"  selectable="ff"> 
+    <NODE id="ponte_pilares"  selectable="ff">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
 
