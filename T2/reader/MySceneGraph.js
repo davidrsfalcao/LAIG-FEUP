@@ -1262,8 +1262,6 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
             }
             switch (animationType) {
                 case "linear":
-                    console.log("FUCk1");
-                    console.log(animationWithControlPoints);
                     this.animations[animationID] = new LinearAnimation(this.scene, animationID, animationWithControlPoints, animationSpeed);
                     break;
                 default:
@@ -1309,8 +1307,6 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             if (this.nodes[nodeID] != null )
             return "node ID must be unique (conflict: ID = " + nodeID + ")";
 
-            //this.log("Processing node "+ nodeID);
-            //this.log("selected "+ selected);
 
             // Creates node.
             this.nodes[nodeID] = new MyGraphNode(this, nodeID, selected);

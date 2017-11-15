@@ -12,9 +12,6 @@ function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngl
     this.centerY = center[1];
     this.centerZ = center[2];
 
-    console.log("OLAA");
-    console.log(this.scene);
-
 }
 
 CircularAnimation.prototype = Object.create(Animation.prototype);

@@ -186,9 +186,9 @@
 </MATERIALS>
 
 <ANIMATIONS>
-    <ANIMATION id="linearAnim" speed="1" type="linear">
-        <controlpoint xx="0" yy="0" zz="0" /> <!-- repete conforme -->
-        <controlpoint xx="3" yy="1" zz="3" /> <!-- seja necessário -->
+    <ANIMATION id="linearAnim" speed="10" type="linear">
+        <controlpoint xx="0" yy="0" zz="-10" /> <!-- repete conforme -->
+        <controlpoint xx="0" yy="0" zz="40" /> <!-- seja necessário -->
     </ANIMATION>
 
     <ANIMATION id="circAnim" speed="10" type="circular"
@@ -578,7 +578,6 @@
         <TEXTURE id="clear" />
 
         <TRANSLATION x="0" y="2" z="0" />
-        <ROTATION axis="y" angle="0" />
         <SCALE sx="0.5" sy="0.5" sz="0.5" />
 
         <ANIMATIONREFS>
