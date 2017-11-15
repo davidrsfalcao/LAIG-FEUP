@@ -8,9 +8,9 @@ function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngl
     this.angularSpeed = speed / radius;
     this.currTime = 0;
     this.currAngle = 0;
-    this.centerX = center[0];
-    this.centerY = center[1];
-    this.centerZ = center[2];
+    this.x = center[0];
+    this.y = center[1];
+    this.z = center[2];
 
 }
 
@@ -26,14 +26,16 @@ CircularAnimation.prototype.updateAnimation = function(deltaTime){
         this.inUse = false;
     }
 }
-CircularAnimation.prototype.getMatrix = function(t){
+CircularAnimation.prototype.getMatrix = function(deltaT){
+    var m =  mat4.create();
 
-    return mat4.create();
-}
+    this.updateAnimation(deltaT);
+    mat4.translate(m, m, [this.x, this.y, this.z]);
+    var a = this.radius * Math.cos(this.initialAngle + this.currAngle);
+    var b = 0;
+    var c = -this.radius * Math.sin(this.initialAngle + this.currAngle);
+    mat4.translate(m, m , [a, b, c]);
+    mat4.rotate(m, m, Math.PI + this.initialAngle + this.currAngle, [0, 1, 0]);
 
-
-CircularAnimation.prototype.display = function(){
-    this.scene.translate(this.centerX, this.centerY, this.centerZ);
-    this.scene.translate(this.radius * Math.cos(this.initialAngle + this.currAngle), 0, -this.radius * Math.sin(this.initialAngle + this.currAngle));
-    this.scene.rotate(Math.PI + this.initialAngle + this.currAngle, 0, 1, 0);
+    return m;
 }
