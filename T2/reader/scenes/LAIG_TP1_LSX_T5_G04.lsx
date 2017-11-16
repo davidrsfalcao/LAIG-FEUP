@@ -193,7 +193,7 @@
 
     <ANIMATION id="circAnim" speed="1" type="circular"
         centerx="0" centery="0" centerz="0"
-        radius="0.1" startang="0" rotang="36000000"
+        radius="0.1" startang="0" rotang="3600000000"
     />
 
    <ANIMATION id="ss" type="combo">
@@ -580,11 +580,11 @@
         <TRANSLATION x="0" y="2" z="0" />
         <SCALE sx="0.5" sy="0.5" sz="0.5" />
 
-<!--
+
         <ANIMATIONREFS>
             <ANIMATIONREF id="linearAnim" />
         </ANIMATIONREFS>
--->
+
         <DESCENDANTS>
                     <NODEREF id="aviao_corpo" />
                     <NODEREF id="aviao_cockpit" />
