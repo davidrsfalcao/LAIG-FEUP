@@ -2,7 +2,6 @@ function LinearAnimation(scene, id, controlPoints, speed) {
     Animation.call(this, scene, id);
     this.controlPoints = controlPoints;
     this.speed = speed;
-    this.timeElapsed = 0;
     this.counter = 0;
 
     this.totalDistance = 0;
