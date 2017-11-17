@@ -30,8 +30,8 @@ function MyGraphNode(graph, nodeID, selected) {
     this.transformMatrix = mat4.create();
     mat4.identity(this.transformMatrix);
 
-    this.transformMatrixCopy = mat4.create();
-    mat4.identity(this.transformMatrixCopy);
+    this.transformMatrixAnimations = mat4.create();
+    mat4.identity(this.transformMatrixAnimations);
 }
 
 /**
@@ -64,7 +64,7 @@ MyGraphNode.prototype.addAnimation = function(anim) {
  */
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
 	this.graph.scene.pushMatrix();
-    this.graph.scene.multMatrix(this.transformMatrixCopy);
+    this.graph.scene.multMatrix(this.transformMatrixAnimations);
     var materialToUse = fatherMaterial;
     var textureToUse = fatherTexture;
     var amplifierS, amplifierT;
@@ -108,7 +108,8 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
 }
 
 MyGraphNode.prototype.update = function(deltaT) {
-    this.transformMatrixCopy = this.getMatrix(deltaT);
+
+    this.transformMatrixAnimations = this.getMatrix(deltaT);
 
     for(var i=0; i<this.children.length; i++){
         this.graph.nodes[this.children[i]].update(deltaT);
@@ -120,9 +121,8 @@ MyGraphNode.prototype.getMatrix = function(deltaT) {
         return this.transformMatrix;
 
     if(this.animations[this.currAnimation].inUse == false){
-        this.transformMatrix = this.transformMatrixCopy;
         if(this.currAnimation + 1 == this.animations.length)
-            return this.transformMatrix;
+            return this.transformMatrixAnimations;
         else this.currAnimation++;
 
         this.animations[this.currAnimation].inUse = true;

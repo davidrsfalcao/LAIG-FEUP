@@ -1264,7 +1264,12 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
                 case "linear":
                     this.animations[animationID] = new LinearAnimation(this.scene, animationID, animationWithControlPoints, animationSpeed);
                     break;
+
+                case "bezier":
+                    this.animations[animationID] = new BezierAnimation(this.scene, animationID, animationWithControlPoints, animationSpeed);
+                    break;
                 default:
+                    break;
 
             }
         }
