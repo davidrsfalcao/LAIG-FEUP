@@ -12,6 +12,8 @@ function XMLscene(interface) {
     this.lightValues = {};
     this.deltaT;
     this.flag = 1;
+    this.frames = 100;
+    this.pause = false;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -97,7 +99,12 @@ XMLscene.prototype.onGraphLoaded = function()
     this.interface.addLightsGroup(this.graph.lights);
 }
 
+XMLscene.prototype.updateFrames = function(){
+	this.setUpdatePeriod(1000/this.frames);
+}
+
 XMLscene.prototype.update = function(currTime){
+    this.updateFrames();
 
     if(this.flag == 1){
         this.flag = 0;
@@ -106,7 +113,7 @@ XMLscene.prototype.update = function(currTime){
     else {
         this.deltaT = currTime - this.currTime;
         this.currTime = currTime;
-        if (this.graph.loadedOk){
+        if (this.graph.loadedOk && this.pause == false){
             this.graph.update(this.deltaT);
         }
 
@@ -133,7 +140,7 @@ XMLscene.prototype.display = function() {
 
     if (this.graph.loadedOk)
     {
-        this.setUpdatePeriod(100);
+        this.setUpdatePeriod(1000/this.frames);
         // Applies initial transformations.
         this.multMatrix(this.graph.initialTransforms);
 

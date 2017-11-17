@@ -3,7 +3,7 @@
  * @constructor
  */
 function MyInterface() {
-    //call CGFinterface constructor 
+    //call CGFinterface constructor
     CGFinterface.call(this);
 }
 ;
@@ -21,11 +21,16 @@ MyInterface.prototype.init = function(application) {
 
     // init GUI. For more information on the methods, check:
     //  http://workshop.chromeexperiments.com/examples/gui
-    
+
     this.gui = new dat.GUI();
+    var group = this.gui.addFolder("Animations");
+    group.open();
+    
+    group.add(this.scene, 'frames', 1, 200);
+    group.add(this.scene, 'pause');
 
     // add a group of controls (and open/expand by defult)
-    
+
     return true;
 };
 
@@ -35,8 +40,6 @@ MyInterface.prototype.init = function(application) {
 MyInterface.prototype.addLightsGroup = function(lights) {
 
     var group = this.gui.addFolder("Lights");
-    group.open();
-
     // add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
     // e.g. this.option1=true; this.option2=false;
 
@@ -47,4 +50,3 @@ MyInterface.prototype.addLightsGroup = function(lights) {
         }
     }
 }
-

@@ -580,11 +580,11 @@
         <TRANSLATION x="0" y="2" z="0" />
         <SCALE sx="0.5" sy="0.5" sz="0.5" />
 
-<!--
+
         <ANIMATIONREFS>
             <ANIMATIONREF id="linearAnim" />
         </ANIMATIONREFS>
--->
+
         <DESCENDANTS>
                     <NODEREF id="aviao_corpo" />
                     <NODEREF id="aviao_cockpit" />
