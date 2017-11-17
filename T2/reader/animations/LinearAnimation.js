@@ -94,16 +94,6 @@ LinearAnimation.prototype.calculateTrajectory = function(){
 
 LinearAnimation.prototype.updateAnimation = function(deltaTime){
 
-    if ((Math.abs(this.distX) <= Math.abs(this.control[0])) &&
-        (Math.abs(this.distY) <= Math.abs(this.control[1])) &&
-        (Math.abs(this.distZ) <= Math.abs(this.control[2]))){
-        this.calculateTrajectory();
-        return;
-    }
-
-    if(this.inUse == false)
-        return;
-
     this.x += this.speed_x * deltaTime / 1000;
     this.control[0] += this.speed_x * deltaTime / 1000;
 
@@ -113,5 +103,14 @@ LinearAnimation.prototype.updateAnimation = function(deltaTime){
     this.z += this.speed_z * deltaTime / 1000;
     this.control[2] += this.speed_z * deltaTime / 1000;
 
+    if ((Math.abs(this.distX) <= Math.abs(this.control[0])) &&
+        (Math.abs(this.distY) <= Math.abs(this.control[1])) &&
+        (Math.abs(this.distZ) <= Math.abs(this.control[2]))){
+        this.calculateTrajectory();
+        return;
+    }
+
+    if(this.inUse == false)
+        return;
 
 }
