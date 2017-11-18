@@ -20,7 +20,6 @@ function XMLscene(interface) {
     this.pause = false;
     this.restart = function(){
         this.graph.restartAnimation();
-        console.log("RESTART");
     }
 }
 
@@ -119,7 +118,7 @@ XMLscene.prototype.update = function(currTime){
         this.camera.setPosition(position);
         var target = vec3.fromValues(0, -1, 3);
         this.camera.setTarget(target);
-        
+
     }
 
     if(this.flag == 1){
