@@ -12,7 +12,7 @@ function XMLscene(interface) {
     this.lightValues = {};
     this.deltaT;
     this.flag = 1;
-    this.frames = 100;
+    this.frames_sec = 100;
     this.pause = false;
     this.restart = function(){
         this.graph.restartAnimation();
@@ -104,7 +104,7 @@ XMLscene.prototype.onGraphLoaded = function()
 }
 
 XMLscene.prototype.updateFrames = function(){
-	this.setUpdatePeriod(1000/this.frames);
+	this.setUpdatePeriod(1000/this.frames_sec);
 }
 
 XMLscene.prototype.update = function(currTime){
@@ -144,7 +144,7 @@ XMLscene.prototype.display = function() {
 
     if (this.graph.loadedOk)
     {
-        this.setUpdatePeriod(1000/this.frames);
+        this.setUpdatePeriod(1000/this.frames_sec);
         // Applies initial transformations.
         this.multMatrix(this.graph.initialTransforms);
 

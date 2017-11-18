@@ -1302,11 +1302,14 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
         else if (nodeName == "NODE") {
             // Retrieves node ID.
             var nodeID = this.reader.getString(children[i], 'id');
-            var selected = this.reader.getString(children[i], 'selectable');
+            var selected = this.reader.getString(children[i], 'selectable', false);
             if (nodeID == null )
             return "failed to retrieve node ID";
-            if (selected == null )
-            return "failed to retrieve selectable";
+            if (selected == null ){
+                selected = "ff";
+            }
+            else if ((selected != "ff") &&  (selected != "tt") )
+                return "failed to retrieve selectable";
 
             // Checks if ID is valid.
             if (this.nodes[nodeID] != null )

@@ -27,8 +27,8 @@ MyInterface.prototype.init = function(application) {
     group.open();
 
     group.add(this.scene, 'restart');
-    group.add(this.scene, 'frames', 1, 200);
     group.add(this.scene, 'pause');
+    group.add(this.scene, 'frames_sec', 1, 200);
 
     // add a group of controls (and open/expand by defult)
 
@@ -41,8 +41,7 @@ MyInterface.prototype.init = function(application) {
 MyInterface.prototype.addLightsGroup = function(lights) {
 
     var group = this.gui.addFolder("Lights");
-    // add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
-    // e.g. this.option1=true; this.option2=false;
+
 
     for (var key in lights) {
         if (lights.hasOwnProperty(key)) {
