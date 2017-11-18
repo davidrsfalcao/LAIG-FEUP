@@ -83,7 +83,13 @@ BezierAnimation.prototype.updateAnimation = function(deltaTime){
     this.y = next_y;
     this.z = next_z;
 
-    console.log("ROTATION: " +     this.currRotation);
+}
 
-
+BezierAnimation.prototype.restartAnimation = function(){
+    this.currRotation = 0
+    this.x = this.pt1[0];
+    this.y = this.pt1[1];
+    this.z = this.pt1[2];
+    this.t = 0;
+    this.inUse = false;
 }

@@ -14,6 +14,10 @@ function XMLscene(interface) {
     this.flag = 1;
     this.frames = 100;
     this.pause = false;
+    this.restart = function(){
+        this.graph.restartAnimation();
+        console.log("RESTART");
+    }
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);

@@ -133,3 +133,21 @@ MyGraphNode.prototype.getMatrix = function(deltaT) {
 
 	return result;
 }
+
+MyGraphNode.prototype.restartAnimation = function() {
+
+    this.transformMatrixAnimations = this.transformMatrix;
+    this.currAnimation = 0;
+    if (this.animations.length != 0){
+        for(var i=0; i<this.animations.length; i++){
+            this.animations[i].restartAnimation();
+        }
+        this.animations[0].inUse = true;
+    }
+
+    for(var i=0; i<this.children.length; i++){
+        this.graph.nodes[this.children[i]].restartAnimation();
+    }
+
+
+}

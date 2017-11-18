@@ -25,7 +25,8 @@ MyInterface.prototype.init = function(application) {
     this.gui = new dat.GUI();
     var group = this.gui.addFolder("Animations");
     group.open();
-    
+
+    group.add(this.scene, 'restart');
     group.add(this.scene, 'frames', 1, 200);
     group.add(this.scene, 'pause');
 

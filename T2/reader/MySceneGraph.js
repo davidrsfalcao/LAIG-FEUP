@@ -1662,3 +1662,9 @@ MySceneGraph.prototype.update = function(deltaT) {
     this.nodes[this.idRoot].update(deltaT);
 
 }
+
+MySceneGraph.prototype.restartAnimation = function() {
+
+    this.nodes[this.idRoot].restartAnimation();
+
+}

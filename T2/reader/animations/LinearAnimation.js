@@ -33,7 +33,6 @@ LinearAnimation.prototype.getMatrix = function(deltaT) {
 	return m;
 }
 
-
 LinearAnimation.prototype.calculateDistance = function(p1, p2) {
     var a = Math.pow((p2[0] - p1[0]), 2);
     var b = Math.pow(p2[1] - p1[1], 2);
@@ -111,5 +110,15 @@ LinearAnimation.prototype.updateAnimation = function(deltaTime){
 
     if(this.inUse == false)
         return;
+
+}
+
+LinearAnimation.prototype.restartAnimation = function(){
+    this.counter = 0;
+    this.totalDistance = 0;
+    this.currRotation = 0;
+    this.control = [0,0,0];
+    this.calculateTrajectory();
+    this.inUse = false;
 
 }

@@ -6,7 +6,6 @@ function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngl
     this.initialAngle = initialAngle * this.radAng;
     this.rotationAngle = rotationAngle * this.radAng;
     this.angularSpeed = speed / radius;
-    this.currTime = 0;
     this.currAngle = 0;
     this.x = center[0];
     this.y = center[1];
@@ -38,4 +37,9 @@ CircularAnimation.prototype.getMatrix = function(deltaT){
     mat4.rotate(m, m, Math.PI + this.initialAngle + this.currAngle, [0, 1, 0]);
 
     return m;
+}
+
+CircularAnimation.prototype.restartAnimation = function(deltaT){
+    this.currAngle = 0;
+    this.inUse = false;
 }
