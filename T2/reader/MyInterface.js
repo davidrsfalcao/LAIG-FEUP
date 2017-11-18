@@ -29,6 +29,7 @@ MyInterface.prototype.init = function(application) {
     group.add(this.scene, 'restart');
     group.add(this.scene, 'pause');
     group.add(this.scene, 'frames_sec', 1, 200);
+    group.add(this.scene, 'cameraChosen', {Free: 0, Tv: 1});
 
     // add a group of controls (and open/expand by defult)
 

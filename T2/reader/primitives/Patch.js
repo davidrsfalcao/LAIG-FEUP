@@ -5,6 +5,7 @@
 
 function Patch(scene, udivs, vdivs, controlvertexes) {
 
+    this.scene = scene;
     var tmp = controlvertexes.slice();
     var degree1 = tmp.length - 1;
     var degree2 = tmp[0].length - 1;
@@ -18,7 +19,7 @@ function Patch(scene, udivs, vdivs, controlvertexes) {
 	};
 
 	this.surface = new CGFnurbsObject(scene, getSurfacePoint, udivs, vdivs);
-
+    this.surface.primitiveType = this.scene.gl.TRIANGLES;
 };
 
 Patch.prototype = Object.create(CGFobject.prototype);

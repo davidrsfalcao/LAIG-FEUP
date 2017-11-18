@@ -9,8 +9,12 @@ function XMLscene(interface) {
 
     this.interface = interface;
 
+    //Camera
+    this.cameraChosen = 0;
+
     this.lightValues = {};
-    this.deltaT;
+    this.currTime = 0;
+
     this.flag = 1;
     this.frames_sec = 100;
     this.pause = false;
@@ -110,18 +114,27 @@ XMLscene.prototype.updateFrames = function(){
 XMLscene.prototype.update = function(currTime){
     this.updateFrames();
 
+    if (this.cameraChosen == 1){
+        var position = vec3.fromValues(10,2,3);
+        this.camera.setPosition(position);
+        var target = vec3.fromValues(0, -1, 3);
+        this.camera.setTarget(target);
+        
+    }
+
     if(this.flag == 1){
         this.flag = 0;
         this.currTime = currTime;
     }
     else {
-        this.deltaT = currTime - this.currTime;
+        var deltaT = currTime - this.currTime;
         this.currTime = currTime;
         if (this.graph.loadedOk && this.pause == false){
-            this.graph.update(this.deltaT);
+            this.graph.update( deltaT);
         }
 
     }
+
 }
 
 /**

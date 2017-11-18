@@ -176,8 +176,8 @@
 
     <MATERIAL id="preto_mat">
         <shininess value="1" />
-        <specular r="0.0" g="0.0" b="0.0" a="1" />
-        <diffuse r="0.0" g="0.0" b="0.0" a="1" />
+        <specular r="0.1" g="0.1" b="0.1" a="1" />
+        <diffuse r="0.01" g="0.01" b="0.01" a="1" />
         <ambient r="0.0" g="0.0" b="0.0" a="1" />
         <emission r="0.0" g="0.0" b="0.0" a="1" />
     </MATERIAL>
@@ -232,6 +232,7 @@
             <NODEREF id="obstaculos" />
             <NODEREF id="aviao" />
             <NODEREF id="ponte" />
+            <NODEREF id="camera" />
         </DESCENDANTS>
 
     </NODE>
@@ -1061,7 +1062,7 @@
         Centro na origem do referencial
     -->
     <NODE id="cubo" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="0" />
@@ -1081,7 +1082,7 @@
 
     <!-- Face frente cubo -->
     <NODE id="cubo_face1" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="0.5" />
@@ -1095,7 +1096,7 @@
 
     <!-- Face direita cubo -->
     <NODE id="cubo_face2" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0.5" y="0" z="0" />
@@ -1109,7 +1110,7 @@
 
     <!-- Face trás cubo -->
     <NODE id="cubo_face3" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0" z="-0.5" />
@@ -1123,7 +1124,7 @@
 
     <!-- Face esquerda cubo -->
     <NODE id="cubo_face4" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="-0.5" y="0" z="0" />
@@ -1137,7 +1138,7 @@
 
     <!-- Face cima cubo -->
     <NODE id="cubo_face5" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="0.5" z="0.0" />
@@ -1151,7 +1152,7 @@
 
     <!-- Face baixo cubo -->
     <NODE id="cubo_face6" >
-        <MATERIAL id="defaultMaterial" />
+        <MATERIAL id="null" />
         <TEXTURE id="null" />
 
         <TRANSLATION x="0" y="-0.5" z="0" />
@@ -1472,7 +1473,7 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-          <LEAF type="patch" args="50 50" >
+          <LEAF type="patch" args="20 20" >
             <CPLINE>
               <CPOINT xx="-2" yy="0" zz="0" ww="1"/>
               <CPOINT xx="-1.9" yy="0" zz="0" ww="1"/>
@@ -1530,7 +1531,7 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-          <LEAF type="patch" args="50 50" >
+          <LEAF type="patch" args="20 20" >
             <CPLINE>
               <CPOINT xx="-1.9" yy="0" zz="0" ww="1"/>
               <CPOINT xx="-1.9" yy="0" zz="0.2" ww="1"/>
@@ -1575,7 +1576,7 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-          <LEAF type="patch" args="50 50" >
+          <LEAF type="patch" args="20 20" >
 
             <CPLINE>
                <CPOINT xx="2" yy="0" zz="0" ww="1"/>
@@ -1617,6 +1618,291 @@
         </DESCENDANTS>
 
     </NODE>
+
+    <NODE id="camera">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="20" y="0.99" z="10" />
+        <SCALE sx="0.3" sy="0.3" sz="0.3" />
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+            <NODEREF id="maquina" />
+            <NODEREF id="tripe" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
+
+        <DESCENDANTS>
+            <NODEREF id="maquina_corpo" />
+            <NODEREF id="maquina_lente" />
+
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="maquina_lente">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="clear" />
+
+        <DESCENDANTS>
+            <NODEREF id="maquina_lente1" />
+            <NODEREF id="maquina_lente2" />
+            <NODEREF id="maquina_lente3" />
+            <NODEREF id="maquina_lente4" />
+            <NODEREF id="maquina_lente5" />
+            <NODEREF id="maquina_lente6" />
+            <NODEREF id="maquina_lente7" />
+            <NODEREF id="maquina_lente8" />
+
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="maquina_lente1">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="10.8969" z="3" />
+
+        <DESCENDANTS>
+            <LEAF  type="cylinder" args="2 0.4 0.8 20 2 1 1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente2">
+        <MATERIAL id="vidral" />
+        <TEXTURE id="vidro" />
+
+
+        <TRANSLATION x="0" y="10.8969" z="5" />
+        <SCALE sx="1" sy="1" sz="0.6" />
+
+        <DESCENDANTS>
+            <LEAF  type="sphere" args="0.9 20 20" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente3">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <TRANSLATION x="0" y="10.8969" z="3.5" />
+
+        <DESCENDANTS>
+            <LEAF  type="cylinder" args="0.5 0.7 0.7 20 2 1 1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente4">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="10.8969" z="4.7" />
+        <SCALE sx="2" sy="2" sz="0.4" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente5">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="9.8969" z="4.9" />
+        <SCALE sx="2" sy="0.1" sz="0.8" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente6">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="clear" />
+
+        <TRANSLATION x="0" y="11.8969" z="4.9" />
+        <SCALE sx="2" sy="0.1" sz="0.8" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente7">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="-1" y="10.8969" z="4.9" />
+        <SCALE sx="0.1" sy="2" sz="0.8" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="maquina_lente8">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="1" y="10.8969" z="4.9" />
+        <SCALE sx="0.1" sy="2" sz="0.8" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+
+    <NODE id="maquina_corpo">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <NODEREF id="maquina_corpo1" />
+
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="maquina_corpo1">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="null" />
+
+        <ROTATION axis="y" angle="-90" />
+        <TRANSLATION x="1" y="10.9969" z="0" />
+        <SCALE sx="4" sy="2" sz="2" />
+
+        <DESCENDANTS>
+            <NODEREF id="cubo" />
+        </DESCENDANTS>
+
+    </NODE>
+
+
+
+    <NODE id="tripe">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_pernas" />
+            <NODEREF id="tripe_suporte" />
+
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_pernas">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <ROTATION axis="y" angle="-45" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_p1" />
+            <NODEREF id="tripe_p2" />
+            <NODEREF id="tripe_p3" />
+            <NODEREF id="tripe_p4" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_p1">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <TRANSLATION x="0" y="0" z="-3.42" />
+        <ROTATION axis="x" angle="-70" />
+
+        <DESCENDANTS>
+            <LEAF  type="cylinder" args="10 0.2 0.2 20 2 1 0" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_p2">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <ROTATION axis="y" angle="180" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_p1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_p3">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <ROTATION axis="y" angle="90" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_p1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_p4">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <ROTATION axis="y" angle="-90" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_p1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_suporte">
+        <MATERIAL id="preto_mat" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <NODEREF id="tripe_suporte1" />
+            <NODEREF id="tripe_suporte2" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="tripe_suporte1">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="cinza" />
+
+        <TRANSLATION x="0" y="9.3969" z="0" />
+        <ROTATION axis="x" angle="-90" />
+
+        <DESCENDANTS>
+            <LEAF  type="cylinder" args="0.5 0.5 0.5 20 2 1 1" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id="tripe_suporte2">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="9.6969" z="0" />
+        <ROTATION axis="x" angle="-90" />
+
+        <DESCENDANTS>
+            <LEAF  type="cylinder" args="0.3 0.4 0.4 20 2 0 1" />
+        </DESCENDANTS>
+    </NODE>
+
 </NODES>
 
 </SCENE>
