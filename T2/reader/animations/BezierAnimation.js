@@ -73,10 +73,6 @@ BezierAnimation.prototype.updateAnimation = function(deltaTime){
     var next_y = this.pt1[1]*b1 + this.pt2[1]*b2 + this.pt3[1]*b3 + this.pt4[1]*b4;
     var next_z = this.pt1[2]*b1 + this.pt2[2]*b2 + this.pt3[2]*b3 + this.pt4[2]*b4;
 
-    var delta_x = next_x - this.x,
-    delta_y = next_y - this.y,
-    delta_z = next_z - this.z;
-
     this.currRotation = Math.atan2(next_x - this.x, next_z - this.z);
 
     this.x = next_x;

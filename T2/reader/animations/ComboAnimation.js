@@ -23,12 +23,10 @@ ComboAnimation.prototype.getMatrix = function(deltaT) {
 
 ComboAnimation.prototype.updateAnimation = function(deltaTime){
 
-    console.log(deltaTime);
     if (this.animations.length == 0)
         return;
 
     if (this.counter == -1){
-        console.log("HERE");
         for(var i = 0; i < this.animations.length; i++){
             this.animations[i].restartAnimation();
         }
