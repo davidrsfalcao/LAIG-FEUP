@@ -9,13 +9,13 @@ function XMLscene(interface) {
 
     this.interface = interface;
 
-    //Camera
+
     this.cameraChosen = 0;
 
     this.lightValues = {};
-    this.currTime = 0;
 
-    this.flag = 1;
+    this.currTime = 0;
+    this.flag_begin = 1;
     this.frames_sec = 100;
     this.pause = false;
     this.restart = function(){
@@ -83,7 +83,10 @@ XMLscene.prototype.initLights = function() {
  * Initializes the scene cameras.
  */
 XMLscene.prototype.initCameras = function() {
-    this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 15),vec3.fromValues(0, 0, 0));
+    this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 15),vec3.fromValues(0, 0, 0));
+    this.cameraTV = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, 1, 3),vec3.fromValues(0, -1, 3));
+    this.camera = this.cameraFree;
+
 }
 
 /* Handler called when the graph is finally loaded.
@@ -113,16 +116,18 @@ XMLscene.prototype.updateFrames = function(){
 XMLscene.prototype.update = function(currTime){
     this.updateFrames();
 
-    if (this.cameraChosen == 1){
-        var position = vec3.fromValues(10,2,3);
-        this.camera.setPosition(position);
-        var target = vec3.fromValues(0, -1, 3);
-        this.camera.setTarget(target);
 
+
+
+    if (this.cameraChosen == 1){
+        this.camera = this.cameraTV;
+    }
+    else {
+        this.camera = this.cameraFree;
     }
 
-    if(this.flag == 1){
-        this.flag = 0;
+    if(this.flag_begin == 1){
+        this.flag_begin = 0;
         this.currTime = currTime;
     }
     else {
