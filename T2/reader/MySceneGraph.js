@@ -45,8 +45,7 @@ function MySceneGraph(filename, scene) {
 /*
 * Callback to be executed after successful reading
 */
-MySceneGraph.prototype.onXMLReady = function()
-{
+MySceneGraph.prototype.onXMLReady = function(){
     console.log("XML Loading finished.");
     var rootElement = this.reader.xmlDoc.documentElement;
 
@@ -1215,9 +1214,28 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
 
         }
 
-        var controlPoints = children[i].children;
 
         var argsCirc = [];
+
+        if (animationType == "combo"){
+            var spanref = children[i].children;
+            var comboAnimations = [];
+            for(var ii=0; ii < spanref.length; ii++){
+                if(spanref[ii].nodeName === 'SPANREF'){
+                    var animID = this.reader.getString(spanref[ii], 'id');
+                    var animC = this.animations[animID];
+
+                    if(animC == null){
+                        return "spanref not defined";
+                    }
+                    else {
+                        comboAnimations.push(animC);
+                    }
+                }
+            }
+            this.animations[animationID] = new ComboAnimation(this.scene,animationID, comboAnimations);
+
+        }
 
         if (animationType == "circular"){
             var center = [];
@@ -1232,6 +1250,7 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
 
         } else if (animationType == "linear" || animationType == "bezier"){
 
+            var controlPoints = children[i].children;
             var animationWithControlPoints = new Array();
             for(var k=0; k < controlPoints.length; k++) {
                 if(controlPoints[k].nodeName === 'controlpoint') {
@@ -1275,8 +1294,6 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
         }
     }
 }
-
-
 
 /**
 * Parses the <NODES> block.

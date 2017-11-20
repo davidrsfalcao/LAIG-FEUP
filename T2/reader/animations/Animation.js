@@ -5,3 +5,7 @@ function Animation(scene, id) {
 }
 
 Animation.prototype.constructor = Animation;
+
+Animation.prototype.begin = function(){
+    this.inUse = true;
+}

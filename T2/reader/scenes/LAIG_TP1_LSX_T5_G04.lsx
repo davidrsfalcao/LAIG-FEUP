@@ -203,8 +203,10 @@
         radius="0.1" startang="0" rotang="3600000000"
     />
 
-   <ANIMATION id="ss" type="combo">
-        <SPANREF id="ss" />
+   <ANIMATION id="comboAnim" type="combo">
+        <SPANREF id="linearAnim" />
+        <SPANREF id="bezierAnim" />
+
     </ANIMATION>
 
 </ANIMATIONS>
@@ -589,8 +591,10 @@
 
 
         <ANIMATIONREFS>
-            <ANIMATIONREF id="linearAnim" />
+            <!--<ANIMATIONREF id="linearAnim" />
             <ANIMATIONREF id="bezierAnim" />
+        -->
+            <ANIMATIONREF id="comboAnim" />
 
         </ANIMATIONREFS>
 
@@ -1010,8 +1014,7 @@
                 </DESCENDANTS>
     </NODE>
 
-    <!--
-        Esfera que compõe o corpo do avião
+    <!--Esfera que compõe o corpo do avião
     -->
     <NODE id="aviao_corpo2" >
         <MATERIAL id="null" />
@@ -1451,7 +1454,6 @@
                 </DESCENDANTS>
     </NODE>
 
-
     <NODE id="arcos">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="cimento" />
@@ -1466,7 +1468,6 @@
                     <NODEREF id="arc4" />
                 </DESCENDANTS>
     </NODE>
-
 
     <NODE id="arc1">
         <MATERIAL id="null" />
@@ -1765,7 +1766,6 @@
 
     </NODE>
 
-
     <NODE id="maquina_corpo">
         <MATERIAL id="preto_mat" />
         <TEXTURE id="null" />
@@ -1789,8 +1789,6 @@
         </DESCENDANTS>
 
     </NODE>
-
-
 
     <NODE id="tripe">
         <MATERIAL id="aluminio" />
