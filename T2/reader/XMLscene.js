@@ -9,7 +9,6 @@ function XMLscene(interface) {
 
     this.interface = interface;
 
-
     this.cameraChosen = 0;
     this.shadderChosen = 0;
 
@@ -20,6 +19,7 @@ function XMLscene(interface) {
     this.flag_begin = 1;
     this.frames_sec = 100;
     this.pause = false;
+    this.wireframe=false;
     this.restart = function(){
         this.graph.restartAnimation();
     }
@@ -100,8 +100,7 @@ XMLscene.prototype.initCameras = function() {
 /* Handler called when the graph is finally loaded.
  * As loading is asynchronous, this may be called already after the application has started the run loop
  */
-XMLscene.prototype.onGraphLoaded = function()
-{
+XMLscene.prototype.onGraphLoaded = function(){
     this.camera.near = this.graph.near;
     this.camera.far = this.graph.far;
     this.axis = new CGFaxis(this,this.graph.referenceLength);

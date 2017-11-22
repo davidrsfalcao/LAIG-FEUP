@@ -38,3 +38,11 @@ MyGraphLeaf.prototype.display = function() {
 MyGraphLeaf.prototype.amplifyTex = function(amplifierS, amplifierT) {
 	this.primitive.amplifyTexture(amplifierS, amplifierT);
 }
+
+MyGraphLeaf.prototype.setLineMode = function() {
+	this.primitive.setLineMode();
+}
+
+MyGraphLeaf.prototype.setFillMode = function() {
+	this.primitive.setFillMode();
+}

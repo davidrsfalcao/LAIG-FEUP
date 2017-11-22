@@ -1678,7 +1678,7 @@ MySceneGraph.prototype.displayScene = function() {
 
     this.scene.pushMatrix();
 
-    this.nodes[this.idRoot].display(this.defaultMaterialID, this.nodes[this.idRoot].textureID, 1, 1, false);
+    this.nodes[this.idRoot].display(this.defaultMaterialID, this.nodes[this.idRoot].textureID, 1, 1, false, false);
 
     this.scene.popMatrix();
 

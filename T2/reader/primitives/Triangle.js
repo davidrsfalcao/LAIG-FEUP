@@ -76,3 +76,11 @@ Triangle.prototype.amplifyTexture = function(s,t){
     }
     this.updateTexCoordsGLBuffers();
 }
+
+Triangle.prototype.setLineMode = function(){
+    this.primitiveType=this.scene.gl.LINES;
+}
+
+Triangle.prototype.setFillMode = function(){
+    this.primitiveType=this.scene.gl.TRIANGLES;
+}

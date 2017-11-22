@@ -69,15 +69,20 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 /**
  * Adds a leaf to this node's leaves array.
  */
-MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
+MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected, selected_wir) {
 
-    var selec;
+    var selec, selec1;
     if(this.selectable && this.graph.scene.selectableValues[this.nodeID] && this.graph.scene.shadderChosen != 0){
         selec = true;
     }
     else {
         selec = false;
     }
+
+    if(selected_wir || (this.selectable && this.graph.scene.selectableValues[this.nodeID])){
+        selec1 = true;
+    }
+    else selec1 = false;
 
 	this.graph.scene.pushMatrix();
     this.graph.scene.multMatrix(this.transformMatrixAnimations);
@@ -103,9 +108,12 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
         amplifierT = t;
     }
 	this.graph.materials[materialToUse].apply();
+
     if (selec){
         this.graph.scene.setActiveShader(this.graph.scene.testShaders[this.graph.scene.shadderChosen]);
     }
+
+
 	for(var i=0; i<this.leaves.length; i++){
 
         if (amplifierS == null){
@@ -116,11 +124,21 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
         }
         this.leaves[i].amplifyTex(amplifierS,amplifierT);
 
-		this.leaves[i].display();
+        if(this.graph.scene.wireframe && selec1){
+            this.leaves[i].setLineMode();
+            this.leaves[i].display();
+            this.leaves[i].setFillMode();
+        }
+        else this.leaves[i].display();
 	}
 
 	for(var i=0; i<this.children.length; i++){
-		this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec);
+        if(this.graph.scene.wireframe && selec1){
+            this.graph.nodes[this.children[i]].setLineMode();
+            this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec, selec1);
+            this.graph.nodes[this.children[i]].setFillMode();
+        }
+        else this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec);
     }
     if (selec){
         this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
@@ -177,5 +195,24 @@ MyGraphNode.prototype.restartAnimation = function() {
         this.graph.nodes[this.children[i]].restartAnimation();
     }
 
+}
 
+MyGraphNode.prototype.setLineMode = function() {
+    for(var i=0; i<this.children.length; i++){
+        this.graph.nodes[this.children[i]].setLineMode();
+    }
+
+    for(var i=0; i<this.leaves.length; i++){
+        this.leaves[i].setLineMode();
+    }
+}
+
+MyGraphNode.prototype.setFillMode = function() {
+    for(var i=0; i<this.children.length; i++){
+        this.graph.nodes[this.children[i]].setFillMode();
+    }
+
+    for(var i=0; i<this.leaves.length; i++){
+        this.leaves[i].setFillMode();
+    }
 }

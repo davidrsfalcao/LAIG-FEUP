@@ -66,3 +66,11 @@ Rectangle.prototype.amplifyTexture = function(amplifierS, amplifierT) {
 
     this.updateTexCoordsGLBuffers();
 };
+
+Rectangle.prototype.setLineMode = function(){
+    this.primitiveType=this.scene.gl.LINES;
+}
+
+Rectangle.prototype.setFillMode = function(){
+    this.primitiveType=this.scene.gl.TRIANGLES;
+}

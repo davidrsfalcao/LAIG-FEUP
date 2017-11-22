@@ -62,3 +62,11 @@ Sphere.prototype.amplifyTexture = function(amplifierS, amplifierT) {
 
     this.updateTexCoordsGLBuffers();
 }
+
+Sphere.prototype.setLineMode = function(){
+    this.primitiveType=this.scene.gl.LINES;
+}
+
+Sphere.prototype.setFillMode = function(){
+    this.primitiveType=this.scene.gl.TRIANGLES;
+}

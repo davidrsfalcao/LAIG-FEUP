@@ -46,3 +46,11 @@ Patch.prototype.display = function() {
     this.surface.display();
 
 }
+
+Patch.prototype.setLineMode = function(){
+    this.surface.primitiveType=this.scene.gl.LINES;
+}
+
+Patch.prototype.setFillMode = function(){
+    this.surface.primitiveType=this.scene.gl.TRIANGLES;
+}

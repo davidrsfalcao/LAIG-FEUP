@@ -45,3 +45,15 @@ Cylinder.prototype.amplifyTexture = function(amplifierS, amplifierT) {
   this.top.amplifyTexture(amplifierS, amplifierT);
   this.bottom.amplifyTexture(amplifierS, amplifierT);
 }
+
+Cylinder.prototype.setLineMode = function(){
+    this.baselessCylinder.primitiveType=this.scene.gl.LINES;
+    this.top.primitiveType=this.scene.gl.LINES;
+    this.bottom.primitiveType=this.scene.gl.LINES;
+}
+
+Cylinder.prototype.setFillMode = function(){
+    this.baselessCylinder.primitiveType=this.scene.gl.TRIANGLES;
+    this.top.primitiveType=this.scene.gl.TRIANGLES;
+    this.bottom.primitiveType=this.scene.gl.TRIANGLES;
+}

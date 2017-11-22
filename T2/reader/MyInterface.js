@@ -28,8 +28,8 @@ MyInterface.prototype.init = function(application) {
 
     group.add(this.scene, 'restart');
     group.add(this.scene, 'pause');
-    group.add(this.scene, 'frames_sec', 1, 200);
-    group.add(this.scene, 'cameraChosen', {Free: 0, Tv: 1});
+    group.add(this.scene, 'frames_sec', 1, 200).name('frames/sec');
+    group.add(this.scene, 'cameraChosen', {Free: 0, Tv: 1}).name('Camera');
 
     return true;
 };
@@ -55,8 +55,10 @@ MyInterface.prototype.addLightsGroup = function(lights) {
  */
 MyInterface.prototype.addSelectableGroup = function(selectables) {
 
+    obj=this;
     var group = this.gui.addFolder("Shadders");
-    group.add(this.scene, 'shadderChosen', {Normal: 0, Vertex: 1, Fragment: 2, 'Vertex & Fragment':3});
+    group.add(this.scene, 'wireframe');
+    group.add(this.scene, 'shadderChosen', {Normal: 0, Vertex: 1, Fragment: 2, 'Vertex & Fragment':3}).name('Shader');;
 
     for (var key in selectables) {
         if (selectables.hasOwnProperty(key)) {
