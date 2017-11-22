@@ -3,19 +3,11 @@ function LinearAnimation(scene, id, controlPoints, speed) {
     this.controlPoints = controlPoints;
     this.speed = speed;
     this.counter = 0;
-
-    this.totalDistance = 0;
     this.currRotation = 0;
     this.control = [0,0,0];
 
     this.calculateTrajectory();
 
-	for (var i = 1; i < controlPoints.length; i++)
-	{
-		this.totalDistance += this.calculateDistance(controlPoints[i - 1], controlPoints[i]);
-    }
-
-    this.span= this.totalDistance/speed;
 }
 
 LinearAnimation.prototype = Object.create(Animation.prototype);
@@ -115,7 +107,6 @@ LinearAnimation.prototype.updateAnimation = function(deltaTime){
 
 LinearAnimation.prototype.restartAnimation = function(){
     this.counter = 0;
-    this.totalDistance = 0;
     this.currRotation = 0;
     this.control = [0,0,0];
     this.calculateTrajectory();
