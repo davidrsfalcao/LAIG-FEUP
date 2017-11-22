@@ -8,8 +8,6 @@ function MyGraphNode(graph, nodeID, selected) {
 
     this.nodeID = nodeID;
 
-    this.selectable = selected;
-
     // IDs of child nodes.
     this.children = [];
 
@@ -32,6 +30,15 @@ function MyGraphNode(graph, nodeID, selected) {
 
     this.transformMatrixAnimations = mat4.create();
     mat4.identity(this.transformMatrixAnimations);
+
+    if (selected == "true"){
+        this.selectable = true;
+    }
+    else {
+        this.selectable = false;
+    }
+    this.flag_begin = true;
+
 }
 
 /**
@@ -62,7 +69,19 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 /**
  * Adds a leaf to this node's leaves array.
  */
-MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
+MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
+
+    var selec;
+    if(selected && this.graph.scene.selectableValues[this.nodeID]){
+        selec = true;
+    }
+    else if(this.selectable && this.graph.scene.selectableValues[this.nodeID]){
+        selec = true;
+    }
+    else {
+        selec = false;
+    }
+
 	this.graph.scene.pushMatrix();
     this.graph.scene.multMatrix(this.transformMatrixAnimations);
     var materialToUse = fatherMaterial;
@@ -87,7 +106,9 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
         amplifierT = t;
     }
 	this.graph.materials[materialToUse].apply();
-
+    if (selec){
+        this.graph.scene.setActiveShader(this.graph.scene.testShaders[this.graph.scene.shadderChosen]);
+    }
 	for(var i=0; i<this.leaves.length; i++){
 
         if (amplifierS == null){
@@ -100,14 +121,24 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t) {
 
 		this.leaves[i].display();
 	}
+    if (selec){
+        this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
+    }
 	for(var i=0; i<this.children.length; i++){
-		this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT);
+		this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec);
     }
 
 	this.graph.scene.popMatrix();
 }
 
 MyGraphNode.prototype.update = function(deltaT) {
+
+    if(this.flag_begin && this.selectable == true){
+        for(var i=0; i<this.children.length; i++){
+            this.graph.nodes[this.children[i]].selectable = true;
+        }
+        this.flag_begin = false;
+    }
 
     this.transformMatrixAnimations = this.getMatrix(deltaT);
 
@@ -144,7 +175,7 @@ MyGraphNode.prototype.restartAnimation = function() {
         }
         this.animations[0].inUse = true;
     }
-    
+
     for(var i=0; i<this.children.length; i++){
         this.graph.nodes[this.children[i]].restartAnimation();
     }

@@ -317,7 +317,7 @@
     </NODE>
 
     <!-- Base cima Passadiço -->
-    <NODE id="passadicoTop" >
+    <NODE id="passadicoTop" selectable="true" >
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -582,7 +582,7 @@
     </NODE>
 
     <!-- Aviao -->
-    <NODE id="aviao"  selectable="true">
+    <NODE id="aviao">
         <MATERIAL id="aluminio" />
         <TEXTURE id="clear" />
 
@@ -1168,7 +1168,7 @@
     </NODE>
 
     <!-- Objeto que representa a Ponte da Arrábida -->
-    <NODE id="ponte" selectable="true" >
+    <NODE id="ponte" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 

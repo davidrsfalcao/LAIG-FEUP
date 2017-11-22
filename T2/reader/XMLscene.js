@@ -45,6 +45,12 @@ XMLscene.prototype.init = function(application) {
 
     this.axis = new CGFaxis(this);
 
+    this.testShaders=[this.defaultShader,
+        new CGFshader(this.gl, "./shaders/flat.vert", "./shaders/flat.frag"),
+        new CGFshader(this.gl, "./shaders/uScale.vert", "./shaders/uScale.frag"),
+        new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/varying.frag")
+    ];
+
 }
 
 /**
@@ -118,7 +124,6 @@ XMLscene.prototype.updateFrames = function(){
 
 XMLscene.prototype.update = function(currTime){
     this.updateFrames();
-
 
     if (this.cameraChosen == 1){
         this.camera = this.cameraTV;
