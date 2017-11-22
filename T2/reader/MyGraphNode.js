@@ -72,7 +72,7 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
     var selec;
-    if(selected && this.graph.scene.selectableValues[this.nodeID]){
+    if(selected){
         selec = true;
     }
     else if(this.selectable && this.graph.scene.selectableValues[this.nodeID]){

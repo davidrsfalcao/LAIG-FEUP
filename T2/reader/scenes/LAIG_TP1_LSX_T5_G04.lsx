@@ -417,7 +417,7 @@
     </NODE>
 
     <!-- Obstaculo esquerda -->
-    <NODE id="obstaculol" >
+    <NODE id="obstaculol" selectable="true" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
