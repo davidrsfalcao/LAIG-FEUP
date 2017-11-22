@@ -582,7 +582,7 @@
     </NODE>
 
     <!-- Aviao -->
-    <NODE id="aviao">
+    <NODE id="aviao" selectable="true">
         <MATERIAL id="aluminio" />
         <TEXTURE id="clear" />
 

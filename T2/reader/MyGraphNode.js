@@ -72,10 +72,7 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
     var selec;
-    if(selected){
-        selec = true;
-    }
-    else if(this.selectable && this.graph.scene.selectableValues[this.nodeID]){
+    if(this.selectable && this.graph.scene.selectableValues[this.nodeID]){
         selec = true;
     }
     else {
@@ -121,13 +118,13 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
 
 		this.leaves[i].display();
 	}
-    if (selec){
-        this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
-    }
+
 	for(var i=0; i<this.children.length; i++){
 		this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec);
     }
-
+    if (selec){
+        this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
+    }
 	this.graph.scene.popMatrix();
 }
 
