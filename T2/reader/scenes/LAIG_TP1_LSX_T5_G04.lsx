@@ -373,7 +373,7 @@
     </NODE>
 
     <!-- lateral 3 Passadiço -->
-    <NODE id="passadicol3" >
+    <NODE id="passadicol3"  >
         <MATERIAL id="null" />
         <TEXTURE id="passeio2" />
 
@@ -1168,7 +1168,7 @@
     </NODE>
 
     <!-- Objeto que representa a Ponte da Arrábida -->
-    <NODE id="ponte" >
+    <NODE id="ponte" selectable="tt" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 

@@ -31,8 +31,6 @@ MyInterface.prototype.init = function(application) {
     group.add(this.scene, 'frames_sec', 1, 200);
     group.add(this.scene, 'cameraChosen', {Free: 0, Tv: 1});
 
-    // add a group of controls (and open/expand by defult)
-
     return true;
 };
 
@@ -48,6 +46,22 @@ MyInterface.prototype.addLightsGroup = function(lights) {
         if (lights.hasOwnProperty(key)) {
             this.scene.lightValues[key] = lights[key][0];
             group.add(this.scene.lightValues, key);
+        }
+    }
+}
+
+/**
+ * Adds a folder containing the IDs of the lights passed as parameter.
+ */
+MyInterface.prototype.addSelectableGroup = function(selectables) {
+
+    var group = this.gui.addFolder("Shadders");
+    group.add(this.scene, 'shadderChosen', {Normal: 0, Vertex: 1, Fragment: 2, 'Vertex & Fragment':3});
+
+    for (var key in selectables) {
+        if (selectables.hasOwnProperty(key)) {
+            this.scene.selectableValues[key] = selectables[key][0];
+            group.add(this.scene.selectableValues, key);
         }
     }
 }

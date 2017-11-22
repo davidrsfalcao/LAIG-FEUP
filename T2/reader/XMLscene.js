@@ -11,8 +11,10 @@ function XMLscene(interface) {
 
 
     this.cameraChosen = 0;
+    this.shadderChosen = 0;
 
     this.lightValues = {};
+    this.selectableValues = {};
 
     this.currTime = 0;
     this.flag_begin = 1;
@@ -107,6 +109,7 @@ XMLscene.prototype.onGraphLoaded = function()
 
     // Adds lights group.
     this.interface.addLightsGroup(this.graph.lights);
+    this.interface.addSelectableGroup(this.graph.selectables);
 }
 
 XMLscene.prototype.updateFrames = function(){
@@ -115,8 +118,6 @@ XMLscene.prototype.updateFrames = function(){
 
 XMLscene.prototype.update = function(currTime){
     this.updateFrames();
-
-
 
 
     if (this.cameraChosen == 1){

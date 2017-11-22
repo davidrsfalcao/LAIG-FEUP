@@ -1300,6 +1300,8 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
 */
 MySceneGraph.prototype.parseNodes = function(nodesNode) {
 
+    this.selectables = [];
+
     // Traverses nodes.
     var children = nodesNode.children;
 
@@ -1319,19 +1321,24 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
         else if (nodeName == "NODE") {
             // Retrieves node ID.
             var nodeID = this.reader.getString(children[i], 'id');
-            var selected = this.reader.getString(children[i], 'selectable', false);
             if (nodeID == null )
             return "failed to retrieve node ID";
-            if (selected == null ){
-                selected = "ff";
-            }
-            else if ((selected != "ff") &&  (selected != "tt") )
-                return "failed to retrieve selectable";
 
             // Checks if ID is valid.
             if (this.nodes[nodeID] != null )
             return "node ID must be unique (conflict: ID = " + nodeID + ")";
 
+            var selected = this.reader.getString(children[i], 'selectable', false);
+
+            if (selected == null ){
+                selected = "ff";
+            }
+            else if ((selected != "ff") &&  (selected != "tt") )
+                return "failed to retrieve selectable in" + nodeID;
+
+            if (selected == "tt" ){
+                this.selectables[nodeID]=[false];
+            }
 
             // Creates node.
             this.nodes[nodeID] = new MyGraphNode(this, nodeID, selected);
