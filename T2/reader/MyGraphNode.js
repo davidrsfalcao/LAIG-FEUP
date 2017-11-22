@@ -144,7 +144,7 @@ MyGraphNode.prototype.restartAnimation = function() {
         }
         this.animations[0].inUse = true;
     }
-
+    
     for(var i=0; i<this.children.length; i++){
         this.graph.nodes[this.children[i]].restartAnimation();
     }

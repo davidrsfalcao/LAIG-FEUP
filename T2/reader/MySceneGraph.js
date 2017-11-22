@@ -1331,12 +1331,12 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             var selected = this.reader.getString(children[i], 'selectable', false);
 
             if (selected == null ){
-                selected = "ff";
+                selected = "false";
             }
-            else if ((selected != "ff") &&  (selected != "tt") )
+            else if ((selected != "false") &&  (selected != "true") )
                 return "failed to retrieve selectable in" + nodeID;
 
-            if (selected == "tt" ){
+            if (selected == "true" ){
                 this.selectables[nodeID]=[false];
             }
 
