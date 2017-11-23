@@ -1168,7 +1168,7 @@
     </NODE>
 
     <!-- Objeto que representa a Ponte da Arrábida -->
-    <NODE id="ponte" >
+    <NODE id="ponte" selectable="true" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
