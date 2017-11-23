@@ -298,7 +298,7 @@
     </NODE>
 
     <!-- Passadiço -->
-    <NODE id="passadico">
+    <NODE id="passadico" selectable="true">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -317,7 +317,7 @@
     </NODE>
 
     <!-- Base cima Passadiço -->
-    <NODE id="passadicoTop" selectable="true" >
+    <NODE id="passadicoTop">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -402,7 +402,7 @@
 
 
     <!-- Obstaculos -->
-    <NODE id="obstaculos" >
+    <NODE id="obstaculos" selectable="true" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -417,7 +417,7 @@
     </NODE>
 
     <!-- Obstaculo esquerda -->
-    <NODE id="obstaculol" selectable="true" >
+    <NODE id="obstaculol">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
