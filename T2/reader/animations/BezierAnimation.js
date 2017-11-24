@@ -14,7 +14,10 @@ function BezierAnimation(scene, id, controlPoints, speed) {
     this.z = this.pt1[2];
     this.t = 0;
 
-    this.calculateDistance();
+
+    this.distance = this.calculateCurveLength();
+    console.log("Distancia Alg: " + this.distance);
+
 
 }
 
@@ -32,6 +35,21 @@ BezierAnimation.prototype.getMatrix = function(deltaT) {
 	return m;
 }
 
+
+BezierAnimation.prototype.calculateMidpoint = function(p1, p2) {
+
+    var midpoint = [];
+
+    midpoint[0] = (p1[0] + p2[0]) / 2;
+    midpoint[1] = (p1[1] + p2[1]) / 2;
+    midpoint[2] = (p1[2] + p2[2]) / 2;
+
+    return midpoint;
+
+}
+
+
+
 BezierAnimation.prototype.calculateDistance_2points = function(p1, p2) {
     var a = Math.pow((p2[0] - p1[0]), 2);
     var b = Math.pow(p2[1] - p1[1], 2);
@@ -42,16 +60,34 @@ BezierAnimation.prototype.calculateDistance_2points = function(p1, p2) {
     return result;
 }
 
-BezierAnimation.prototype.calculateDistance = function() {
+BezierAnimation.prototype.calculateCurveLength = function() {
+    var result = 0, result1 = 0;
+    var error = 100;
+    var points = [this.pt1, this.pt2, this.pt3, this.pt4];
+    var midpoint;
 
-    var chord = this.calculateDistance_2points(this.pt1, this.pt4);
-    var cont_net = this.calculateDistance_2points(this.pt1, this.pt2) +
-    this.calculateDistance_2points(this.pt2, this.pt3) +
-    this.calculateDistance_2points(this.pt3, this.pt4);
+    while(error > 1E-4){
+        var next_points = [];
+        next_points.push(this.pt1);
 
-    this.distance = (cont_net + chord) / 2;
+        for(var i = 0; i < (points.length -1); i++){
+            midpoint = this.calculateMidpoint(points[i], points[i+1]);
+            next_points.push(midpoint);
+        }
+        next_points.push(this.pt4);
+        points = next_points;
+        result = 0;
+        for(var i = 0; i < (points.length -1); i++){
+            result += this.calculateDistance_2points(points[i], points[i+1]);
+        }
+        error = Math.abs(result1 - result);
+        result1 = result;
 
+
+    }
+    return result;
 }
+
 
 BezierAnimation.prototype.updateAnimation = function(deltaTime){
 

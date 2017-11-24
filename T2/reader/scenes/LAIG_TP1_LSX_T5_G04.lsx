@@ -191,7 +191,7 @@
         <controlpoint xx="0" yy="0" zz="40" /> <!-- seja necessário -->
     </ANIMATION>
 
-    <ANIMATION id="bezierAnim" speed="15" type="bezier">
+    <ANIMATION id="bezierAnim" speed="10" type="bezier">
         <controlpoint xx="0" yy="0" zz="40" /> <!-- repete conforme -->
         <controlpoint xx="0" yy="0" zz="60" /> <!-- seja necessário -->
         <controlpoint xx="-20" yy="0" zz="60" /> <!-- seja necessário -->
