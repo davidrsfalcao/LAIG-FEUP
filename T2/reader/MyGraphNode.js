@@ -69,7 +69,7 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 /**
  * Adds a leaf to this node's leaves array.
  */
-MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected, selected_wir) {
+MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
     var selec, selec1;
     if(this.selectable && this.graph.scene.selectableValues[this.nodeID] && this.graph.scene.shadderChosen != 0){
@@ -79,7 +79,7 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
         selec = false;
     }
 
-    if(selected_wir || (this.selectable && this.graph.scene.selectableValues[this.nodeID])){
+    if(selected || (this.selectable && this.graph.scene.selectableValues[this.nodeID])){
         selec1 = true;
     }
     else selec1 = false;
@@ -135,10 +135,10 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
 	for(var i=0; i<this.children.length; i++){
         if(this.graph.scene.wireframe && selec1){
             this.graph.nodes[this.children[i]].setLineMode();
-            this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec, selec1);
+            this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec1);
             this.graph.nodes[this.children[i]].setFillMode();
         }
-        else this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec);
+        else this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec1);
     }
     if (selec){
         this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
