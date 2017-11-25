@@ -298,7 +298,7 @@
     </NODE>
 
     <!-- Passadiço -->
-    <NODE id="passadico" selectable="true">
+    <NODE id="passadico">
         <MATERIAL id="null" />
         <TEXTURE id="passeio" />
 
@@ -402,7 +402,7 @@
 
 
     <!-- Obstaculos -->
-    <NODE id="obstaculos" selectable="true" >
+    <NODE id="obstaculos" >
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 
@@ -443,10 +443,19 @@
 
         <DESCENDANTS>
                     <NODEREF id="obsbase" />
-                    <NODEREF id="obsmid" />
-                    <NODEREF id="obstop" />
+                    <NODEREF id="obstaculo" />
 
                 </DESCENDANTS>
+    </NODE>
+
+    <NODE id="obstaculo" selectable="true">
+        <MATERIAL id="null" />
+        <TEXTURE id="clear" />
+
+        <DESCENDANTS>
+                <NODEREF id="obsmid" />
+                <NODEREF id="obstop" />
+            </DESCENDANTS>
     </NODE>
 
     <!-- Base Obstaculo -->
@@ -984,7 +993,7 @@
         Objeto que representa o corpo do avião
         Composto por: cilindro e esfera
     -->
-    <NODE id="aviao_corpo" >
+    <NODE id="aviao_corpo" selectable="true" >
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -1032,7 +1041,7 @@
     <!-- Frente do avião
          Esfera achatada
     -->
-    <NODE id="aviao_frente" >
+    <NODE id="aviao_frente" selectable="true" >
         <MATERIAL id="null" />
         <TEXTURE id="azul" />
 
@@ -1048,7 +1057,7 @@
     <!-- Cockpit do avião
         Esfera esticada num dos eixos
     -->
-    <NODE id="aviao_cockpit" >
+    <NODE id="aviao_cockpit" selectable="true" >
         <MATERIAL id="vidral" />
         <TEXTURE id="vidro" />
 
@@ -1168,7 +1177,7 @@
     </NODE>
 
     <!-- Objeto que representa a Ponte da Arrábida -->
-    <NODE id="ponte" selectable="true" >
+    <NODE id="ponte">
         <MATERIAL id="defaultMaterial" />
         <TEXTURE id="clear" />
 

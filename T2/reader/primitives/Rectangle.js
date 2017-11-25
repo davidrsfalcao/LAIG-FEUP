@@ -43,8 +43,6 @@ Rectangle.prototype.initBuffers = function() {
 
       ];
 
-      this.primitiveType = this.scene.gl.TRIANGLES;
-
       this.normals = [
       0, 0, 1,
       0, 0, 1,
