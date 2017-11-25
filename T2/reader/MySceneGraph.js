@@ -13,6 +13,8 @@ var NODES_INDEX = 7;
 /**
 * MySceneGraph class, representing the scene graph.
 * @constructor
+* @param {String} filename - name of XML file
+* @param {Object} scene - this scene
 */
 function MySceneGraph(filename, scene) {
     this.loadedOk = null ;
@@ -65,6 +67,8 @@ MySceneGraph.prototype.onXMLReady = function(){
 
 /**
 * Parses the LSX file, processing each block.
+* Verify tags on XML file.
+* @param {Object} rootElement - root of the graph 
 */
 MySceneGraph.prototype.parseLSXFile = function(rootElement) {
     if (rootElement.nodeName != "SCENE")
@@ -166,6 +170,7 @@ MySceneGraph.prototype.parseLSXFile = function(rootElement) {
 
 /**
 * Parses the <INITIALS> block.
+* @param {Object} initialsNode - first node of INITIALS block
 */
 MySceneGraph.prototype.parseInitials = function(initialsNode) {
 
@@ -421,6 +426,7 @@ MySceneGraph.prototype.parseInitials = function(initialsNode) {
 
 /**
 * Parses the <ILLUMINATION> block.
+* @param {Object} illuminationNode - first node of ILLUMINATION block
 */
 MySceneGraph.prototype.parseIllumination = function(illuminationNode) {
 
@@ -555,6 +561,7 @@ MySceneGraph.prototype.parseIllumination = function(illuminationNode) {
 
 /**
 * Parses the <LIGHTS> node.
+*@param {Object} lightsNode - first node of LIGHTS block
 */
 MySceneGraph.prototype.parseLights = function(lightsNode) {
 
@@ -859,6 +866,7 @@ MySceneGraph.prototype.parseLights = function(lightsNode) {
 
 /**
 * Parses the <TEXTURES> block.
+*@param {Object} texturesNode - first node of TEXTURES block
 */
 MySceneGraph.prototype.parseTextures = function(texturesNode) {
 
@@ -939,6 +947,7 @@ MySceneGraph.prototype.parseTextures = function(texturesNode) {
 
 /**
 * Parses the <MATERIALS> node.
+*@param {Object} materialsNode - first node of MATERIALS block
 */
 MySceneGraph.prototype.parseMaterials = function(materialsNode) {
 
@@ -1172,6 +1181,7 @@ MySceneGraph.prototype.parseMaterials = function(materialsNode) {
 
 /**
 * Parses the <ANIMATIONS> block.
+*@param {Object} nodesAnimation - first node of ANIMATIONS block
 */
 MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
 
@@ -1297,6 +1307,7 @@ MySceneGraph.prototype.parseAnimations = function(nodesAnimation) {
 
 /**
 * Parses the <NODES> block.
+*@param {Object} nodesNode - first node of NODES block
 */
 MySceneGraph.prototype.parseNodes = function(nodesNode) {
 
@@ -1684,12 +1695,19 @@ MySceneGraph.prototype.displayScene = function() {
 
 }
 
+/**
+ * Update the scene, processing each node, starting in the root node. 
+ * @param {Number} deltaT - time
+ */
 MySceneGraph.prototype.update = function(deltaT) {
 
     this.nodes[this.idRoot].update(deltaT);
 
 }
 
+/**
+ * Restart the scene, processing each node, starting in the root node. 
+ */
 MySceneGraph.prototype.restartAnimation = function() {
 
     this.nodes[this.idRoot].restartAnimation();

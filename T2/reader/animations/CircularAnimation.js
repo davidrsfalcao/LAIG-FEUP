@@ -1,3 +1,15 @@
+/**
+ * CircularAnimation
+ * @constructor
+ * @param {Object} scene - this scene
+ * @param {String} id - animation id
+ * @param {Array} center - coordinates of the animation center
+ * @param {Number} radius - radius of animation
+ * @param {Number} initialAngle - animation's initial angle
+ * @param {Number} rotationAngle - animation's rotation angle
+ * @param {Number} speed - animation speed
+ 
+ */
 function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngle, speed) {
     Animation.call(this, scene, id);
 
@@ -16,6 +28,10 @@ function CircularAnimation(scene, id, center, radius, initialAngle, rotationAngl
 CircularAnimation.prototype = Object.create(Animation.prototype);
 CircularAnimation.prototype.constructor = CircularAnimation;
 
+/**
+ * Update Animation 
+ * @param {Number} deltaTime - time
+ */
 CircularAnimation.prototype.updateAnimation = function(deltaTime){
 
     this.currAngle += this.angularSpeed * deltaTime/1000;
@@ -25,6 +41,11 @@ CircularAnimation.prototype.updateAnimation = function(deltaTime){
         this.inUse = false;
     }
 }
+
+/**
+ * Get transformation matrix after animation is applied
+ * @param {Number} deltaT - time
+ */
 CircularAnimation.prototype.getMatrix = function(deltaT){
     var m =  mat4.create();
 
@@ -39,6 +60,9 @@ CircularAnimation.prototype.getMatrix = function(deltaT){
     return m;
 }
 
+/**
+ * Restart Animation 
+ */
 CircularAnimation.prototype.restartAnimation = function(deltaT){
     this.currAngle = 0;
     this.inUse = false;

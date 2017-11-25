@@ -1,3 +1,11 @@
+/**
+ * BezierAnimation
+ * @constructor
+ * @param {Object} scene - this scene
+ * @param {String} id - animation id
+ * @param {Array} controlPoints - coordinates of four control Points
+ * @param {Number} speed - animation speed
+ */
 function BezierAnimation(scene, id, controlPoints, speed) {
     Animation.call(this, scene, id);
     this.speed = speed;
@@ -24,6 +32,10 @@ function BezierAnimation(scene, id, controlPoints, speed) {
 BezierAnimation.prototype = Object.create(Animation.prototype);
 BezierAnimation.prototype.constructor = BezierAnimation;
 
+/**
+ * Get transformation matrix after animation is applied
+ * @param {Number} deltaT - time
+ */
 BezierAnimation.prototype.getMatrix = function(deltaT) {
 	var m = mat4.create();
     mat4.identity(m);
@@ -35,7 +47,11 @@ BezierAnimation.prototype.getMatrix = function(deltaT) {
 	return m;
 }
 
-
+/**
+ * Calculate midpoint of Point p1 and Point p2
+ * @param {Array} p1 - Coordinates of Point 1
+ * @param {Array} p2 - Coordinates of Point 2
+ */
 BezierAnimation.prototype.calculateMidpoint = function(p1, p2) {
 
     var midpoint = [];
@@ -49,7 +65,11 @@ BezierAnimation.prototype.calculateMidpoint = function(p1, p2) {
 }
 
 
-
+/**
+ * Calculate distance between Point p1 and Point p2
+ * @param {Array} p1 - Coordinates of Point 1
+ * @param {Array} p2 - Coordinates of Point 2
+ */
 BezierAnimation.prototype.calculateDistance_2points = function(p1, p2) {
     var a = Math.pow((p2[0] - p1[0]), 2);
     var b = Math.pow(p2[1] - p1[1], 2);
@@ -60,6 +80,9 @@ BezierAnimation.prototype.calculateDistance_2points = function(p1, p2) {
     return result;
 }
 
+/**
+ * Calculate bezier curve length through the Casteljau's algorithm
+ */
 BezierAnimation.prototype.calculateCurveLength = function() {
     var result = 0, result1 = 0;
     var error = 100;
@@ -89,6 +112,10 @@ BezierAnimation.prototype.calculateCurveLength = function() {
 }
 
 
+/**
+ * Update Animation 
+ * @param {Number} deltaTime - time
+ */
 BezierAnimation.prototype.updateAnimation = function(deltaTime){
 
     this.t += ((deltaTime/1000) * this.speed) / this.distance;
@@ -117,6 +144,9 @@ BezierAnimation.prototype.updateAnimation = function(deltaTime){
 
 }
 
+/**
+ * Restart Animation 
+ */
 BezierAnimation.prototype.restartAnimation = function(){
     this.currRotation = 0
     this.x = this.pt1[0];

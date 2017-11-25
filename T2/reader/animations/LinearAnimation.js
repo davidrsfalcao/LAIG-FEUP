@@ -1,3 +1,11 @@
+/**
+ * LinearAnimation
+ * @constructor
+ * @param {Object} scene - this scene
+ * @param {String} id - animation id
+ * @param {Array} controlPoints - coordinates of three control Points
+ * @param {Number} speed - animation speed
+ */
 function LinearAnimation(scene, id, controlPoints, speed) {
     Animation.call(this, scene, id);
     this.controlPoints = controlPoints;
@@ -13,6 +21,10 @@ function LinearAnimation(scene, id, controlPoints, speed) {
 LinearAnimation.prototype = Object.create(Animation.prototype);
 LinearAnimation.prototype.constructor = LinearAnimation;
 
+/**
+ * Get transformation matrix after animation is applied
+ * @param {Number} deltaT - time
+ */
 LinearAnimation.prototype.getMatrix = function(deltaT) {
 	var m = mat4.create();
     mat4.identity(m);
@@ -25,6 +37,11 @@ LinearAnimation.prototype.getMatrix = function(deltaT) {
 	return m;
 }
 
+/**
+ * Calculate distance between Point p1 and Point p2
+ * @param {Array} p1 - Coordinates of Point 1
+ * @param {Array} p2 - Coordinates of Point 2
+ */
 LinearAnimation.prototype.calculateDistance = function(p1, p2) {
     var a = Math.pow((p2[0] - p1[0]), 2);
     var b = Math.pow(p2[1] - p1[1], 2);
@@ -35,12 +52,20 @@ LinearAnimation.prototype.calculateDistance = function(p1, p2) {
     return result;
 }
 
+/**
+ * Calculate rotation between Point p1 and Point p2 to correct the direction
+ * @param {Array} p1 - Coordinates of Point 1
+ * @param {Array} p2 - Coordinates of Point 2
+ */
 LinearAnimation.prototype.calculateRotation = function(p1, p2) {
 	var rot = Math.atan2(p2[0] - p1[0], p2[2] - p1[2]);
 
     return rot;
 }
 
+/**
+ * Calculate trajectory of the linearAnimation
+ */
 LinearAnimation.prototype.calculateTrajectory = function(){
     this.x1 = this.controlPoints[this.counter][0];
     this.y1 = this.controlPoints[this.counter][1];
@@ -82,6 +107,10 @@ LinearAnimation.prototype.calculateTrajectory = function(){
 
 }
 
+/**
+ * Update Animation 
+ * @param {Number} deltaTime - time
+ */
 LinearAnimation.prototype.updateAnimation = function(deltaTime){
 
     this.x += this.speed_x * deltaTime / 1000;
@@ -105,6 +134,10 @@ LinearAnimation.prototype.updateAnimation = function(deltaTime){
 
 }
 
+
+/**
+ * Restart Animation 
+ */
 LinearAnimation.prototype.restartAnimation = function(){
     this.counter = 0;
     this.currRotation = 0;

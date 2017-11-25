@@ -1,3 +1,10 @@
+/**
+ * ComboAnimation
+ * @constructor
+ * @param {Object} scene - this scene
+ * @param {String} id - animation id
+ * @param {Array} animations - animations that make up the set of animations
+ */
 function ComboAnimation(scene, id, animations) {
     Animation.call(this, scene, id);
 
@@ -9,6 +16,10 @@ function ComboAnimation(scene, id, animations) {
 ComboAnimation.prototype = Object.create(Animation.prototype);
 ComboAnimation.prototype.constructor = ComboAnimation;
 
+/**
+ * Get transformation matrix after animation is applied
+ * @param {Number} deltaT - time
+ */
 ComboAnimation.prototype.getMatrix = function(deltaT) {
 	var m = mat4.create();
     mat4.identity(m);
@@ -20,7 +31,10 @@ ComboAnimation.prototype.getMatrix = function(deltaT) {
 	return m;
 }
 
-
+/**
+ * Update Animation 
+ * @param {Number} deltaTime - time
+ */
 ComboAnimation.prototype.updateAnimation = function(deltaTime){
 
     if (this.animations.length == 0)
@@ -47,6 +61,9 @@ ComboAnimation.prototype.updateAnimation = function(deltaTime){
 
 }
 
+/**
+ * Restart Animation 
+ */
 ComboAnimation.prototype.restartAnimation = function(){
     this.inUse = false;
     this.counter = -1;

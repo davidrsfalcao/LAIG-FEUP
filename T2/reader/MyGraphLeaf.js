@@ -1,6 +1,9 @@
 /**
  * MyGraphLeaf class, representing a leaf in the scene graph.
  * @constructor
+ * @param {Object} scene - represents the scene
+ * @param {String} type - represents type of leaf's primitive
+ * @param {Array} args - the args that will be needed to create the leaf's primitives
 **/
 
 function MyGraphLeaf(scene,type,args) {
@@ -31,18 +34,33 @@ function MyGraphLeaf(scene,type,args) {
 	}
 }
 
+/**
+ * Display primitives
+ */
 MyGraphLeaf.prototype.display = function() {
 	this.primitive.display();
 }
 
+/**
+ * Function that amplify scalars values in textures
+ * @param {Number} amplifierS -  update S value in texture
+ * @param {Number} amplifierT - update T value in texture
+ */
 MyGraphLeaf.prototype.amplifyTex = function(amplifierS, amplifierT) {
 	this.primitive.amplifyTexture(amplifierS, amplifierT);
 }
 
+/**
+ * SetLineMode in primitives
+ */
 MyGraphLeaf.prototype.setLineMode = function() {
 	this.primitive.setLineMode();
 }
 
+
+/**
+ * SetFillMode in primitives
+ */
 MyGraphLeaf.prototype.setFillMode = function() {
 	this.primitive.setFillMode();
 }

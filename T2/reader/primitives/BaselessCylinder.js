@@ -1,6 +1,13 @@
 /**
- * BaselessCylinder
+ * BaselessCylinder - Constructs Cylinder
  * @constructor
+ * @param {Object} scene - this scene
+ * @param {Number} height - cylinder's height
+ * @param {Number} base - cylinder's base
+ * @param {Number} top - cylinder's top
+ * @param {Number} slices - cylinder's slices
+ * @param {Number} stacks - cylinder's stacks
+
  */
 function BaselessCylinder(scene, height, base, top, slices, stacks) {
     CGFobject.call(this, scene);
@@ -17,6 +24,9 @@ function BaselessCylinder(scene, height, base, top, slices, stacks) {
 BaselessCylinder.prototype = Object.create(CGFobject.prototype);
 BaselessCylinder.prototype.constructor = BaselessCylinder;
 
+/**
+ * Init Buffers
+ */
 BaselessCylinder.prototype.initBuffers = function() {
     this.vertices = [];
     this.normals = [];

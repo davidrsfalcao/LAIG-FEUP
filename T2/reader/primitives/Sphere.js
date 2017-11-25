@@ -1,6 +1,10 @@
 /**
  * Sphere
  * @constructor
+ * @param {Object} scene - this scene
+ * @param {Number} radius - Sphere's radius
+ * @param {Number} slices - Sphere's slices
+ * @param {Number} stacks - Sphere's stacks
  */
 function Sphere(scene, radius, slices, stacks) {
     CGFobject.call(this, scene);
@@ -15,6 +19,9 @@ function Sphere(scene, radius, slices, stacks) {
 Sphere.prototype = Object.create(CGFobject.prototype);
 Sphere.prototype.constructor = Sphere;
 
+/**
+ * Init Buffers
+ */
 Sphere.prototype.initBuffers = function() {
 
     this.vertices = [];
@@ -54,6 +61,12 @@ Sphere.prototype.initBuffers = function() {
     this.initGLBuffers();
 };
 
+/**
+ * Amplifies the texture according to the s and t variables.
+ * The cylinder body does not need amplifying as it is a quadric surface.
+ * Even though it does not do anything, it needs to be present due to
+ * inheritance.
+ */
 Sphere.prototype.amplifyTexture = function(amplifierS, amplifierT) {
     for (let i = 0; i < this.originalTexCoords.length; i += 2) {
         this.texCoords[i] = this.originalTexCoords[i] / amplifierS;
@@ -63,10 +76,16 @@ Sphere.prototype.amplifyTexture = function(amplifierS, amplifierT) {
     this.updateTexCoordsGLBuffers();
 }
 
+/**
+ * Apply setLineMode function to Sphere
+ */
 Sphere.prototype.setLineMode = function(){
     this.primitiveType=this.scene.gl.LINES;
 }
 
+/**
+ * Apply setFillMode function to Sphere
+ */
 Sphere.prototype.setFillMode = function(){
     this.primitiveType=this.scene.gl.TRIANGLES;
 }

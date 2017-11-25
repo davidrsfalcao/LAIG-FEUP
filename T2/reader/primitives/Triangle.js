@@ -1,3 +1,17 @@
+/**
+ * Triangle - Constructs Triangle
+ * @constructor
+ * @param {Object} scene - this scene
+ * @param {Number} x1 - coordinate x of first point
+ * @param {Number} y1 - coordinate y of first point
+ * @param {Number} z1 - coordinate z of first point
+ * @param {Number} x2 - coordinate x of second point
+ * @param {Number} y2 - coordinate y of second point
+ * @param {Number} z2 - coordinate z of second point
+ * @param {Number} x3 - coordinate x of third point
+ * @param {Number} y3 - coordinate y of third point
+ * @param {Number} z3 - coordinate z of third point
+ */
 function Triangle(scene, x1, y1, z1, x2, y2, z2, x3, y3, z3) {
     CGFobject.call(this,scene);
 
@@ -17,7 +31,9 @@ function Triangle(scene, x1, y1, z1, x2, y2, z2, x3, y3, z3) {
 Triangle.prototype = Object.create(CGFobject.prototype);
 Triangle.prototype.constructor=Triangle;
 
-
+/**
+ * Init Buffers
+ */
 Triangle.prototype.initBuffers = function () {
 
     this.vertices = [
@@ -68,7 +84,12 @@ Triangle.prototype.initBuffers = function () {
 
 };
 
-
+/**
+ * Amplifies the texture according to the s and t variables.
+ * The cylinder body does not need amplifying as it is a quadric surface.
+ * Even though it does not do anything, it needs to be present due to
+ * inheritance.
+ */
 Triangle.prototype.amplifyTexture = function(s,t){
     for (var i = 0; i < this.texCoords.length; i += 2) {
         this.texCoords[i] = this.originalTexCoords[i] / s;
@@ -77,10 +98,16 @@ Triangle.prototype.amplifyTexture = function(s,t){
     this.updateTexCoordsGLBuffers();
 }
 
+/**
+ * Apply setLineMode function to Triangle
+ */
 Triangle.prototype.setLineMode = function(){
     this.primitiveType=this.scene.gl.LINES;
 }
 
+/**
+ * Apply setFillMode function to Triangle
+ */
 Triangle.prototype.setFillMode = function(){
     this.primitiveType=this.scene.gl.TRIANGLES;
 }

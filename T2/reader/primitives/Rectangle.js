@@ -1,6 +1,11 @@
 /**
-* Rectangle
+* Rectangle - Constructs Rectangle
 * @constructor
+* @param {Object} scene - this scene
+* @param {Number} left_top_x - coordinate x of letf corner of rectangle
+* @param {Number} left_top_y - coordinate y of letf corner of rectangle
+* @param {Number} right_bottom_x - coordinate x of right corner of rectangle
+* @param {Number} right_bottom_y - coordinate y of right corner of rectangle
 */
 
 function Rectangle(scene, left_top_x, left_top_y, right_bottom_x, right_bottom_y) {
@@ -20,6 +25,9 @@ function Rectangle(scene, left_top_x, left_top_y, right_bottom_x, right_bottom_y
 Rectangle.prototype = Object.create(CGFobject.prototype);
 Rectangle.prototype.constructor = Rectangle;
 
+/**
+ * Init Buffers
+ */
 Rectangle.prototype.initBuffers = function() {
 
     this.vertices = [
@@ -58,6 +66,12 @@ Rectangle.prototype.initBuffers = function() {
     this.initGLBuffers();
 };
 
+/**
+ * Amplifies the texture according to the s and t variables.
+ * The cylinder body does not need amplifying as it is a quadric surface.
+ * Even though it does not do anything, it needs to be present due to
+ * inheritance.
+ */
 Rectangle.prototype.amplifyTexture = function(amplifierS, amplifierT) {
     for (let i = 0; i < this.originalTexCoords.length; i += 2) {
         this.texCoords[i] = this.originalTexCoords[i] / amplifierS;
@@ -67,10 +81,16 @@ Rectangle.prototype.amplifyTexture = function(amplifierS, amplifierT) {
     this.updateTexCoordsGLBuffers();
 };
 
+/**
+ * Apply setLineMode function to Rectangle
+ */
 Rectangle.prototype.setLineMode = function(){
     this.primitiveType=this.scene.gl.LINES;
 }
 
+/**
+ * Apply setFillMode function to Rectangle
+ */
 Rectangle.prototype.setFillMode = function(){
     this.primitiveType=this.scene.gl.TRIANGLES;
 }

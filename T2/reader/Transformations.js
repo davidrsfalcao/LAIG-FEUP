@@ -1,3 +1,9 @@
+/**
+ * Load Transformation
+ * @constructor
+ * @param {Object} scene - this scene
+ */
+
 function Transformation(scene) {
     this.scene = scene;
 
@@ -9,6 +15,13 @@ function Transformation(scene) {
 
 Transformation.prototype.constructor = Transformation;
 
+/**
+ * Rotation transformation
+ * @param {Number} angle - angle 
+ * @param {Number} x - x 
+ * @param {Number} y - y 
+ * @param {Number} z - z 
+ */
 Transformation.prototype.rotate = function(angle, x, y, z) {
     this.scene.pushMatrix();
     this.scene.setMatrix(this.transformationMatrix);
@@ -17,6 +30,12 @@ Transformation.prototype.rotate = function(angle, x, y, z) {
     this.scene.popMatrix();
 }
 
+/**
+ * Translate transformation
+ * @param {Number} x - x 
+ * @param {Number} y - y 
+ * @param {Number} z - z 
+ */
 Transformation.prototype.translate = function(x, y, z) {
     this.scene.pushMatrix();
     this.scene.setMatrix(this.transformationMatrix);
@@ -25,6 +44,12 @@ Transformation.prototype.translate = function(x, y, z) {
     this.scene.popMatrix();
 }
 
+/**
+ * Scale transformation
+ * @param {Number} x - x 
+ * @param {Number} y - y 
+ * @param {Number} z - z 
+ */
 Transformation.prototype.scale = function(x, y, z) {
     this.scene.pushMatrix();
     this.scene.setMatrix(this.transformationMatrix);
@@ -33,6 +58,10 @@ Transformation.prototype.scale = function(x, y, z) {
     this.scene.popMatrix();
 }
 
+/**
+ * Multiply transformations
+ * @param transformation
+ */
 Transformation.prototype.multiply = function(transformation) {
     this.scene.pushMatrix();
     this.scene.setMatrix(this.transformationMatrix);
@@ -41,6 +70,9 @@ Transformation.prototype.multiply = function(transformation) {
     this.scene.popMatrix();
 }
 
+/**
+ * Get transformation's matrix
+ */
 Transformation.prototype.getMatrix = function() {
     return this.transformationMatrix;
 }

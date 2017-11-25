@@ -1,6 +1,9 @@
 /**
  * MyGraphNode class, representing an intermediate node in the scene graph.
  * @constructor
+ * @param {Object} graph - scene's graph
+ * @param {String} nodeId - id of this node
+ * @param {Boolean} selected - true if this node is selected on XML file, false otherwise
 **/
 
 function MyGraphNode(graph, nodeID, selected) {
@@ -43,6 +46,7 @@ function MyGraphNode(graph, nodeID, selected) {
 
 /**
  * Adds the reference (ID) of another node to this node's children array.
+ * @param {String} nodeID - nodeID
  */
 MyGraphNode.prototype.addChild = function(nodeID) {
     this.children.push(nodeID);
@@ -50,6 +54,7 @@ MyGraphNode.prototype.addChild = function(nodeID) {
 
 /**
  * Adds a leaf to this node's leaves array.
+ * @param {Object} leaf - leaf
  */
 MyGraphNode.prototype.addLeaf = function(leaf) {
     this.leaves.push(leaf);
@@ -57,6 +62,7 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
 
 /**
  * Adds a animation to this node's animations array.
+ * @param {String} anim - id of animation to be added 
  */
 MyGraphNode.prototype.addAnimation = function(anim) {
 
@@ -67,7 +73,13 @@ MyGraphNode.prototype.addAnimation = function(anim) {
 }
 
 /**
- * Adds a leaf to this node's leaves array.
+ * Display this node
+ * @param {String} fatherMaterial - fatherMaterial's id
+ * @param {String} fatherTexture - fatherTexture's id
+ * @param {Number} s - scalar s 
+ * @param {Number} t - scalar t
+ * @param {Boolean} selected - true if this node is selected on XML file, false otherwise
+ * 
  */
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
@@ -146,6 +158,10 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
 	this.graph.scene.popMatrix();
 }
 
+/**
+ * Update nodes
+ * @param {Number} deltaT - time
+ */
 MyGraphNode.prototype.update = function(deltaT) {
 
     if(this.flag_begin && this.selectable == true){
@@ -162,6 +178,10 @@ MyGraphNode.prototype.update = function(deltaT) {
     }
 }
 
+/**
+ * Update transformation's matrix 
+ * @param {Number} deltaT - time
+ */
 MyGraphNode.prototype.getMatrix = function(deltaT) {
 	if (this.animations.length == 0)
         return this.transformMatrix;
@@ -180,6 +200,9 @@ MyGraphNode.prototype.getMatrix = function(deltaT) {
 	return result;
 }
 
+/**
+ * Restart animations
+ */
 MyGraphNode.prototype.restartAnimation = function() {
 
     this.transformMatrixAnimations = this.transformMatrix;
@@ -196,7 +219,9 @@ MyGraphNode.prototype.restartAnimation = function() {
     }
 
 }
-
+/**
+ * Apply setLineMode function to every children
+ */
 MyGraphNode.prototype.setLineMode = function() {
     for(var i=0; i<this.children.length; i++){
         this.graph.nodes[this.children[i]].setLineMode();
@@ -207,6 +232,9 @@ MyGraphNode.prototype.setLineMode = function() {
     }
 }
 
+/**
+ * Apply setFillMode function to every children
+ */
 MyGraphNode.prototype.setFillMode = function() {
     for(var i=0; i<this.children.length; i++){
         this.graph.nodes[this.children[i]].setFillMode();

@@ -1,6 +1,9 @@
 /**
- * Circle
+ * Circle - Constructs Circle
  * @constructor
+ * @param {Object} scene - this scene
+ * @param {Number} slices - Circle's slices
+ * @param {Number} radius - Circle's radius
  */
 function Circle(scene, slices, radius) {
     CGFobject.call(this, scene);
@@ -14,6 +17,9 @@ function Circle(scene, slices, radius) {
 Circle.prototype = Object.create(CGFobject.prototype);
 Circle.prototype.constructor = Circle;
 
+/**
+ * Init Buffers
+ */
 Circle.prototype.initBuffers = function() {
     this.vertices = [];
     this.normals = [];
