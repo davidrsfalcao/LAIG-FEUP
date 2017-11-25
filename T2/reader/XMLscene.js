@@ -23,6 +23,8 @@ function XMLscene(interface) {
     this.restart = function(){
         this.graph.restartAnimation();
     }
+    this.timeElapsed = 0;
+    this.scaleFactor= 0;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -43,13 +45,19 @@ XMLscene.prototype.init = function(application) {
     this.gl.enable(this.gl.CULL_FACE);
     this.gl.depthFunc(this.gl.LEQUAL);
 
+
     this.axis = new CGFaxis(this);
 
     this.testShaders=[this.defaultShader,
-        new CGFshader(this.gl, "./shaders/flat.vert", "./shaders/flat.frag"),
-        new CGFshader(this.gl, "./shaders/uScale.vert", "./shaders/uScale.frag"),
-        new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/varying.frag")
+        new CGFshader(this.gl, "shaders/vertex.vert", "shaders/vertex.frag"),
+        new CGFshader(this.gl, "./shaders/fragment.vert", "./shaders/fragment.frag"),
+        new CGFshader(this.gl, "./shaders/vertex.vert", "./shaders/fragment.frag")
     ];
+
+
+    this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
+    this.testShaders[2].setUniformsValues({scaleFactor: this.scaleFactor});
+    this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: this.scaleFactor});
 
 }
 
@@ -138,11 +146,13 @@ XMLscene.prototype.update = function(currTime){
     else {
         var deltaT = currTime - this.currTime;
         this.currTime = currTime;
+        this.timeElapsed += deltaT;
         if (this.graph.loadedOk && this.pause == false){
             this.graph.update( deltaT);
         }
 
     }
+    this.updateShadders(currTime);
 
 }
 
@@ -203,5 +213,14 @@ XMLscene.prototype.display = function() {
     this.popMatrix();
 
     // ---- END Background, camera and axis setup
+
+}
+
+XMLscene.prototype.updateShadders = function(currTime){
+    this.scaleFactor = 5*Math.sin(this.timeElapsed/1000);
+    var for_color = 1 + Math.abs(this.scaleFactor)/2;
+    this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
+    this.testShaders[2].setUniformsValues({scaleFactor: for_color});
+    this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: for_color});
 
 }

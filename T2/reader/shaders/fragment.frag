@@ -8,16 +8,16 @@ varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
 
 uniform bool uUseTexture;
+uniform float scaleFactor;
 
 void main() {
-	// Branching should be reduced to a minimal. 
-	// When based on a non-changing uniform, it is usually optimized.
+
 	if (uUseTexture)
 	{
 		vec4 textureColor = texture2D(uSampler, vTextureCoord);
-		gl_FragColor = textureColor * vFinalColor;
+		gl_FragColor = textureColor * vFinalColor * scaleFactor;
 	}
 	else
-		gl_FragColor = vFinalColor;
+		gl_FragColor = vFinalColor * scaleFactor;
 
 }
