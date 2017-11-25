@@ -20,6 +20,8 @@ function XMLscene(interface) {
     this.frames_sec = 100;
     this.pause = false;
     this.wireframe=false;
+    this.scaleFactor=1.5;
+    
     this.restart = function(){
         this.graph.restartAnimation();
     }
@@ -46,12 +48,23 @@ XMLscene.prototype.init = function(application) {
     this.axis = new CGFaxis(this);
 
     this.testShaders=[this.defaultShader,
-        new CGFshader(this.gl, "./shaders/flat.vert", "./shaders/flat.frag"),
-        new CGFshader(this.gl, "./shaders/uScale.vert", "./shaders/uScale.frag"),
-        new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/varying.frag")
+        new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/varying.frag"),
+      //  new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/sepia.frag"), 
+      //  new CGFshader(this.gl, "./shaders/varying.vert", "./shaders/sepia.frag")
     ];
 
+    this.updateShader();
+
 }
+
+XMLscene.prototype.updateShader = function() {
+    this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
+	//this.testShaders[2].setUniformsValues({normScale: this.scaleFactor});
+	//this.testShaders[3].setUniformsValues({normScale: this.scaleFactor});
+    }
+    
+
+
 
 /**
  * Initializes the scene lights with the values read from the LSX file.
