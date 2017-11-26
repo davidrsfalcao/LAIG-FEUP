@@ -18,7 +18,7 @@ function XMLscene(interface) {
     this.frames_sec = 100;
     this.pause = false;
     this.wireframe=false;
-    
+
     this.restart = function(){
         this.graph.restartAnimation();
     }
@@ -215,7 +215,10 @@ XMLscene.prototype.display = function() {
     // ---- END Background, camera and axis setup
 
 }
-
+/**
+ * Update shadders' scaleFactor
+ * @param {Number} deltaT - time
+ */
 XMLscene.prototype.updateShadders = function(currTime){
     this.scaleFactor = 5*Math.sin(this.timeElapsed/1000);
     var for_color = 1 + Math.abs(this.scaleFactor)/2;
