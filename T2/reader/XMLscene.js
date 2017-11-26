@@ -1,5 +1,3 @@
-var DEGREE_TO_RAD = Math.PI / 180;
-
 /**
  * XMLscene class, representing the scene that is to be rendered.
  * @constructor
@@ -20,7 +18,6 @@ function XMLscene(interface) {
     this.frames_sec = 100;
     this.pause = false;
     this.wireframe=false;
-    this.scaleFactor=1.5;
     
     this.restart = function(){
         this.graph.restartAnimation();
@@ -62,14 +59,6 @@ XMLscene.prototype.init = function(application) {
     this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: this.scaleFactor});
 
 }
-
-XMLscene.prototype.updateShader = function() {
-    this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
-	//this.testShaders[2].setUniformsValues({normScale: this.scaleFactor});
-	//this.testShaders[3].setUniformsValues({normScale: this.scaleFactor});
-    }
-    
-
 
 
 /**
