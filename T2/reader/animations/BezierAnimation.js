@@ -24,7 +24,6 @@ function BezierAnimation(scene, id, controlPoints, speed) {
 
 
     this.distance = this.calculateCurveLength();
-    console.log("Distancia Alg: " + this.distance);
 
 
 }
@@ -113,7 +112,7 @@ BezierAnimation.prototype.calculateCurveLength = function() {
 
 
 /**
- * Update Animation 
+ * Update Animation
  * @param {Number} deltaTime - time
  */
 BezierAnimation.prototype.updateAnimation = function(deltaTime){
@@ -121,9 +120,14 @@ BezierAnimation.prototype.updateAnimation = function(deltaTime){
     this.t += ((deltaTime/1000) * this.speed) / this.distance;
     if (this.t >= 1){
         this.inUse = false;
+        var x1 = this.x;
+        var z1 = this.z;
         this.x = this.pt4[0];
         this.y = this.pt4[1];
         this.z = this.pt4[2];
+
+        this.currRotation = Math.atan2(this.x - x1, this.z - z1);
+
         return;
     }
 
@@ -145,7 +149,7 @@ BezierAnimation.prototype.updateAnimation = function(deltaTime){
 }
 
 /**
- * Restart Animation 
+ * Restart Animation
  */
 BezierAnimation.prototype.restartAnimation = function(){
     this.currRotation = 0

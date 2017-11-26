@@ -191,11 +191,18 @@
         <controlpoint xx="0" yy="0" zz="40" /> <!-- seja necessário -->
     </ANIMATION>
 
-    <ANIMATION id="bezierAnim" speed="10" type="bezier">
+    <ANIMATION id="bezierAnim" speed="7" type="bezier">
         <controlpoint xx="0" yy="0" zz="40" /> <!-- repete conforme -->
         <controlpoint xx="0" yy="0" zz="60" /> <!-- seja necessário -->
         <controlpoint xx="-20" yy="0" zz="60" /> <!-- seja necessário -->
-        <controlpoint xx="-20" yy="0" zz="10" /> <!-- seja necessário -->
+        <controlpoint xx="-20" yy="0" zz="20" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="bezierAnim1" speed="10" type="bezier">
+        <controlpoint xx="-20" yy="0" zz="20" /> <!-- seja necessário -->
+        <controlpoint xx="-20" yy="0" zz="0" /> <!-- repete conforme -->
+        <controlpoint xx="20" yy="0" zz="0" /> <!-- seja necessário -->
+        <controlpoint xx="20" yy="0" zz="20" /> <!-- seja necessário -->
     </ANIMATION>
 
     <ANIMATION id="circAnim" speed="1" type="circular"
@@ -203,11 +210,42 @@
         radius="0.1" startang="0" rotang="3600000000"
     />
 
+    <ANIMATION id="linearAnim1" speed="15" type="linear">
+        <controlpoint xx="20" yy="0" zz="20" /> <!-- repete conforme -->
+        <controlpoint xx="20" yy="0" zz="40" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="linearAnim2" speed="15" type="linear">
+        <controlpoint xx="37.07" yy="0" zz="32.93" /> <!-- repete conforme -->
+        <controlpoint xx="0" yy="0" zz="0" /> <!-- seja necessário -->
+    </ANIMATION>
+
+
+    <ANIMATION id="circAnim1" speed="8" type="circular"
+        centerx="30" centery="0" centerz="40"
+        radius="10" startang="180" rotang="225"
+    />
+
+    <ANIMATION id="circAnim2" speed="8" type="circular"
+        centerx="-5" centery="0" centerz="5"
+        radius="7.07" startang="45" rotang="315"
+    />
+
    <ANIMATION id="comboAnim" type="combo">
         <SPANREF id="linearAnim" />
         <SPANREF id="bezierAnim" />
+        <SPANREF id="bezierAnim1" />
 
     </ANIMATION>
+
+    <ANIMATION id="comboAnim1" type="combo">
+         <SPANREF id="linearAnim1" />
+         <SPANREF id="circAnim1" />
+         <SPANREF id="linearAnim2" />
+          <SPANREF id="circAnim2" />
+
+     </ANIMATION>
+
 
 </ANIMATIONS>
 
@@ -427,8 +465,7 @@
 
         <DESCENDANTS>
                     <NODEREF id="obsbase" />
-                    <NODEREF id="obsmid" />
-                    <NODEREF id="obstop" />
+                    <NODEREF id="obstaculo" />
                 </DESCENDANTS>
     </NODE>
 
@@ -600,10 +637,8 @@
 
 
         <ANIMATIONREFS>
-            <!--<ANIMATIONREF id="linearAnim" />
-            <ANIMATIONREF id="bezierAnim" />
-        -->
             <ANIMATIONREF id="comboAnim" />
+            <ANIMATIONREF id="comboAnim1" />
 
         </ANIMATIONREFS>
 
