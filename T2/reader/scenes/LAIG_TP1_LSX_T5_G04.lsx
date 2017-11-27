@@ -293,7 +293,7 @@
     </NODE>
 
     <!-- Porto -->
-    <NODE id="porto" >
+    <NODE id="porto" selectable="true" >
         <MATERIAL id="null" />
         <TEXTURE id="ribeira" />
 
