@@ -1,0 +1,1462 @@
+<SCENE>
+
+<!-- Initial values -->
+<INITIALS>
+    <frustum near="0.1" far="500"/>
+    <translation x="-1" y="-3" z="0" />
+    <rotation axis="x" angle="0" />
+    <rotation axis="y" angle="0" />
+    <rotation axis="z" angle="0" />
+    <scale sx="0.3" sy="0.3" sz="0.3" />
+    <reference length="5" />
+</INITIALS>
+
+
+<!-- Illumination and clear colour -->
+<ILLUMINATION>
+    <ambient r="0.2" g="0.2" b="0.2" a="1" />
+    <background r="0.5" g="0.8" b="0.95" a="1" />
+</ILLUMINATION>
+
+
+<!-- Lights -->
+<LIGHTS>
+	<LIGHT id="light0">
+        <enable value ="1" />
+        <position  x="20" y="30" z="20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+	<LIGHT id="light1">
+        <enable value ="1" />
+        <position x="20" y="30" z="-20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+	<LIGHT id="light2">
+        <enable value ="1" />
+        <position x="-20" y="30" z="20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+        <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
+
+    <LIGHT id="light3">
+        <enable value ="1" />
+        <position x="-20" y="30" z="-20" w="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+        <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+        <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+    </LIGHT>
+
+</LIGHTS>
+
+<!-- Textures -->
+<TEXTURES>
+
+    <!-- Street bench -->
+    <TEXTURE id="river">
+        <file path="images/river.jpg" />
+        <amplif_factor s="0.25" t="0.25" />
+    </TEXTURE>
+
+    <TEXTURE id="river1">
+        <file path="images/river1.png" />
+        <amplif_factor s="0.25" t="0.25" />
+    </TEXTURE>
+
+    <TEXTURE id="ribeira">
+        <file path="images/porto.jpg" />
+        <amplif_factor s="1.2" t="1.1" />
+    </TEXTURE>
+
+    <TEXTURE id="passeio">
+        <file path="images/passeio.png" />
+        <amplif_factor s="1" t="1.2" />
+    </TEXTURE>
+
+    <TEXTURE id="passeio1">
+        <file path="images/passeio.png" />
+        <amplif_factor s="1" t="8" />
+    </TEXTURE>
+
+    <TEXTURE id="passeio2">
+        <file path="images/passeio.png" />
+        <amplif_factor s="5" t="8" />
+    </TEXTURE>
+
+    <TEXTURE id="boia">
+        <file path="images/boia.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="borracha">
+        <file path="images/borracha.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="azul">
+        <file path="images/azul.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="cinza">
+        <file path="images/cinza.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="vidro">
+        <file path="images/vidro.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="red-bull">
+        <file path="images/red-bull.png" />
+        <amplif_factor s="2" t="0.6" />
+    </TEXTURE>
+
+    <TEXTURE id="cimento">
+        <file path="images/cimento.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="estrada">
+        <file path="images/estrada.jpg" />
+        <amplif_factor s="0.2" t="1" />
+    </TEXTURE>
+
+      <TEXTURE id="board">
+        <file path="images/board.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+
+</TEXTURES>
+
+
+<MATERIALS>
+    <!-- A default material -->
+    <MATERIAL id="defaultMaterial">
+        <shininess value="1" />
+        <specular r="0.0" g="0.0" b="0.0" a="1" />
+        <diffuse r="0.4" g="0.4" b="0.4" a="1" />
+        <ambient r="0.4" g="0.4" b="0.4" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+    <MATERIAL id="aluminio">
+        <shininess value="1" />
+        <specular r="0.8" g="0.8" b="0.8" a="1" />
+        <diffuse r="0.4" g="0.4" b="0.4" a="1" />
+        <ambient r="0.0" g="0.0" b="0.0" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+    <MATERIAL id="vidral">
+        <shininess value="50" />
+        <specular r="1.0" g="1.0" b="1.0" a="1" />
+        <diffuse r="0.6" g="0.6" b="1.0" a="1" />
+        <ambient r="0.1" g="0.1" b="0.1" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+    <MATERIAL id="agua">
+        <shininess value="50" />
+        <specular r="1.0" g="1.0" b="1.0" a="1" />
+        <diffuse r="0.6" g="0.6" b="0.6" a="1" />
+        <ambient r="0.2" g="0.2" b="0.2" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+    <MATERIAL id="boia_mat">
+        <shininess value="1" />
+        <specular r="0.2" g="0.2" b="0.2" a="1" />
+        <diffuse r="0.5" g="0.5" b="0.5" a="1" />
+        <ambient r="0.0" g="0.0" b="0.0" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+    <MATERIAL id="preto_mat">
+        <shininess value="1" />
+        <specular r="0.1" g="0.1" b="0.1" a="1" />
+        <diffuse r="0.01" g="0.01" b="0.01" a="1" />
+        <ambient r="0.0" g="0.0" b="0.0" a="1" />
+        <emission r="0.0" g="0.0" b="0.0" a="1" />
+    </MATERIAL>
+
+
+</MATERIALS>
+
+<ANIMATIONS>
+    <ANIMATION id="linearAnim" speed="15" type="linear">
+        <controlpoint xx="0" yy="0" zz="-10" /> <!-- repete conforme -->
+        <controlpoint xx="0" yy="0" zz="40" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="bezierAnim" speed="7" type="bezier">
+        <controlpoint xx="0" yy="0" zz="40" /> <!-- repete conforme -->
+        <controlpoint xx="0" yy="0" zz="60" /> <!-- seja necessário -->
+        <controlpoint xx="-20" yy="0" zz="60" /> <!-- seja necessário -->
+        <controlpoint xx="-20" yy="0" zz="20" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="bezierAnim1" speed="10" type="bezier">
+        <controlpoint xx="-20" yy="0" zz="20" /> <!-- seja necessário -->
+        <controlpoint xx="-20" yy="0" zz="0" /> <!-- repete conforme -->
+        <controlpoint xx="20" yy="0" zz="0" /> <!-- seja necessário -->
+        <controlpoint xx="20" yy="0" zz="20" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="circAnim" speed="1" type="circular"
+        centerx="0" centery="0" centerz="0"
+        radius="0.1" startang="0" rotang="3600000000"
+    />
+
+    <ANIMATION id="linearAnim1" speed="15" type="linear">
+        <controlpoint xx="20" yy="0" zz="20" /> <!-- repete conforme -->
+        <controlpoint xx="20" yy="0" zz="40" /> <!-- seja necessário -->
+    </ANIMATION>
+
+    <ANIMATION id="linearAnim2" speed="15" type="linear">
+        <controlpoint xx="37.07" yy="0" zz="32.93" /> <!-- repete conforme -->
+        <controlpoint xx="0" yy="0" zz="0" /> <!-- seja necessário -->
+    </ANIMATION>
+
+
+    <ANIMATION id="circAnim1" speed="8" type="circular"
+        centerx="30" centery="0" centerz="40"
+        radius="10" startang="180" rotang="225"
+    />
+
+    <ANIMATION id="circAnim2" speed="8" type="circular"
+        centerx="-5" centery="0" centerz="5"
+        radius="7.07" startang="45" rotang="315"
+    />
+
+   <ANIMATION id="comboAnim" type="combo">
+        <SPANREF id="linearAnim" />
+        <SPANREF id="bezierAnim" />
+        <SPANREF id="bezierAnim1" />
+
+    </ANIMATION>
+
+    <ANIMATION id="comboAnim1" type="combo">
+         <SPANREF id="linearAnim1" />
+         <SPANREF id="circAnim1" />
+         <SPANREF id="linearAnim2" />
+          <SPANREF id="circAnim2" />
+
+     </ANIMATION>
+
+
+</ANIMATIONS>
+
+
+<!-- The leaves -->
+<LEAVES>
+</LEAVES>
+
+<!-- The nodes -->
+<NODES>
+
+    <ROOT id="root" />
+
+    <!-- The root node -->
+    <NODE id="root">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
+            <NODEREF id="board" />
+            <NODEREF id="cell11" />
+            <NODEREF id="cell21" />
+            <NODEREF id="cell31" />
+            <NODEREF id="cell41" />
+            <NODEREF id="cell51" />
+            <NODEREF id="cell61" />
+            <NODEREF id="cell71" />
+            <NODEREF id="cell81" />
+            <NODEREF id="cell91" /> 
+
+            <NODEREF id="cell12" />
+            <NODEREF id="cell22" />
+            <NODEREF id="cell32" />
+            <NODEREF id="cell42" />
+            <NODEREF id="cell52" />
+            <NODEREF id="cell62" />
+            <NODEREF id="cell72" />
+            <NODEREF id="cell82" />
+            <NODEREF id="cell92" /> 
+
+            <NODEREF id="cell13" />
+            <NODEREF id="cell23" />
+            <NODEREF id="cell33" />
+            <NODEREF id="cell43" />
+            <NODEREF id="cell53" />
+            <NODEREF id="cell63" />
+            <NODEREF id="cell73" />
+            <NODEREF id="cell83" />
+            <NODEREF id="cell93" /> 
+
+            <NODEREF id="cell14" />
+            <NODEREF id="cell24" />
+            <NODEREF id="cell34" />
+            <NODEREF id="cell44" />
+            <NODEREF id="cell54" />
+            <NODEREF id="cell64" />
+            <NODEREF id="cell74" />
+            <NODEREF id="cell84" />
+            <NODEREF id="cell94" /> 
+
+            <NODEREF id="cell15" />
+            <NODEREF id="cell25" />
+            <NODEREF id="cell35" />
+            <NODEREF id="cell45" />
+            <NODEREF id="cell55" />
+            <NODEREF id="cell65" />
+            <NODEREF id="cell75" />
+            <NODEREF id="cell85" />
+            <NODEREF id="cell95" /> 
+
+            <NODEREF id="cell16" />
+            <NODEREF id="cell26" />
+            <NODEREF id="cell36" />
+            <NODEREF id="cell46" />
+            <NODEREF id="cell56" />
+            <NODEREF id="cell66" />
+            <NODEREF id="cell76" />
+            <NODEREF id="cell86" />
+            <NODEREF id="cell96" /> 
+
+            <NODEREF id="cell17" />
+            <NODEREF id="cell27" />
+            <NODEREF id="cell37" />
+            <NODEREF id="cell47" />
+            <NODEREF id="cell57" />
+            <NODEREF id="cell67" />
+            <NODEREF id="cell77" />
+            <NODEREF id="cell87" />
+            <NODEREF id="cell97" /> 
+
+            <NODEREF id="cell18" />
+            <NODEREF id="cell28" />
+            <NODEREF id="cell38" />
+            <NODEREF id="cell48" />
+            <NODEREF id="cell58" />
+            <NODEREF id="cell68" />
+            <NODEREF id="cell78" />
+            <NODEREF id="cell88" />
+            <NODEREF id="cell98" /> 
+
+            <NODEREF id="cell19" />
+            <NODEREF id="cell29" />
+            <NODEREF id="cell39" />
+            <NODEREF id="cell49" />
+            <NODEREF id="cell59" />
+            <NODEREF id="cell69" />
+            <NODEREF id="cell79" />
+            <NODEREF id="cell89" />
+            <NODEREF id="cell99" /> 
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!-- BOARD -->
+    <NODE id="board">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="red-bull" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="90" sy="90" sz="90" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+
+    </NODE>
+
+     <NODE id="cell11">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell21">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell31">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell41">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell51">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell61">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell71">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell81">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell91">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-40" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+    <!-- 2a coluna -->
+
+      <NODE id="cell12">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell22">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell32">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell42">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell52">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell62">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell72">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell82">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell92">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-30" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+    <!-- 3a coluna -->
+
+      <NODE id="cell13">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell23">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell33">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell43">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell53">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell63">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell73">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell83">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell93">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-20" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+       <!-- 5a coluna -->
+
+      <NODE id="cell15">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell25">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell35">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell45">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell55">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell65">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell75">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell85">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell95">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="0" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+           <!-- 4a coluna -->
+
+      <NODE id="cell14">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell24">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell34">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell44">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell54">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell64">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell74">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell84">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell94">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="-10" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+             <!-- 5a coluna -->
+
+      <NODE id="cell16">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell26">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell36">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell46">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell56">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell66">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell76">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell86">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell96">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="10" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+                 <!-- 6a coluna -->
+
+      <NODE id="cell17">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell27">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell37">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell47">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell57">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell67">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell77">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell87">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell97">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="20" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+    
+                 <!-- 7a coluna -->
+
+      <NODE id="cell18">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell28">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell38">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell48">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell58">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell68">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell78">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell88">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell98">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="30" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+
+                    <!-- 9a coluna -->
+
+      <NODE id="cell19">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+         <NODE id="cell29">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell39">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+       <NODE id="cell49">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell59">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="0" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+     <NODE id="cell69">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="-10" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+    
+        <NODE id="cell79">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="-20" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+        <NODE id="cell89">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="-30" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE>
+
+
+         <NODE id="cell99">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="board" />
+
+        <TRANSLATION x="40" y="-40" z="0.1" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="10" sy="10" sz="10" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+    </NODE> 
+    </NODES>
+</SCENE>
