@@ -129,8 +129,13 @@
         <amplif_factor s="0.2" t="1" />
     </TEXTURE>
 
-      <TEXTURE id="board">
+    <TEXTURE id="board">
         <file path="images/board.png" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="black">
+        <file path="images/black.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
@@ -361,6 +366,10 @@
             <NODEREF id="cell79" />
             <NODEREF id="cell89" />
             <NODEREF id="cell99" /> 
+            <NODEREF id="separador1" />
+            <NODEREF id="separador2" />
+            <NODEREF id="separador3" />
+            <NODEREF id="separador4" />
         </DESCENDANTS>
 
     </NODE>
@@ -373,6 +382,62 @@
         <TRANSLATION x="0" y="0" z="0" />
         <ROTATION axis="x" angle="0" />
         <SCALE sx="90" sy="90" sz="90" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+
+    </NODE>
+
+  <NODE id="separador1">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="black" />
+
+        <TRANSLATION x="0" y="14.8" z="0.5" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="90" sy="0.4" sz="1" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="separador2">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="black" />
+
+        <TRANSLATION x="0" y="-14.8" z="0.5" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="90" sy="0.4" sz="1" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="separador3">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="black" />
+
+        <TRANSLATION x="-14.8" y="0" z="0.5" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="0.4" sy="90" sz="0" />
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+		</DESCENDANTS>
+
+    </NODE>
+
+     <NODE id="separador4">
+        <MATERIAL id="aluminio" />
+        <TEXTURE id="black" />
+
+        <TRANSLATION x="14.8" y="0" z="0.5" />
+        <ROTATION axis="x" angle="0" />
+        <SCALE sx="0.4" sy="90" sz="0" />
 
         <DESCENDANTS>
 			<LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
