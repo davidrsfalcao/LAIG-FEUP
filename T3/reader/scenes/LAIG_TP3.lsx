@@ -727,7 +727,7 @@
     <DESCENDANTS>
       <NODEREF id="table_top" />
       <NODEREF id="table_top_borders" />
-      <NODEREF id="table_legs" />
+      <NODEREF id="table_leg" />
     </DESCENDANTS>
   </NODE>
 
@@ -759,25 +759,17 @@
     </DESCENDANTS>
   </NODE>
 
-  <NODE id="table_legs" >
-    <MATERIAL id="defaultMaterial" />
-    <TEXTURE id="clear" />
-
-    <DESCENDANTS>
-      <NODEREF id="table_leg1" />
-    </DESCENDANTS>
-  </NODE>
-
-  <NODE id="table_leg1" >
+  <NODE id="table_leg" >
     <MATERIAL id="aluminio" />
-    <TEXTURE id="cinza" />
+    <TEXTURE id="clear" />
 
     <TRANSLATION x="0" y="0" z="-136" />
 
     <DESCENDANTS>
-      <LEAF  type="cylinder" args="130 30 30 20 20 1 1" />
+        <LEAF  type="cylinder" args="130 30 30 20 20 1 1" />
     </DESCENDANTS>
   </NODE>
+
 
 
 
