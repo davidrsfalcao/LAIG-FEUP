@@ -62,7 +62,7 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
 
 /**
  * Adds a animation to this node's animations array.
- * @param {String} anim - id of animation to be added 
+ * @param {String} anim - id of animation to be added
  */
 MyGraphNode.prototype.addAnimation = function(anim) {
 
@@ -76,10 +76,10 @@ MyGraphNode.prototype.addAnimation = function(anim) {
  * Display this node
  * @param {String} fatherMaterial - fatherMaterial's id
  * @param {String} fatherTexture - fatherTexture's id
- * @param {Number} s - scalar s 
+ * @param {Number} s - scalar s
  * @param {Number} t - scalar t
  * @param {Boolean} selected - true if this node is selected on XML file, false otherwise
- * 
+ *
  */
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
@@ -179,7 +179,7 @@ MyGraphNode.prototype.update = function(deltaT) {
 }
 
 /**
- * Update transformation's matrix 
+ * Update transformation's matrix
  * @param {Number} deltaT - time
  */
 MyGraphNode.prototype.getMatrix = function(deltaT) {

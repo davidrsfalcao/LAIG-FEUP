@@ -24,8 +24,10 @@ function XMLscene(interface) {
     }
     this.timeElapsed = 0;
     this.scaleFactor= 0;
+    this.cells = [];
+    this.pieces = [];
 
-  
+
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -60,9 +62,15 @@ XMLscene.prototype.init = function(application) {
     this.testShaders[2].setUniformsValues({scaleFactor: this.scaleFactor});
     this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: this.scaleFactor});
 
-    this.piece = new TrianglePiece(this, 9, 1, "nw", 1);
+    this.piece = new Piece(this);
+    this.board = new Board(this);
+
+
     this.tex=new CGFappearance(this);
     this.tex.loadTexture("scenes/images/black.jpg");
+
+    this.cellTex = new CGFappearance(this);
+    this.cellTex.loadTexture("scenes/images/board.png");
 
     this.setPickEnabled(true);
 
@@ -209,16 +217,29 @@ XMLscene.prototype.display = function() {
             }
         }
 
-        for(let i=0; i< this.graph.cells.length; i++){
-            this.registerForPick(1+i, this.graph.cells[i]); 
-        }
-        // Displays the scene.
         this.graph.displayScene();
 
+        for(let i=0; i< this.cells.length; i++){
+            this.registerForPick(1+i, this.cells[i].object);
+            this.pushMatrix();
+            this.translate(0,0.1,0);
+            this.cells[i].object.display();
+            this.popMatrix();
 
-   
-       // this.registerForPick(1, this.piece); 
-        this.piece.display();
+        }
+
+
+        this.pushMatrix();
+
+        this.translate(0,0.1,0);
+        for (var i = 0; i < this.pieces.length; i++) {
+            this.pushMatrix();
+            this.translate(0,0.1,0);
+            //this.rotate(-Math.PI/2,0,1,0);
+            this.pieces[i].object.display();
+            this.popMatrix();
+        }
+        this.popMatrix();
 
     }
 	else

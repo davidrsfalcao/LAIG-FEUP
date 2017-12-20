@@ -24,7 +24,6 @@ function MySceneGraph(filename, scene) {
     scene.graph = this;
 
     this.nodes = [];
-    this.cells = [];
 
     this.idRoot = null;                    // The id of the root element.
 
@@ -1357,15 +1356,6 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             // Creates node.
             let newNode = new MyGraphNode(this, nodeID, selected);
             this.nodes[nodeID] = newNode;
-
-
-            if (nodeID.search("cell") != -1){
-                let line = parseInt(nodeID.substring(4,5));
-                let column = parseInt(nodeID.substring(5,6));
-
-                let cell = {object: newNode, line: line, column: column, player: 0};
-                this.cells.push(cell);
-            }
 
             // Gathers child nodes.
             var nodeSpecs = children[i].children;
