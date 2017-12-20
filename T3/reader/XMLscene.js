@@ -232,10 +232,11 @@ XMLscene.prototype.display = function() {
         this.pushMatrix();
 
         this.translate(0,0.1,0);
+        let size = this.cells.length;
         for (var i = 0; i < this.pieces.length; i++) {
+            this.registerForPick(1+i+size, this.pieces[i].object);
             this.pushMatrix();
             this.translate(0,0.1,0);
-            //this.rotate(-Math.PI/2,0,1,0);
             this.pieces[i].object.display();
             this.popMatrix();
         }
