@@ -24,6 +24,8 @@ function XMLscene(interface) {
     }
     this.timeElapsed = 0;
     this.scaleFactor= 0;
+
+  
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -57,6 +59,12 @@ XMLscene.prototype.init = function(application) {
     this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
     this.testShaders[2].setUniformsValues({scaleFactor: this.scaleFactor});
     this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: this.scaleFactor});
+
+    this.piece = new TrianglePiece(this, 9, 1, "nw", 1);
+    this.tex=new CGFappearance(this);
+    this.tex.loadTexture("scenes/images/black.jpg");
+
+    this.setPickEnabled(true);
 
 }
 
@@ -160,6 +168,8 @@ XMLscene.prototype.update = function(currTime){
  * Displays the scene.
  */
 XMLscene.prototype.display = function() {
+    this.logPicking();
+    this.clearPickRegistration();
     // ---- BEGIN Background, camera and axis setup
     // Clear image and depth buffer everytime we update the scene
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
@@ -199,8 +209,16 @@ XMLscene.prototype.display = function() {
             }
         }
 
+        for(let i=0; i< this.graph.cells.length; i++){
+            this.registerForPick(1+i, this.graph.cells[i]); 
+        }
         // Displays the scene.
         this.graph.displayScene();
+
+
+   
+       // this.registerForPick(1, this.piece); 
+        this.piece.display();
 
     }
 	else
@@ -214,6 +232,25 @@ XMLscene.prototype.display = function() {
 
     // ---- END Background, camera and axis setup
 
+}
+
+
+XMLscene.prototype.logPicking = function ()
+{
+	if (this.pickMode == false) {
+		if (this.pickResults != null && this.pickResults.length > 0) {
+			for (var i=0; i< this.pickResults.length; i++) {
+				var obj = this.pickResults[i][0];
+				if (obj)
+				{
+					var customId = this.pickResults[i][1];
+                    console.log(this.pickResults[i]);
+					console.log("Picked object: " + obj + ", with pick id " + customId);
+				}
+			}
+			this.pickResults.splice(0,this.pickResults.length);
+		}
+	}
 }
 /**
  * Update shadders' scaleFactor

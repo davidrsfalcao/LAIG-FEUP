@@ -12,7 +12,7 @@ function getUrlVars() {
     return vars;
 }
 
-serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
+serialInclude(['../lib/CGF.js', 'MySceneGraph.js',
 			 'MyGraphNode.js', 'MyGraphLeaf.js', 'MyInterface.js',
               'Transformations.js',
 			 './primitives/Sphere.js',
@@ -21,12 +21,14 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
              './primitives/Cylinder.js',
              './primitives/Circle.js',
              './primitives/Patch.js',
+             './primitives/TrianglePiece.js',
              './primitives/BaselessCylinder.js',
              './animations/Animation.js',
              './animations/BezierAnimation.js',
              './animations/LinearAnimation.js',
              './animations/ComboAnimation.js',
              './animations/CircularAnimation.js',
+             'XMLscene.js', 
 
 main=function()
 {
