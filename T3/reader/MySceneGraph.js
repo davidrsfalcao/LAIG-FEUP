@@ -24,6 +24,7 @@ function MySceneGraph(filename, scene) {
     scene.graph = this;
 
     this.nodes = [];
+    this.cells = [];
 
     this.idRoot = null;                    // The id of the root element.
 
@@ -68,7 +69,7 @@ MySceneGraph.prototype.onXMLReady = function(){
 /**
 * Parses the LSX file, processing each block.
 * Verify tags on XML file.
-* @param {Object} rootElement - root of the graph 
+* @param {Object} rootElement - root of the graph
 */
 MySceneGraph.prototype.parseLSXFile = function(rootElement) {
     if (rootElement.nodeName != "SCENE")
@@ -1332,8 +1333,10 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
         else if (nodeName == "NODE") {
             // Retrieves node ID.
             var nodeID = this.reader.getString(children[i], 'id');
+
             if (nodeID == null )
             return "failed to retrieve node ID";
+
 
             // Checks if ID is valid.
             if (this.nodes[nodeID] != null )
@@ -1352,7 +1355,17 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             }
 
             // Creates node.
-            this.nodes[nodeID] = new MyGraphNode(this, nodeID, selected);
+            let newNode = new MyGraphNode(this, nodeID, selected);
+            this.nodes[nodeID] = newNode;
+
+
+            if (nodeID.search("cell") != -1){
+                let line = parseInt(nodeID.substring(4,5));
+                let column = parseInt(nodeID.substring(5,6));
+
+                let cell = {object: newNode, line: line, column: column, player: 0};
+                this.cells.push(cell);
+            }
 
             // Gathers child nodes.
             var nodeSpecs = children[i].children;
@@ -1696,7 +1709,7 @@ MySceneGraph.prototype.displayScene = function() {
 }
 
 /**
- * Update the scene, processing each node, starting in the root node. 
+ * Update the scene, processing each node, starting in the root node.
  * @param {Number} deltaT - time
  */
 MySceneGraph.prototype.update = function(deltaT) {
@@ -1706,7 +1719,7 @@ MySceneGraph.prototype.update = function(deltaT) {
 }
 
 /**
- * Restart the scene, processing each node, starting in the root node. 
+ * Restart the scene, processing each node, starting in the root node.
  */
 MySceneGraph.prototype.restartAnimation = function() {
 
