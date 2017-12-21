@@ -51,8 +51,12 @@ TrianglePiece.prototype = Object.create(CGFobject.prototype);
 TrianglePiece.prototype.constructor=TrianglePiece;
 
 TrianglePiece.prototype.display = function(){
-    this.scene.tex.apply();
+ 
 
+    if(this.player==1)
+        this.scene.tex1.apply();
+        else
+        this.scene.tex2.apply();
 
     this.scene.pushMatrix();
         let dX = (this.x-5)*10;
