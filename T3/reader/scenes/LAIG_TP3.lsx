@@ -93,8 +93,13 @@
 
     <!-- Street bench -->
     <TEXTURE id="wood">
-      <file path="images/wood.jpeg" />
+      <file path="images/wood.jpg" />
       <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="wood1">
+      <file path="images/wood.jpg" />
+      <amplif_factor s="5" t="10" />
     </TEXTURE>
 
     <TEXTURE id="marmore">
@@ -268,7 +273,7 @@
       <MATERIAL id="defaultMaterial" />
       <TEXTURE id="black" />
 
-      <TRANSLATION x="0" y="14.8" z="0.5" />
+      <TRANSLATION x="0" y="14.8" z="0.15" />
       <ROTATION axis="x" angle="0" />
       <SCALE sx="90" sy="0.4" sz="1" />
 
@@ -282,7 +287,7 @@
       <MATERIAL id="defaultMaterial" />
       <TEXTURE id="black" />
 
-      <TRANSLATION x="0" y="-14.8" z="0.5" />
+      <TRANSLATION x="0" y="-14.8" z="0.15" />
       <ROTATION axis="x" angle="0" />
       <SCALE sx="90" sy="0.4" sz="1" />
 
@@ -296,7 +301,7 @@
       <MATERIAL id="defaultMaterial" />
       <TEXTURE id="black" />
 
-      <TRANSLATION x="-14.8" y="0" z="0.5" />
+      <TRANSLATION x="-14.8" y="0" z="0.15" />
       <ROTATION axis="x" angle="0" />
       <SCALE sx="0.4" sy="90" sz="0" />
 
@@ -310,7 +315,7 @@
       <MATERIAL id="defaultMaterial" />
       <TEXTURE id="black" />
 
-      <TRANSLATION x="14.8" y="0" z="0.5" />
+      <TRANSLATION x="14.8" y="0" z="0.15" />
       <ROTATION axis="x" angle="0" />
       <SCALE sx="0.4" sy="90" sz="0" />
 
@@ -322,7 +327,7 @@
 
     <NODE id="board_suport" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <ROTATION axis="x" angle="-90" />
 
@@ -352,7 +357,7 @@
 
     <NODE id="suport_top" >
       <MATERIAL id="null" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <TRANSLATION x="0" y="0.001" z="47.5" />
       <SCALE sx="130" sy="4" sz="5" />
@@ -365,7 +370,7 @@
 
     <NODE id="suport_bottom" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <TRANSLATION x="0" y="0.001" z="-47.5" />
       <SCALE sx="130" sy="4" sz="5" />
@@ -377,7 +382,7 @@
 
     <NODE id="suport_left" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <ROTATION axis="y" angle="90" />
       <TRANSLATION x="0" y="0.001" z="-47.5" />
@@ -390,7 +395,7 @@
 
     <NODE id="suport_left1" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <ROTATION axis="y" angle="90" />
       <TRANSLATION x="0" y="0.001" z="-67.5" />
@@ -403,7 +408,7 @@
 
     <NODE id="suport_right" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <ROTATION axis="y" angle="90" />
       <TRANSLATION x="0" y="0.001" z="47.5" />
@@ -416,7 +421,7 @@
 
     <NODE id="suport_right1" >
       <MATERIAL id="defaultMaterial" />
-      <TEXTURE id="wood" />
+      <TEXTURE id="wood1" />
 
       <ROTATION axis="y" angle="90" />
       <TRANSLATION x="0" y="0.001" z="67.5" />
