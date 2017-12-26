@@ -229,7 +229,8 @@ XMLscene.prototype.display = function() {
 
         this.graph.displayScene();
 
-
+        this.pushMatrix();
+        this.rotate(Math.PI/2,0,1,0);
 
         for(let i=0; i< this.cells.length; i++){
             this.registerForPick(1+i, this.cells[i].object);
@@ -253,6 +254,7 @@ XMLscene.prototype.display = function() {
             this.pieces[i].object.display();
             this.popMatrix();
         }
+        this.popMatrix();
         this.popMatrix();
 
        /* this.pushMatrix();

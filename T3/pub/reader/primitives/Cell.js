@@ -6,7 +6,7 @@
  * @param {Number} y - coordinate y of first point
 
  */
-function Cell(scene, line, column) {
+function Cell(scene, column, line) {
     CGFobject.call(this, scene);
     this.scene = scene;
     this.line = line;
@@ -25,8 +25,8 @@ Cell.prototype.constructor=Cell;
 Cell.prototype.display = function(){
     this.scene.cellTex.apply();
     this.scene.pushMatrix();
-    let dX = (this.column-5)*10;
-    let dY = (this.line-5)*10;
+    let dX = (this.line-5)*10;
+    let dY = (this.column-5)*10;
     this.scene.translate(dY,0,dX);
 
     this.scene.pushMatrix();
