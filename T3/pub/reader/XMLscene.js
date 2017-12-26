@@ -48,6 +48,8 @@ XMLscene.prototype.init = function(application) {
     this.gl.enable(this.gl.CULL_FACE);
     this.gl.depthFunc(this.gl.LEQUAL);
 
+    this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
+    this.gl.enable(this.gl.BLEND);
 
     this.axis = new CGFaxis(this);
 
@@ -65,7 +67,7 @@ XMLscene.prototype.init = function(application) {
     this.piece = new Piece(this);
     this.board = new Board(this);
 
-    this.cilynder = new Cylinder(this, 20, 10, 10, 20, 20, 1, 1);
+    //this.cilynder = new Cylinder(this, 20, 10, 10, 20, 20, 1, 1);
 
     this.tex=new CGFappearance(this);
     this.tex.loadTexture("scenes/images/black.jpg");
@@ -73,10 +75,9 @@ XMLscene.prototype.init = function(application) {
     this.cellTex = new CGFappearance(this);
     this.cellTex.loadTexture("scenes/images/board.png");
 
-
     this.tex1=new CGFappearance(this);
     this.tex1.loadTexture("scenes/images/blackwood.jpg");
-    
+
     this.tex2=new CGFappearance(this);
     this.tex2.loadTexture("scenes/images/redwood.jpg");
 
@@ -227,7 +228,7 @@ XMLscene.prototype.display = function() {
         }
 
         this.graph.displayScene();
-        
+
 
 
         for(let i=0; i< this.cells.length; i++){
@@ -248,7 +249,7 @@ XMLscene.prototype.display = function() {
             this.registerForPick(1+i+size, this.pieces[i].object);
             this.pushMatrix();
             this.translate(0,0.1,0);
-        
+
             this.pieces[i].object.display();
             this.popMatrix();
         }

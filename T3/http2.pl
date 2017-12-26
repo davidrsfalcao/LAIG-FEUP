@@ -3,8 +3,8 @@
 :- use_module(library(http/http_path)).
 :- use_module(library(http/http_client)).
 :- use_module(library(http/http_server_files)).
-
 :- use_module(library(lists)).
+:- include('pub/game/Azacru.pl').
 
 :- http_handler(root(game), prepReplyStringToJSON, []).						% Predicate to handle requests on server/game (for Prolog Game Logic)
 :- http_handler(pub(.), serve_files_in_directory(pub), [prefix]).			% Serve files in /pub as requested (for WebGL Game Interface)
@@ -54,6 +54,7 @@ play(Player, Board, Play, NextPlayer, NewBoard, Message):-		% Example play predi
 	Board=[[_|A]|B], NewBoard=[[Play|A]|B],						% Example - changes [1,1] to Play
 	next(Player, NextPlayer),									% Change Player
 	Message = "Move Validated".									% Add some message (Game Over / Invalid Move / ...)
+
 
 next(1,0).
 next(0,1).

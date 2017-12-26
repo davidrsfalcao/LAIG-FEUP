@@ -103,8 +103,8 @@
     </TEXTURE>
 
     <TEXTURE id="marmore">
-      <file path="images/marmore.jpg" />
-      <amplif_factor s="0.25" t="0.25" />
+      <file path="images/green.jpg" />
+      <amplif_factor s="1" t="1" />
     </TEXTURE>
 
     <TEXTURE id="ribeira">
@@ -194,7 +194,7 @@
     <MATERIAL id="vidral">
       <shininess value="50" />
       <specular r="1.0" g="1.0" b="1.0" a="1" />
-      <diffuse r="0.6" g="0.6" b="1.0" a="1" />
+      <diffuse r="0.6" g="0.6" b="1.0" a="0.1" />
       <ambient r="0.1" g="0.1" b="0.1" a="1" />
       <emission r="0.0" g="0.0" b="0.0" a="1" />
     </MATERIAL>
@@ -209,8 +209,8 @@
 
     <MATERIAL id="aluminio">
       <shininess value="1" />
-      <specular r="0.8" g="0.8" b="0.8" a="1" />
-      <diffuse r="0.4" g="0.4" b="0.4" a="1" />
+      <specular r="0.1" g="0.1" b="0.1" a="1" />
+      <diffuse r="0" g="0" b="0" a="1" />
       <ambient r="0.0" g="0.0" b="0.0" a="1" />
       <emission r="0.0" g="0.0" b="0.0" a="1" />
     </MATERIAL>
@@ -571,7 +571,7 @@
 
   <NODE id="table_top_borders" >
     <MATERIAL id="aluminio" />
-    <TEXTURE id="cinza" />
+    <TEXTURE id="clear" />
 
     <TRANSLATION x="0" y="0" z="-6" />
     <!-- <TRANSLATION x="0" y="-0.5" z="0" />
