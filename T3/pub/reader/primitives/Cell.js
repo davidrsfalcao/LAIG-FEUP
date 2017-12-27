@@ -11,10 +11,9 @@ function Cell(scene, column, line) {
     this.scene = scene;
     this.line = line;
     this.column = column;
-
+    this.player = 0;
     this.rect = new Rectangle(scene, -0.5, 0.5, 0.5, -0.5);
-    let cell = {type: "cell", object: this, line: line, column: column, player: 0};
-    this.scene.cells.push(cell);
+    this.scene.cells.push(this);
 
 };
 

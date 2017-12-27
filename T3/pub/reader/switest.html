@@ -50,8 +50,8 @@
 			function handleReply(data){
 				response=JSON.parse(data.target.response);
 				document.querySelector("#reply").innerHTML=response.message;		// Access message and show
-				document.querySelector("#board").value=response.newBoard;			// Access new Board
-				document.querySelector("#player").value=response.newPlayer;			// Access new Player
+				document.querySelector("#board").value=response.argA;			// Access new Board
+				document.querySelector("#player").value=response.argB;			// Access new Player
 			}
 
 		</script>

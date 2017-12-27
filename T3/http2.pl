@@ -29,7 +29,7 @@ prepReplyStringToJSON(_Request) :-								% Fallback for non-POST Requests
 
 formatAsJSON(Reply):-
 		write('{'),												% Start JSON Object
-		Fields = [newPlayer, newBoard, message],				% Response Field Names
+		Fields = [argB, argA, message],				% Response Field Names
 		writeJSON(Fields, Reply).								% Format content as JSON
 
 writeJSON([Prop], [Val]):-
@@ -42,7 +42,7 @@ writeJSON([Prop|PT], [Val|VT]):-
 
 processString([_Par=Val], R):-
         term_string(List, Val),									% Convert Parameter String to Prolog List
-		R = [_NB, _NP, _M],										% Variables for Response
+		R = [_AA, _AB, _M],										% Variables for Response
 		append(List, R, ListR),									% Add extra Vars to Request
 		Term =.. ListR,											% Create Term from ListR
 		Term.													% Call the Term

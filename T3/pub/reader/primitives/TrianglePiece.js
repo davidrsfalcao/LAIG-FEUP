@@ -6,11 +6,11 @@
  * @param {Number} y - coordinate y of first point
 
  */
-function TrianglePiece(scene, x, y, direction, player) {
+function TrianglePiece(scene, line, column, direction, player) {
     CGFobject.call(this, scene);
     this.scene=scene;
-    this.x=x;
-    this.y=y;
+    this.line=line;
+    this.column=column;
     this.direction=direction;
     this.player=player;
     this.ang;
@@ -41,8 +41,7 @@ function TrianglePiece(scene, x, y, direction, player) {
         break;
     }
 
-    let piece = {type: "piece", object: this, line: x, column: y, player: player, direction: direction};
-    this.scene.pieces.push(piece);
+    this.scene.pieces.push(this);
 
 };
 
@@ -51,7 +50,7 @@ TrianglePiece.prototype = Object.create(CGFobject.prototype);
 TrianglePiece.prototype.constructor=TrianglePiece;
 
 TrianglePiece.prototype.display = function(){
- 
+
 
     if(this.player==1)
         this.scene.tex1.apply();
@@ -59,10 +58,10 @@ TrianglePiece.prototype.display = function(){
         this.scene.tex2.apply();
 
     this.scene.pushMatrix();
-        let dX = (this.x-5)*10;
-        let dY = (this.y-5)*10;
+        let dX = (this.column-5)*10;
+        let dY = (this.line-5)*10;
 
-        this.scene.translate(dY,0,dX);
+        this.scene.translate(dX,0,dY);
         this.scene.pushMatrix();
             this.scene.rotate(this.ang, 0, 1, 0);
             this.scene.pushMatrix();

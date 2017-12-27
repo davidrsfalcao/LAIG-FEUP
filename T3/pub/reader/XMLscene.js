@@ -230,10 +230,10 @@ XMLscene.prototype.display = function() {
         this.rotate(Math.PI/2,0,1,0);
 
         for(let i=0; i< this.cells.length; i++){
-            this.registerForPick(1+i, this.cells[i].object);
+            this.registerForPick(1+i, this.cells[i]);
             this.pushMatrix();
             this.translate(0,0.1,0);
-            this.cells[i].object.display();
+            this.cells[i].display();
             this.popMatrix();
 
         }
@@ -244,11 +244,11 @@ XMLscene.prototype.display = function() {
         this.translate(0,0.1,0);
         let size = this.cells.length;
         for (var i = 0; i < this.pieces.length; i++) {
-            this.registerForPick(1+i+size, this.pieces[i].object);
+            this.registerForPick(1+i+size, this.pieces[i]);
             this.pushMatrix();
             this.translate(0,0.1,0);
 
-            this.pieces[i].object.display();
+            this.pieces[i].display();
             this.popMatrix();
         }
         this.popMatrix();
