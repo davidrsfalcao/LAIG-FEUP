@@ -105,3 +105,20 @@ tile_belongs_to_player(QUADRANT, LINE, COLUMN, PLAYER):-
     QQ == QUADRANT,
     board_res(LINE,COLUMN,PP),
     PP == PLAYER.
+
+board_res_to_matrix(Board_res):-
+    board_res_to_matrix(1, Board_res).
+
+board_res_to_matrix(10,[]).
+
+board_res_to_matrix(I,[H|T]):-
+    board_res_to_matrix_row(I, 1, H),
+    I1 is I+1,
+    board_res_to_matrix(I1, T).
+
+
+board_res_to_matrix_row(_, 10, []).
+board_res_to_matrix_row(I, J, [H|T]):-
+    board_res(I,J, H),
+    J1 is J+1,
+    board_res_to_matrix_row(I, J1, T).

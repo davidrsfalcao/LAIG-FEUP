@@ -285,3 +285,21 @@ delete_possible_moves(PLAYER, INDEX):-
         	delete_possible_moves(PLAYER, INDEX1)
         )
     ).
+
+board_to_matrix(Board):-
+    board_to_matrix(1, Board).
+
+board_to_matrix(10,[]).
+
+board_to_matrix(I,[H|T]):-
+    board_to_matrix_row(I, 1, H),
+    I1 is I+1,
+    board_to_matrix(I1, T).
+
+
+board_to_matrix_row(_, 10, []).
+board_to_matrix_row(I, J, [H|T]):-
+    %write('I: '), write(I), write('  J: '), write(J),nl,
+    board(I,J, H),
+    J1 is J+1,
+    board_to_matrix_row(I, J1, T).
