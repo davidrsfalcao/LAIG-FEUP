@@ -7,7 +7,7 @@
         <rotation axis="x" angle="0" />
         <rotation axis="y" angle="0" />
         <rotation axis="z" angle="0" />
-        <scale sx="0.08" sy="0.08" sz="0.08" />
+        <scale sx="0.07" sy="0.07" sz="0.07" />
         <reference length="5" />
     </INITIALS>
 
@@ -15,7 +15,7 @@
     <!-- Illumination and clear colour -->
     <ILLUMINATION>
         <ambient r="0.2" g="0.2" b="0.2" a="1" />
-        <background r="0.5" g="0.8" b="0.95" a="1" />
+        <background r="0" g="0" b="0" a="1" />
     </ILLUMINATION>
 
 
@@ -102,7 +102,7 @@
         <amplif_factor s="5" t="10" />
     </TEXTURE>
 
-    <TEXTURE id="marmore">
+    <TEXTURE id="green">
         <file path="images/green.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
@@ -246,15 +246,30 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
+            <NODEREF id="scene_1" />
+
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!-- SCENE ! -->
+
+    <NODE id="scene_1">
+        <MATERIAL id="defaultMaterial" />
+        <TEXTURE id="null" />
+
+        <DESCENDANTS>
             <NODEREF id="board" />
             <NODEREF id="table" />
             <NODEREF id="floor" />
             <NODEREF id="front_wall" />
+            <NODEREF id="back_wall" />
             <NODEREF id="left_wall" />
             <NODEREF id="right_wall" />
         </DESCENDANTS>
 
     </NODE>
+
 
     <!-- BOARD -->
     <NODE id="board">
@@ -562,7 +577,7 @@
 
 <NODE id="table_top" >
     <MATERIAL id="defaultMaterial" />
-    <TEXTURE id="marmore" />
+    <TEXTURE id="green" />
 
     <TRANSLATION x="0" y="0" z="-6" />
     <!-- <TRANSLATION x="0" y="-0.5" z="0" />
@@ -616,7 +631,20 @@
     <MATERIAL id="null" />
     <TEXTURE id="wall" />
 
-    <TRANSLATION x="0" y="63.99" z="-400" />
+    <TRANSLATION x="0" y="64" z="-400" />
+    <SCALE sx="800" sy="400" sz="1" />
+
+    <DESCENDANTS>
+        <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="back_wall" >
+    <MATERIAL id="null" />
+    <TEXTURE id="wall" />
+
+    <ROTATION axis="y" angle="180" />
+    <TRANSLATION x="0" y="64" z="-400" />
     <SCALE sx="800" sy="400" sz="1" />
 
     <DESCENDANTS>
@@ -628,7 +656,7 @@
     <MATERIAL id="null" />
     <TEXTURE id="wall" />
 
-    <TRANSLATION x="-400" y="63.99" z="0" />
+    <TRANSLATION x="-400" y="64" z="0" />
     <ROTATION axis="y" angle="90" />
     <SCALE sx="800" sy="400" sz="1" />
 
@@ -641,7 +669,7 @@
     <MATERIAL id="null" />
     <TEXTURE id="wall" />
 
-    <TRANSLATION x="400" y="63.99" z="0" />
+    <TRANSLATION x="400" y="64" z="0" />
     <ROTATION axis="y" angle="-90" />
     <SCALE sx="800" sy="400" sz="1" />
 

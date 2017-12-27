@@ -8,7 +8,6 @@ function XMLscene(interface) {
     this.interface = interface;
 
     this.cameraChosen = 0;
-    this.shadderChosen = 0;
 
     this.lightValues = {};
     this.selectableValues = {};
@@ -17,7 +16,6 @@ function XMLscene(interface) {
     this.flag_begin = 1;
     this.frames_sec = 100;
     this.pause = false;
-    this.wireframe=false;
 
     this.restart = function(){
         this.graph.restartAnimation();
@@ -148,7 +146,6 @@ XMLscene.prototype.onGraphLoaded = function(){
 
     // Adds lights group.
     this.interface.addLightsGroup(this.graph.lights);
-    this.interface.addSelectableGroup(this.graph.selectables);
 }
 
 XMLscene.prototype.updateFrames = function(){
@@ -228,7 +225,7 @@ XMLscene.prototype.display = function() {
         }
 
         this.graph.displayScene();
-
+        this.clearPickRegistration();
         this.pushMatrix();
         this.rotate(Math.PI/2,0,1,0);
 
@@ -256,12 +253,6 @@ XMLscene.prototype.display = function() {
         }
         this.popMatrix();
         this.popMatrix();
-
-       /* this.pushMatrix();
-        this.translate(0, 10, 0);
-        this.rotate(Math.PI/2, 1, 0, 0);
-        this.cilynder.display();
-        this.popMatrix();*/
 
     }
 	else

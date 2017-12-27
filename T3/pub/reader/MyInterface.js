@@ -49,21 +49,3 @@ MyInterface.prototype.addLightsGroup = function(lights) {
         }
     }
 }
-
-/**
- * Adds a folder containing the IDs of the lights passed as parameter.
- */
-MyInterface.prototype.addSelectableGroup = function(selectables) {
-
-    obj=this;
-    var group = this.gui.addFolder("Shadders");
-    group.add(this.scene, 'wireframe');
-    group.add(this.scene, 'shadderChosen', {Normal: 0, Vertex: 1, Fragment: 2, 'Vertex & Fragment':3}).name('Shader');;
-
-    for (var key in selectables) {
-        if (selectables.hasOwnProperty(key)) {
-            this.scene.selectableValues[key] = selectables[key][0];
-            group.add(this.scene.selectableValues, key);
-        }
-    }
-}

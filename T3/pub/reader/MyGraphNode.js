@@ -83,19 +83,6 @@ MyGraphNode.prototype.addAnimation = function(anim) {
  */
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
-    var selec, selec1;
-    if(this.selectable && this.graph.scene.selectableValues[this.nodeID] && this.graph.scene.shadderChosen != 0){
-        selec = true;
-    }
-    else {
-        selec = false;
-    }
-
-    if(selected || (this.selectable && this.graph.scene.selectableValues[this.nodeID])){
-        selec1 = true;
-    }
-    else selec1 = false;
-
 	this.graph.scene.pushMatrix();
     this.graph.scene.multMatrix(this.transformMatrixAnimations);
     var materialToUse = fatherMaterial;
@@ -121,10 +108,6 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
     }
 	this.graph.materials[materialToUse].apply();
 
-    if (selec){
-        this.graph.scene.setActiveShader(this.graph.scene.testShaders[this.graph.scene.shadderChosen]);
-    }
-
 
 	for(var i=0; i<this.leaves.length; i++){
 
@@ -147,14 +130,12 @@ MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, se
 	for(var i=0; i<this.children.length; i++){
         if(this.graph.scene.wireframe && selec1){
             this.graph.nodes[this.children[i]].setLineMode();
-            this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec1);
+            this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selected);
             this.graph.nodes[this.children[i]].setFillMode();
         }
-        else this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selec1);
+        else this.graph.nodes[this.children[i]].display(materialToUse, textureToUse, amplifierS, amplifierT, selected);
     }
-    if (selec){
-        this.graph.scene.setActiveShader(this.graph.scene.defaultShader);
-    }
+
 	this.graph.scene.popMatrix();
 }
 
