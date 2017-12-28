@@ -1,5 +1,9 @@
 :- dynamic player/2.
 
+:-dynamic playing/1.
+
+:-dynamic plays_left/1.
+
 % clean all player predicates
 clean_players:-
     retractall(player(_,_)),
@@ -9,7 +13,8 @@ clean_players:-
 init_game:-
     create_board,
     create_board_res,
-    nb_setval(plays_left,1),
+    assert(plays_left(1)),
+    assert(playing(1)),
     !.
 
 % clean all dynamic predicates of the game
@@ -17,6 +22,7 @@ clean_game_stuff:-
     clean_players,
     clean_board,
     clean_board_res,
+    retractall(playing(_)),
     !.
 
 % plays the game. Manages the entire game
@@ -194,10 +200,11 @@ move_piece(PLAYER, LINE, COLUMN):-
 
 % alternate between players
 change_player:-
-    nb_getval(player, PLAYER),
+    playing(PLAYER),
+    retract(playing(_)),
     TMP is mod(PLAYER,2),
     NextPlayer is TMP +1,
-    nb_setval(player, NextPlayer),
+    assert(playing(NextPlayer)),
     !.
 
 % verify if the game ends
@@ -208,22 +215,22 @@ final:-
     (TAM == 0 ->
         true
         ;
-        nb_getval(player, PLAYER),
-        nb_getval(plays_left, PLAYS),
-        number_possible_moves_player(PLAYER, COUNT),nl,nl,
+        playing(PLAYER),
+        plays_left(PLAYS),
+        number_possible_moves_player(PLAYER, COUNT),
         ( COUNT == 0 ->
             ( PLAYS == 0 ->
                 true
                 ;
                 P is PLAYS - 1,
-                nb_setval(plays_left, P),
+                retract(plays_left(_)),
+                assert(plays_left(P)),
                 ( PLAYER == 1 ->
                     ENEMY is 2
                     ;
                     ENEMY is 1
                 ),
-                number_possible_moves_player(ENEMY, C), nl,nl,
-                write(C), nl,nl,
+                number_possible_moves_player(ENEMY, C),
                 ( C == 0 ->
                     true
                     ;

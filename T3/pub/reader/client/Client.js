@@ -1,5 +1,4 @@
-function Client(scene){
-    this.scene = scene;
+function Client(){
 }
 
 Client.prototype.constructor = Client;

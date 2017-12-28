@@ -1,6 +1,5 @@
-function StartGame(scene, mode, difficulty) {
-    Client.call(this, scene);
-    //this.scene = scene;
+function StartGame(mode, difficulty) {
+    Client.call(this);
     this.mode = mode;
     this.difficulty = difficulty;
 
@@ -20,4 +19,5 @@ StartGame.prototype.handleReply = function (data){
     let response=JSON.parse(data.target.response);
     console.log("Message: " + response.message);
     pushBoards(JSON.parse(response.argA), JSON.parse(response.argB));
+    orderPieces();
 }

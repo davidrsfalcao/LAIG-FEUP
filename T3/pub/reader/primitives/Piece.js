@@ -24,16 +24,16 @@ function Piece(scene) {
     this.piece4 = new TrianglePiece(scene,4,-1,"e",2);
     //this.piece4 = new TrianglePiece(scene,9,7,"n",2);
     this.pieces.push(this.piece4);
-    this.piece5 = new TrianglePiece(scene,1,11,"w",1);
+    this.piece5 = new TrianglePiece(scene,6,11,"w",1);
     //this.piece5 = new TrianglePiece(scene,1,3,"s",1);
     this.pieces.push(this.piece5);
     //this.piece6 = new TrianglePiece(scene,5,1,"e",1);
-    this.piece6 = new TrianglePiece(scene,2,11,"w",1);
+    this.piece6 = new TrianglePiece(scene,7,11,"w",1);
     this.pieces.push(this.piece6);
     //this.piece7 = new TrianglePiece(scene,9,3,"n",1);
-    this.piece7 = new TrianglePiece(scene,3,11,"w",1);
+    this.piece7 = new TrianglePiece(scene,8,11,"w",1);
     this.pieces.push(this.piece7);
-    this.piece8 = new TrianglePiece(scene,4,11,"w",1);
+    this.piece8 = new TrianglePiece(scene,9,11,"w",1);
     //this.piece8 = new TrianglePiece(scene,9,9,"nw",1);
     this.pieces.push(this.piece8);
 

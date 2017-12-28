@@ -7,8 +7,6 @@ function initScene(scene1){
 function pushBoards(Board, Board_res){
     scene.board_matrix.push(Board);
     scene.board_res_matrix.push(Board_res);
-    orderPieces();
-
 }
 
 function getPlayerPiece(piece){
@@ -51,7 +49,8 @@ function getPiecesPlayer(player){
 }
 
 function orderPieces(){
-    scene.board_matrix.piece = new Piece(scene);
+
+    console.log("ORDER");
     let atualBoard = scene.board_matrix[scene.board_matrix.length-1];
     let player1_pieces = getPiecesPlayer(1);
     let player2_pieces = getPiecesPlayer(2);
@@ -69,6 +68,7 @@ function orderPieces(){
                         player1_pieces[0].line = line+1;
                         player1_pieces[0].column = column+1;
                         player1_pieces[0].ang = getAnglePiece(piece);
+                        player1_pieces[0].inGame = true;
                         player1_pieces.splice(0,1);
                         break;
 
@@ -76,6 +76,7 @@ function orderPieces(){
                         player2_pieces[0].line = line+1;
                         player2_pieces[0].column = column+1;
                         player2_pieces[0].ang = getAnglePiece(piece);
+                        player2_pieces[0].inGame = true;
                         player2_pieces.splice(0,1);
                         break;
                 }
@@ -84,6 +85,63 @@ function orderPieces(){
         }
 
     }
+    // Out pieces
+    for (let i = 0; i < player1_pieces.length; i++) {
+        player1_pieces[i].line = 9-i;
+        player1_pieces[i].column = 11;
+        player1_pieces[i].ang = -Math.PI/2;
+    }
 
+    for (let i = 0; i < player2_pieces.length; i++) {
+        player2_pieces[i].line = 1+i;
+        player2_pieces[i].column = -1;
+        player2_pieces[i].ang = Math.PI/2;
+    }
+
+}
+
+function clearCellSelection(){
+    for (let i = 0; i < scene.cells.length; i++) {
+        scene.cells[i].selected = false;
+    }
+    scene.selected_piece = {};
+}
+
+function selectCells(moves){
+    let ll;
+    let cc;
+
+    for (let i = 0; i < moves.length; i++) {
+        ll = moves[i][1];
+        cc = moves[i][2];
+        let line = moves[i][3];
+        let col = moves[i][4];
+
+        for (let j = 0; j < scene.cells.length; j++) {
+            if((scene.cells[j].line == line) && (scene.cells[j].column == col)){
+                scene.cells[j].selected = true;
+                break;
+            }
+        }
+    }
+
+    if(moves.length > 0){
+        scene.selected_piece = {line: ll, column: cc};
+    }
+
+}
+
+function change_player(player){
+    scene.player = player;
+}
+
+function movePiece(line, column, line1, column1){
+
+    for (let i = 0; i < scene.pieces.length; i++) {
+        if((scene.pieces[i].line==line) && (scene.pieces[i].column==column)) {
+            scene.pieces[i].addAnimation(line1, column1);
+            break;
+        }
+    }
 
 }

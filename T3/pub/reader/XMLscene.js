@@ -23,7 +23,9 @@ function XMLscene(interface) {
     this.scaleFactor= 0;
     this.cells = [];
     this.pieces = [];
-    this.request;
+    this.requests = [];
+    this.player = 1;
+    this.selected_piece;
 
 
 }
@@ -72,6 +74,9 @@ XMLscene.prototype.init = function(application) {
 
     this.cellTex = new CGFappearance(this);
     this.cellTex.loadTexture("scenes/images/board.png");
+
+    this.cellTex1 = new CGFappearance(this);
+    this.cellTex1.loadTexture("scenes/images/board1.png");
 
     this.tex1=new CGFappearance(this);
     this.tex1.loadTexture("scenes/images/redwood.jpg");
@@ -155,13 +160,6 @@ XMLscene.prototype.updateFrames = function(){
 XMLscene.prototype.update = function(currTime){
     this.updateFrames();
 
-    if (this.cameraChosen == 1){
-        this.camera = this.cameraTV;
-    }
-    else {
-        this.camera = this.cameraFree;
-    }
-
     if(this.flag_begin == 1){
         this.flag_begin = 0;
         this.currTime = currTime;
@@ -172,6 +170,9 @@ XMLscene.prototype.update = function(currTime){
         this.timeElapsed += deltaT;
         if (this.graph.loadedOk && this.pause == false){
             this.graph.update( deltaT);
+            for (let i = 0; i < this.pieces.length; i++) {
+                this.pieces[i].update(deltaT/1000);
+            }
         }
 
     }
@@ -278,8 +279,16 @@ XMLscene.prototype.logPicking = function ()
 				if (obj)
 				{
 					var customId = this.pickResults[i][1];
+
+                    if (obj instanceof TrianglePiece && (obj.player == this.player) && (obj.inGame)){
+                        this.requests.push(new ChoosePiece(obj.line, obj.column));
+                    }
+                    else if(obj instanceof Cell && (obj.selected)){
+                        this.requests.push(new MovePiece(this.selected_piece.line, this.selected_piece.column, obj.line, obj.column));
+                    }
+                    clearCellSelection();
                     console.log(this.pickResults[i]);
-					console.log("Picked object: " + obj + ", with pick id " + customId);
+					//console.log("Picked object: " + obj + ", with pick id " + customId);
 				}
 			}
 			this.pickResults.splice(0,this.pickResults.length);
@@ -302,5 +311,5 @@ XMLscene.prototype.updateShadders = function(currTime){
 XMLscene.prototype.newgame = function(){
     this.board_matrix = [];
     this.board_res_matrix = [];
-    this.request = new StartGame(this,1,1);
+    this.requests.push(new StartGame(1,1));
 }
