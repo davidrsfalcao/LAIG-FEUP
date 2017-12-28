@@ -26,10 +26,7 @@ MyInterface.prototype.init = function(application) {
     var group = this.gui.addFolder("Animations");
     group.open();
 
-    group.add(this.scene, 'restart');
-    group.add(this.scene, 'pause');
-    group.add(this.scene, 'frames_sec', 1, 200).name('frames/sec');
-    group.add(this.scene, 'cameraChosen', {Free: 0, Tv: 1}).name('Camera');
+    group.add(this.scene, 'newgame').name('New Game');
 
     return true;
 };

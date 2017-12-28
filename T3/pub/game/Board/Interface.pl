@@ -1,24 +1,24 @@
 
 % translate( board symbol, interface symbol)
-translate('null', '   ').
-translate('1', '░░░').
-translate('2', '▓▓▓').
-translate('1_e', ' ▷ ').
-translate('1_w', ' ◁ ').
-translate('1_n', ' △ ').
-translate('1_s', ' ▽ ').
-translate('1_ne', ' ◹ ').
-translate('1_nw', ' ◸ ').
-translate('1_se', ' ◿ ').
-translate('1_sw', ' ◺ ').
-translate('2_e', ' ▶ ').
-translate('2_w', ' ◀ ').
-translate('2_n', ' ▲ ').
-translate('2_s', ' ▼ ').
-translate('2_ne', ' ◥ ').
-translate('2_nw', ' ◤ ').
-translate('2_se', ' ◢ ').
-translate('2_sw', ' ◣ ').
+translate('null', 0).
+translate('1', 100).
+translate('2', 200).
+translate('1_e', 3).
+translate('1_w', 7).
+translate('1_n', 1).
+translate('1_s', 5).
+translate('1_ne', 2).
+translate('1_nw', 8).
+translate('1_se', 4).
+translate('1_sw', 6).
+translate('2_e', 11).
+translate('2_w', 15).
+translate('2_n', 9).
+translate('2_s', 13).
+translate('2_ne', 10).
+translate('2_nw', 16).
+translate('2_se', 12).
+translate('2_sw', 14).
 translate('X', ' X ').
 
 % displays the board

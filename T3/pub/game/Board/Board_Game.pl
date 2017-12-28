@@ -300,6 +300,7 @@ board_to_matrix(I,[H|T]):-
 board_to_matrix_row(_, 10, []).
 board_to_matrix_row(I, J, [H|T]):-
     %write('I: '), write(I), write('  J: '), write(J),nl,
-    board(I,J, H),
+    board(I,J, H1),
+    translate(H1, H),
     J1 is J+1,
     board_to_matrix_row(I, J1, T).

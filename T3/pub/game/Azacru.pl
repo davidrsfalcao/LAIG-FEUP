@@ -20,7 +20,7 @@
 start_game(Type, Difficulty, Board, Board_res, Message):-
 	clean_game_stuff, % Clean dynamic predicates
 	init_game, % Init new dynamic predicates
-	nb_setval(player,1), % Set firs player
+	nb_setval(player,1), % Set first player
 	board_to_matrix(Board), % Get Main Board
 	board_res_to_matrix(Board_res), % Get Aux Board
 	start_mode(Type, Difficulty), % Set Game type and Difficulty

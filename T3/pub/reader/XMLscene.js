@@ -16,14 +16,14 @@ function XMLscene(interface) {
     this.flag_begin = 1;
     this.frames_sec = 100;
     this.pause = false;
+    this.board_matrix = []; //Store board matrix to undo plays
+    this.board_res_matrix = []; //Store board res matrix to undo plays
 
-    this.restart = function(){
-        this.graph.restartAnimation();
-    }
     this.timeElapsed = 0;
     this.scaleFactor= 0;
     this.cells = [];
     this.pieces = [];
+    this.request;
 
 
 }
@@ -74,12 +74,12 @@ XMLscene.prototype.init = function(application) {
     this.cellTex.loadTexture("scenes/images/board.png");
 
     this.tex1=new CGFappearance(this);
-    this.tex1.loadTexture("scenes/images/blackwood.jpg");
+    this.tex1.loadTexture("scenes/images/redwood.jpg");
 
     this.tex2=new CGFappearance(this);
-    this.tex2.loadTexture("scenes/images/redwood.jpg");
+    this.tex2.loadTexture("scenes/images/bluewood.jpg");
 
-
+    initScene(this); //Init Scene on Game
     this.setPickEnabled(true);
 
 }
@@ -297,4 +297,10 @@ XMLscene.prototype.updateShadders = function(currTime){
     this.testShaders[2].setUniformsValues({scaleFactor: for_color});
     this.testShaders[3].setUniformsValues({normScale: this.scaleFactor, scaleFactor: for_color});
 
+}
+
+XMLscene.prototype.newgame = function(){
+    this.board_matrix = [];
+    this.board_res_matrix = [];
+    this.request = new StartGame(this,1,1);
 }
