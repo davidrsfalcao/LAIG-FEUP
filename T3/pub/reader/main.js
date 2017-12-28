@@ -30,8 +30,13 @@ serialInclude(['../lib/CGF.js', 'MySceneGraph.js',
              './animations/CircularAnimation.js',
              './primitives/Board.js',
              './primitives/Cell.js',
-              './primitives/Piece.js',
+             './primitives/Piece.js',
              'XMLscene.js',
+             './client/Client.js',
+             './client/StartGame.js',
+             './client/ChoosePiece.js',
+             './client/MovePiece.js',
+             'Game.js',
 
 main=function()
 {

@@ -12,6 +12,7 @@ function Cell(scene, column, line) {
     this.line = line;
     this.column = column;
     this.player = 0;
+    this.selected = false;
     this.rect = new Rectangle(scene, -0.5, 0.5, 0.5, -0.5);
     this.scene.cells.push(this);
 
@@ -22,7 +23,11 @@ Cell.prototype.constructor=Cell;
 
 
 Cell.prototype.display = function(){
-    this.scene.cellTex.apply();
+    if(this.selected){
+        this.scene.cellTex1.apply();
+    }
+    else this.scene.cellTex.apply();
+    
     this.scene.pushMatrix();
     let dX = (this.line-5)*10;
     let dY = (this.column-5)*10;

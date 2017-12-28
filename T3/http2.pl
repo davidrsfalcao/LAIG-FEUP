@@ -29,7 +29,7 @@ prepReplyStringToJSON(_Request) :-								% Fallback for non-POST Requests
 
 formatAsJSON(Reply):-
 		write('{'),												% Start JSON Object
-		Fields = [argB, argA, message],				% Response Field Names
+		Fields = [argA, argB, message],				% Response Field Names
 		writeJSON(Fields, Reply).								% Format content as JSON
 
 writeJSON([Prop], [Val]):-
@@ -47,16 +47,5 @@ processString([_Par=Val], R):-
 		Term =.. ListR,											% Create Term from ListR
 		Term.													% Call the Term
 
-%---------------------------------------------
-
-play(Player, Board, Play, NextPlayer, NewBoard, Message):-		% Example play predicate
-	% Game Logic
-	Board=[[_|A]|B], NewBoard=[[Play|A]|B],						% Example - changes [1,1] to Play
-	next(Player, NextPlayer),									% Change Player
-	Message = "Move Validated".									% Add some message (Game Over / Invalid Move / ...)
-
-
-next(1,0).
-next(0,1).
 
 :- server(8081).
