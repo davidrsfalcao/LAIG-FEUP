@@ -14,9 +14,7 @@ MovePiece.prototype.constructor = MovePiece;
 
 MovePiece.prototype.makeRequest = function()
 {
-
     var requestString = "[move_piece_selected," + this.line + "," + this.column + "," + this.line1 + "," + this.column1 +"]";
-    console.log(requestString);
     this.postRequest(requestString, this.handleReply);
 }
 

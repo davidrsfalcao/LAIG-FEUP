@@ -287,7 +287,7 @@ XMLscene.prototype.logPicking = function ()
                         this.requests.push(new MovePiece(this.selected_piece.line, this.selected_piece.column, obj.line, obj.column));
                     }
                     clearCellSelection();
-                    console.log(this.pickResults[i]);
+                    //console.log(this.pickResults[i]);
 					//console.log("Picked object: " + obj + ", with pick id " + customId);
 				}
 			}
@@ -309,6 +309,7 @@ XMLscene.prototype.updateShadders = function(currTime){
 }
 
 XMLscene.prototype.newgame = function(){
+    this.player = 1;
     this.board_matrix = [];
     this.board_res_matrix = [];
     this.requests.push(new StartGame(1,1));

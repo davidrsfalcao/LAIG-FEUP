@@ -49,8 +49,6 @@ function getPiecesPlayer(player){
 }
 
 function orderPieces(){
-
-    console.log("ORDER");
     let atualBoard = scene.board_matrix[scene.board_matrix.length-1];
     let player1_pieces = getPiecesPlayer(1);
     let player2_pieces = getPiecesPlayer(2);
