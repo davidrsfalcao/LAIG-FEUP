@@ -68,24 +68,39 @@
     <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
     <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
     <specular r="1.0" g="1.0" b="1.0" a="1.0" />
-</LIGHT>
+    </LIGHT>
 
-<LIGHT id="light6">
-<enable value ="1" />
-<position x="-32" y="-10" z="32" w="1" />
-<ambient r="0.2" g="0.2" b="0.2" a="1.0" />
-<diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
-<specular r="1.0" g="1.0" b="1.0" a="1.0" />
-</LIGHT>
+    <LIGHT id="light6">
+    <enable value ="1" />
+    <position x="-32" y="-10" z="32" w="1" />
+    <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+    <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+    <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+    </LIGHT>
 
-<LIGHT id="light7">
-<enable value ="1" />
-<position x="-32" y="-10" z="-32" w="1" />
-<ambient r="0.2" g="0.2" b="0.2" a="1.0" />
-<diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
-<specular r="0.6" g="0.6" b="0.6" a="1.0" />
-</LIGHT> -->
+    <LIGHT id="light7">
+    <enable value ="1" />
+    <position x="-32" y="-10" z="-32" w="1" />
+    <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+    <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+    <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+    </LIGHT> -->
 
+    <LIGHT id="light8">
+    <enable value ="1" />
+    <position x="0" y="50" z="0" w="1" />
+    <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+    <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+    <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+    </LIGHT> 
+
+    <LIGHT id="light9">
+    <enable value ="1" />
+    <position x="0" y="300" z="-420" w="1" />
+    <ambient r="0.6" g="0.6" b="0.6" a="1.0" />
+    <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+    <specular r="0.6" g="0.6" b="0.6" a="1.0" />
+    </LIGHT>
 </LIGHTS>
 
 <!-- Textures -->
@@ -108,7 +123,7 @@
     </TEXTURE>
 
     <TEXTURE id="floor">
-        <file path="images/floor.jpg" />
+        <file path="images/chao.jpg" />
         <amplif_factor s="0.3" t="0.3" />
     </TEXTURE>
 
@@ -153,7 +168,7 @@
     </TEXTURE>
 
     <TEXTURE id="wall">
-        <file path="images/wall.jpg" />
+        <file path="images/wallred.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
 
@@ -176,7 +191,21 @@
         <file path="images/black.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
+    
+    <TEXTURE id="blackwood">
+        <file path="images/woodblack.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
 
+    <TEXTURE id="window">
+        <file path="images/paisagem.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+     <TEXTURE id="carpet">
+        <file path="images/carpet.jpg" />
+        <amplif_factor s="1" t="1" />
+    </TEXTURE>
 
 </TEXTURES>
 
@@ -247,7 +276,6 @@
 
         <DESCENDANTS>
             <NODEREF id="scene_1" />
-
         </DESCENDANTS>
 
     </NODE>
@@ -262,10 +290,12 @@
             <NODEREF id="board" />
             <NODEREF id="table" />
             <NODEREF id="floor" />
+            <NODEREF id="carpet" />
             <NODEREF id="front_wall" />
             <NODEREF id="back_wall" />
             <NODEREF id="left_wall" />
             <NODEREF id="right_wall" />
+            <NODEREF id="window" />
         </DESCENDANTS>
 
     </NODE>
@@ -627,6 +657,19 @@
     </DESCENDANTS>
 </NODE>
 
+<NODE id="carpet" >
+    <MATERIAL id="null" />
+    <TEXTURE id="carpet" />
+
+    <TRANSLATION x="-10" y="-135" z="-10" />
+    <ROTATION axis="x" angle="-90" />
+    <SCALE sx="402" sy="400" sz="1" />
+
+    <DESCENDANTS>
+          <LEAF type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
 <NODE id="front_wall" >
     <MATERIAL id="null" />
     <TEXTURE id="wall" />
@@ -675,6 +718,216 @@
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="window" >
+    <MATERIAL id="null" />
+    <TEXTURE id="window" />
+
+    <TRANSLATION x="0" y="0" z="-0" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="1" sy="1" sz="1" />
+
+    <DESCENDANTS>
+        <NODEREF id="paisagem" />
+        <NODEREF id="front_top" />
+        <NODEREF id="front_mid" />
+        <NODEREF id="front_mid2" />
+        <NODEREF id="front_down" />
+        <NODEREF id="front_left" />
+        <NODEREF id="front_right" />
+        <NODEREF id="front_midv" />
+        <NODEREF id="s1" />
+        <NODEREF id="s2" />
+        <NODEREF id="s3" />
+        <NODEREF id="s4" />
+        <NODEREF id="s5" />
+        <NODEREF id="s6" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="paisagem" >
+    <MATERIAL id="null" />
+    <TEXTURE id="window" />
+
+    <TRANSLATION x="0" y="90" z="-398" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="650" sy="252" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s1" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="-100" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s2" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="-175" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s3" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="-250" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s4" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="100" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s5" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="175" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="s6" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="250" y="90" z="-395" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="10" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_top" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="0" y="220" z="-395" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="700" sy="10" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_mid" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="0" y="150" z="-395" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="700" sy="10" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_mid2" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="0" y="30" z="-395" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="700" sy="10" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_down" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="0" y="-40" z="-395" />
+    <ROTATION axis="y" angle="0" />
+    <SCALE sx="700" sy="10" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_left" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+   <TRANSLATION x="-330" y="90" z="-394" />
+    <ROTATION axis="z" angle="0" />
+    
+    <SCALE sx="40" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_midv" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+    <TRANSLATION x="0" y="90" z="-394" />
+    <ROTATION axis="z" angle="0" />
+    <SCALE sx="40" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
+    </DESCENDANTS>
+</NODE>
+
+<NODE id="front_right" >
+    <MATERIAL id="null" />
+    <TEXTURE id="blackwood" />
+
+   <TRANSLATION x="330" y="90" z="-394" />
+    <ROTATION axis="z" angle="0" />
+    
+    <SCALE sx="40" sy="250" sz="1" />
+
+    <DESCENDANTS>
+         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
     </DESCENDANTS>
 </NODE>
 
