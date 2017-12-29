@@ -23,6 +23,7 @@ function XMLscene(interface) {
     this.scaleFactor= 0;
     this.cells = [];
     this.pieces = [];
+    this.cylinders = [];
     this.requests = [];
     this.player = 1;
     this.selected_piece;
@@ -68,9 +69,10 @@ XMLscene.prototype.init = function(application) {
 
     this.piece = new Piece(this);
     this.board = new Board(this);
+    this.cilinder = new PieceC(this);
 
-    //this.cilynder = new Cylinder(this, 20, 10, 10, 20, 20, 1, 1);
-
+    //this.cil = new Cylinder (this, 5, 1.5, 1.5, 10, 10, 1, 1);
+    
     this.tex=new CGFappearance(this);
     this.tex.loadTexture("scenes/images/black.jpg");
 
@@ -210,6 +212,7 @@ XMLscene.prototype.display = function() {
 		// Draw axis
 		//this.axis.display();
 
+        //this.cil.display();
         var i = 0;
         for (var key in this.lightValues) {
             if (this.lightValues.hasOwnProperty(key)) {
@@ -253,6 +256,15 @@ XMLscene.prototype.display = function() {
             this.pieces[i].display();
             this.popMatrix();
         }
+
+        for (var i = 0; i < this.cylinders.length; i++) {
+            this.pushMatrix();
+            this.translate(0,3,0);
+            this.rotate(Math.PI/2,1,0,0);
+            this.cylinders[i].display();
+            this.popMatrix();
+        }
+    
         this.popMatrix();
         this.popMatrix();
 
