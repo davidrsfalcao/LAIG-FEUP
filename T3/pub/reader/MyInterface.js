@@ -23,10 +23,12 @@ MyInterface.prototype.init = function(application) {
     //  http://workshop.chromeexperiments.com/examples/gui
 
     this.gui = new dat.GUI();
-    var group = this.gui.addFolder("Animations");
+    var group = this.gui.addFolder("Game");
     group.open();
 
     group.add(this.scene, 'newgame').name('New Game');
+
+    group.add(this.scene, 'selected_scene', { Winter: 1, Porto: 2}).name('Scene');
 
     return true;
 };

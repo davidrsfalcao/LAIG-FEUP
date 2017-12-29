@@ -27,6 +27,8 @@ function XMLscene(interface) {
     this.player = 1;
     this.selected_piece;
 
+    this.selected_scene = 1;
+
 
 }
 

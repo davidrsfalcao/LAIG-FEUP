@@ -83,6 +83,13 @@ MyGraphNode.prototype.addAnimation = function(anim) {
  */
 MyGraphNode.prototype.display = function(fatherMaterial, fatherTexture, s, t, selected) {
 
+    if(this.nodeID.search('scene') != -1){
+        let nn = this.nodeID.substring(6,7);
+        if(parseInt(nn) != this.graph.scene.selected_scene){
+            return;
+        }
+    }
+
 	this.graph.scene.pushMatrix();
     this.graph.scene.multMatrix(this.transformMatrixAnimations);
     var materialToUse = fatherMaterial;

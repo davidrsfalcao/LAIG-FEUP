@@ -92,7 +92,7 @@
     <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
     <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
     <specular r="0.6" g="0.6" b="0.6" a="1.0" />
-    </LIGHT> 
+    </LIGHT>
 
     <LIGHT id="light9">
     <enable value ="1" />
@@ -202,7 +202,7 @@
         <file path="images/black.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
-    
+
     <TEXTURE id="blackwood">
         <file path="images/woodblack.jpg" />
         <amplif_factor s="1" t="1" />
@@ -222,7 +222,7 @@
         <file path="images/carpet.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
-    
+
      <TEXTURE id="carpet2">
         <file path="images/ca2.jpg" />
         <amplif_factor s="1" t="1" />
@@ -242,7 +242,7 @@
         <file path="images/quadro.jpg" />
         <amplif_factor s="1" t="1" />
     </TEXTURE>
-    
+
 
 </TEXTURES>
 
@@ -312,8 +312,8 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-        <!--<NODEREF id="scene_1" /> -->
-            <NODEREF id="scene_2" />
+        <NODEREF id="scene_1" />
+        <NODEREF id="scene_2" />
         </DESCENDANTS>
 
     </NODE>
@@ -675,7 +675,7 @@
     <SCALE sx="1" sy="1" sz="1" />
 
     <DESCENDANTS>
-        <NODEREF id="table_top2" /> 
+        <NODEREF id="table_top2" />
         <NODEREF id="table_down2" />
         <NODEREF id="table_down3" />
         <NODEREF id="t1" />
@@ -691,7 +691,7 @@
 
     <TRANSLATION x="0" y="0" z="-4" />
     <ROTATION axis="x" angle="0" />
-    <SCALE sx="301" sy="201" sz="1" /> 
+    <SCALE sx="301" sy="201" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -704,7 +704,7 @@
 
     <TRANSLATION x="0" y="0" z="-8" />
     <ROTATION axis="x" angle="180" />
-    <SCALE sx="301" sy="201" sz="1" /> 
+    <SCALE sx="301" sy="201" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -717,7 +717,7 @@
 
     <TRANSLATION x="0" y="0" z="-8.1" />
     <ROTATION axis="x" angle="180" />
-    <SCALE sx="250" sy="160" sz="1" /> 
+    <SCALE sx="250" sy="160" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -727,12 +727,12 @@
 <NODE id="t1" >
     <MATERIAL id="defaultMaterial" />
     <TEXTURE id="granito" />
-    
+
     <TRANSLATION x="150" y="0" z="-8" />
     <ROTATION axis="z" angle="90" />
     <ROTATION axis="x" angle="90" />
-    
-    <SCALE sx="200" sy="8" sz="1" /> 
+
+    <SCALE sx="200" sy="8" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -742,12 +742,12 @@
 <NODE id="t2" >
     <MATERIAL id="defaultMaterial" />
     <TEXTURE id="granito" />
-    
+
     <TRANSLATION x="-150" y="0" z="-8" />
     <ROTATION axis="y" angle="180" />
     <ROTATION axis="z" angle="90" />
     <ROTATION axis="x" angle="90" />
-    <SCALE sx="200" sy="8" sz="1" /> 
+    <SCALE sx="200" sy="8" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -757,10 +757,10 @@
 <NODE id="t3" >
     <MATERIAL id="defaultMaterial" />
     <TEXTURE id="granito" />
-    
+
     <TRANSLATION x="0" y="-100" z="-8" />
     <ROTATION axis="x" angle="90" />
-    <SCALE sx="300" sy="8" sz="1" /> 
+    <SCALE sx="300" sy="8" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -770,10 +770,10 @@
 <NODE id="t4" >
     <MATERIAL id="defaultMaterial" />
     <TEXTURE id="granito" />
-    
+
     <TRANSLATION x="0" y="100" z="-8" />
     <ROTATION axis="x" angle="-90" />
-    <SCALE sx="300" sy="8" sz="1" /> 
+    <SCALE sx="300" sy="8" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="rectangle" args="-0.5 0.5 0.5 -0.5" />
@@ -913,7 +913,7 @@
     <TRANSLATION x="0" y="0" z="-6" />
     <TRANSLATION x="0" y="-135" z="0" />
     <ROTATION axis="x" angle="90" />
-    <SCALE sx="1" sy="1" sz="1" /> 
+    <SCALE sx="1" sy="1" sz="1" />
 
     <DESCENDANTS>
         <LEAF  type="cylinder" args="2 230 230 100 100 1 1" />
@@ -1379,7 +1379,7 @@
 
    <TRANSLATION x="-330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
-    
+
     <SCALE sx="40" sy="250" sz="1" />
 
     <DESCENDANTS>
@@ -1393,7 +1393,7 @@
 
    <TRANSLATION x="-330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
-    
+
     <SCALE sx="40" sy="250" sz="1" />
 
     <DESCENDANTS>
@@ -1433,7 +1433,7 @@
 
    <TRANSLATION x="330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
-    
+
     <SCALE sx="40" sy="250" sz="1" />
 
     <DESCENDANTS>
@@ -1447,7 +1447,7 @@
 
    <TRANSLATION x="330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
-    
+
     <SCALE sx="40" sy="250" sz="1" />
 
     <DESCENDANTS>

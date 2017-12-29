@@ -154,7 +154,6 @@ TrianglePiece.prototype.update = function(deltaT){
             let deltaL = this.animation.line - this.animation.iLine;
             let deltaC = this.animation.column - this.animation.iCol;
             let deltaA = this.animation.angle - this.animation.iAng;
-            console.log(deltaA/degToRad);
             if(deltaA > Math.PI){
                 let diff = 2*Math.PI - deltaA;
                 deltaA = -diff;
