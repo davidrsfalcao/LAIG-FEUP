@@ -164,7 +164,6 @@ function movePiece(){
             if(out){
                 out_pos = check_out_positons();
                 scene.pieces[i].inGame = false;
-                console.log(out_pos);
                 scene.pieces[i].addAnimation(out_pos.line, out_pos.column);
             }
             else scene.pieces[i].addAnimation(line1, column1);
@@ -202,7 +201,7 @@ function check_out_positons(){
         column = -1;
         let player2_pieces = getPiecesPlayer(2);
 
-        for (let i = 0; i <= 9; i++) {
+        for (let i = 1; i <= 9; i++) {
             for (let j = 0; j < player2_pieces.length; j++) {
                 if((player2_pieces[j].column == -1) && (player2_pieces[j].line == i)){
                     found = true;
