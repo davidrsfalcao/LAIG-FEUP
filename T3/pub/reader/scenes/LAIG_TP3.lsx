@@ -4,10 +4,10 @@
     <INITIALS>
         <frustum near="0.1" far="500"/>
         <translation x="-1" y="-3" z="0" />
-        <rotation axis="x" angle="0" />
-        <rotation axis="y" angle="0" />
+        <rotation axis="y" angle="10" />
+        <rotation axis="x" angle="20" />
         <rotation axis="z" angle="0" />
-        <scale sx="0.07" sy="0.07" sz="0.07" />
+        <scale sx="0.071" sy="0.071" sz="0.071" />
         <reference length="5" />
     </INITIALS>
 
@@ -206,6 +206,11 @@
     <TEXTURE id="blackwood">
         <file path="images/woodblack.jpg" />
         <amplif_factor s="1" t="1" />
+    </TEXTURE>
+
+    <TEXTURE id="blackwood1">
+        <file path="images/woodblack.jpg" />
+        <amplif_factor s="5" t="1" />
     </TEXTURE>
 
     <TEXTURE id="paisagem2">
@@ -1389,7 +1394,7 @@
 
 <NODE id="1front_left" >
     <MATERIAL id="null" />
-    <TEXTURE id="blackwood" />
+    <TEXTURE id="blackwood1" />
 
    <TRANSLATION x="-330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
@@ -1416,7 +1421,7 @@
 
 <NODE id="1front_midv" >
     <MATERIAL id="null" />
-    <TEXTURE id="blackwood" />
+    <TEXTURE id="blackwood1" />
 
     <TRANSLATION x="0" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />
@@ -1443,7 +1448,7 @@
 
 <NODE id="1front_right" >
     <MATERIAL id="null" />
-    <TEXTURE id="blackwood" />
+    <TEXTURE id="blackwood1" />
 
    <TRANSLATION x="330" y="90" z="-394" />
     <ROTATION axis="z" angle="0" />

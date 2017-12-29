@@ -91,7 +91,6 @@ XMLscene.prototype.init = function(application) {
 
 }
 
-
 /**
  * Initializes the scene lights with the values read from the LSX file.
  */
@@ -112,7 +111,7 @@ XMLscene.prototype.initLights = function() {
             this.lights[i].setDiffuse(light[3][0], light[3][1], light[3][2], light[3][3]);
             this.lights[i].setSpecular(light[4][0], light[4][1], light[4][2], light[4][3]);
 
-            this.lights[i].setVisible(true);
+            this.lights[i].setVisible(false);
             if (light[0])
                 this.lights[i].enable();
             else
@@ -209,13 +208,13 @@ XMLscene.prototype.display = function() {
         this.multMatrix(this.graph.initialTransforms);
 
 		// Draw axis
-		this.axis.display();
+		//this.axis.display();
 
         var i = 0;
         for (var key in this.lightValues) {
             if (this.lightValues.hasOwnProperty(key)) {
                 if (this.lightValues[key]) {
-                    this.lights[i].setVisible(true);
+                    this.lights[i].setVisible(false);
                     this.lights[i].enable();
                 }
                 else {
@@ -271,9 +270,7 @@ XMLscene.prototype.display = function() {
 
 }
 
-
-XMLscene.prototype.logPicking = function ()
-{
+XMLscene.prototype.logPicking = function (){
 	if (this.pickMode == false) {
 		if (this.pickResults != null && this.pickResults.length > 0) {
 			for (var i=0; i< this.pickResults.length; i++) {
@@ -297,6 +294,7 @@ XMLscene.prototype.logPicking = function ()
 		}
 	}
 }
+
 /**
  * Update shadders' scaleFactor
  * @param {Number} deltaT - time
