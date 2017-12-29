@@ -63,20 +63,20 @@ function orderPieces(){
 
                 switch (player) {
                     case 1:
-                        player1_pieces[0].line = line+1;
-                        player1_pieces[0].column = column+1;
-                        player1_pieces[0].ang = getAnglePiece(piece);
-                        player1_pieces[0].inGame = true;
-                        player1_pieces.splice(0,1);
-                        break;
+                    player1_pieces[0].line = line+1;
+                    player1_pieces[0].column = column+1;
+                    player1_pieces[0].ang = getAnglePiece(piece);
+                    player1_pieces[0].inGame = true;
+                    player1_pieces.splice(0,1);
+                    break;
 
                     case 2:
-                        player2_pieces[0].line = line+1;
-                        player2_pieces[0].column = column+1;
-                        player2_pieces[0].ang = getAnglePiece(piece);
-                        player2_pieces[0].inGame = true;
-                        player2_pieces.splice(0,1);
-                        break;
+                    player2_pieces[0].line = line+1;
+                    player2_pieces[0].column = column+1;
+                    player2_pieces[0].ang = getAnglePiece(piece);
+                    player2_pieces[0].inGame = true;
+                    player2_pieces.splice(0,1);
+                    break;
                 }
             }
 
@@ -133,13 +133,90 @@ function change_player(player){
     scene.player = player;
 }
 
-function movePiece(line, column, line1, column1){
+function movePiece(){
 
-    for (let i = 0; i < scene.pieces.length; i++) {
-        if((scene.pieces[i].line==line) && (scene.pieces[i].column==column)) {
-            scene.pieces[i].addAnimation(line1, column1);
+    let request;
+
+    for(var i = scene.requests.length-1; i >= 0; i--) {
+        if(scene.requests[i] instanceof MovePiece){
+            request = scene.requests[i];
             break;
         }
     }
 
+    let line = request.line;
+    let line1 = request.line1;
+    let column = request.column;
+    let column1 = request.column1;
+
+    let board = scene.board_matrix[scene.board_matrix.length-1];
+    let position = board[line1-1][column1-1];
+    let out = false;
+
+    if(position >= 100){
+        out = true;
+    }
+
+    let out_pos;
+
+    for (let i = 0; i < scene.pieces.length; i++) {
+        if((scene.pieces[i].line==line) && (scene.pieces[i].column==column)) {
+            if(out){
+                out_pos = check_out_positons();
+                scene.pieces[i].inGame = false;
+                console.log(out_pos);
+                scene.pieces[i].addAnimation(out_pos.line, out_pos.column);
+            }
+            else scene.pieces[i].addAnimation(line1, column1);
+            break;
+        }
+    }
+
+}
+
+function check_out_positons(){
+    let player = scene.player;
+    let line, column;
+    let found = false;
+
+    if(player == 1){
+        column = 11;
+        let player1_pieces = getPiecesPlayer(1);
+
+        for (let i = 9; i >= 0; i--) {
+            for (let j = 0; j < player1_pieces.length; j++) {
+                if((player1_pieces[j].column == 11) && (player1_pieces[j].line == i)){
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found){
+                line = i;
+                break;
+            }
+            else found = false;
+        }
+    }
+    else if(player == 2){
+        column = -1;
+        let player2_pieces = getPiecesPlayer(2);
+
+        for (let i = 0; i <= 9; i++) {
+            for (let j = 0; j < player2_pieces.length; j++) {
+                if((player2_pieces[j].column == -1) && (player2_pieces[j].line == i)){
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found){
+                line = i;
+                break;
+            }
+            else found = false;
+        }
+    }
+
+    return {line: line, column: column};
 }

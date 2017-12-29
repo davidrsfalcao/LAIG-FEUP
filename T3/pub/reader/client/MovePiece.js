@@ -6,7 +6,7 @@ function MovePiece(line, column, line1, column1) {
     this.column1 = column1;
 
     this.makeRequest();
-    movePiece(line, column, line1, column1);
+
 }
 
 MovePiece.prototype = Object.create(Client.prototype);
@@ -21,5 +21,6 @@ MovePiece.prototype.makeRequest = function()
 MovePiece.prototype.handleReply = function (data){
     let response=JSON.parse(data.target.response);
     pushBoards(JSON.parse(response.argA), JSON.parse(response.argB));
+    movePiece();
     change_player(JSON.parse(response.message));
 }
