@@ -12,6 +12,7 @@ function CylinderPiece(scene, line, column, player) {
     this.line=line;
     this.column=column;
     this.height = 0;
+    this.out_pos = {line: line, column: column};
 
     this.player=player;
 
@@ -20,8 +21,8 @@ function CylinderPiece(scene, line, column, player) {
     this.animation = null; //{line: ll, column: cc, timeElapsed: time};
     this.animated = false;
 
-    this.cil = new Cylinder(this.scene, 3, 1, 1, 10, 10, 1, 1);
-  
+    this.cil = new Cylinder(this.scene, 2, 1, 1, 10, 10, 1, 1);
+
     this.scene.cylinders.push(this);
 
 };
@@ -37,7 +38,7 @@ CylinderPiece.prototype.display = function(){
     else
         this.scene.tex2.apply();
 
-    
+
     let dX = (this.column-5)*10;
     let dY = (this.line-5)*10;
 
