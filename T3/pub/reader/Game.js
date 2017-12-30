@@ -250,6 +250,18 @@ function change_player(player){
     scene.selected_piece = null;
     scene.bot_choose_piece = false;
     scene.bot_move_piece = true;
+    updateScore();
+
+    if(player == 1){
+        document.getElementById('player1').style.backgroundColor = "red";
+    }
+    else document.getElementById('player1').style.backgroundColor = "inherit";
+
+    if(player == 2){
+        document.getElementById('player2').style.backgroundColor = "blue";
+    }
+    else document.getElementById('player2').style.backgroundColor = "inherit";
+
     if(player == 0){
         this.gameStarted = false;
     }
@@ -367,5 +379,29 @@ function upateMovementBot(line, column){
     }
     request.line1 = line;
     request.column1= column;
+
+}
+
+function updateScore(){
+
+    let score1 = 0;
+    let score2 = 0;
+
+    let board = scene.board_res_matrix[scene.board_res_matrix.length-1];
+
+    for (var i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if(board[i][j] == 1){
+                score1++;
+            }
+            else if(board[i][j] == 2){
+                score2++;
+            }
+        }
+    }
+
+    document.getElementById('score1').innerHTML = score1;
+    document.getElementById('score2').innerHTML = score2;
+
 
 }

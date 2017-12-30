@@ -357,7 +357,6 @@ XMLscene.prototype.newgame = function(){
     this.requests = [];
     this.requests.push(new StartGame(this.mode,this.difficulty));
 
-
     switch(this.mode) {
         case 1:
             this.players_type = {1: 'Player', 2: 'Player'};
@@ -374,6 +373,7 @@ XMLscene.prototype.newgame = function(){
 
     }
     this.gameStarted = true;
+    document.getElementById('player1').style.backgroundColor = "red";
 }
 
 XMLscene.prototype.undo = function(){
