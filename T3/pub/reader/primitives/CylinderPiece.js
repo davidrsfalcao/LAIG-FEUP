@@ -11,6 +11,9 @@ function CylinderPiece(scene, line, column, player) {
     this.scene=scene;
     this.line=line;
     this.column=column;
+    this.posL = line;
+    this.posC = column
+
     this.height = 0;
     this.out_pos = {line: line, column: column};
 
@@ -39,14 +42,72 @@ CylinderPiece.prototype.display = function(){
         this.scene.tex2.apply();
 
 
-    let dX = (this.column-5)*10;
-    let dY = (this.line-5)*10;
+    let dX = (this.posC-5)*10;
+    let dY = (this.posL-5)*10;
 
     this.scene.pushMatrix();
-    this.scene.translate(dX,dY,this.height);
-    this.scene.pushMatrix();
+        this.scene.translate(dX,dY,-this.height+1);
+        this.scene.pushMatrix();
+            this.cil.display();
+        this.scene.popMatrix();
+    this.scene.popMatrix();
+}
 
-    this.cil.display();
-    this.scene.popMatrix();
-    this.scene.popMatrix();
+CylinderPiece.prototype.update = function(deltaT){
+    if(this.animated){
+        this.animation.timeElapsed += deltaT;
+
+        if(this.animation.timeElapsed >= this.animationTime){
+            this.posL = this.animation.line;
+            this.posC = this.animation.column;
+            this.height = 0;
+            this.animated = false;
+            this.animation = null;
+        }
+        else {
+            let deltaL = this.animation.line - this.animation.iLine;
+            let deltaC = this.animation.column - this.animation.iCol;
+            let percentage = this.animation.timeElapsed/this.animationTime;
+
+            this.posL = this.animation.iLine + (deltaL * percentage);
+            this.posC = this.animation.iCol + (deltaC * percentage);
+            this.height = Math.sin(Math.PI * percentage)*10;
+
+
+        }
+
+    }
+
+}
+
+CylinderPiece.prototype.addAnimation = function(l, c, line, col){
+
+    this.animation = {
+        iLine: this.posL,
+        iCol: this.posC,
+        line: line,
+        column: col,
+        timeElapsed: 0
+    };
+
+    this.animated = true;
+    this.inGame = true;
+    this.line = l;
+    this.column = c;
+
+}
+
+CylinderPiece.prototype.getOut = function(){
+
+    this.animation = {
+        iLine: this.posL,
+        iCol: this.posC,
+        line: this.out_pos.line,
+        column: this.out_pos.column,
+        timeElapsed: 0};
+    this.animated = true;
+    this.inGame = false;
+    this.line = this.out_pos.line;
+    this.column = this.out_pos.column;
+
 }

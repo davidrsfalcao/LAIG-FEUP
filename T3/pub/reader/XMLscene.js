@@ -72,7 +72,7 @@ XMLscene.prototype.init = function(application) {
     this.cilinder = new PieceC(this);
 
     //this.cil = new Cylinder (this, 5, 1.5, 1.5, 10, 10, 1, 1);
-    
+
     this.tex=new CGFappearance(this);
     this.tex.loadTexture("scenes/images/black.jpg");
 
@@ -176,6 +176,9 @@ XMLscene.prototype.update = function(currTime){
             for (let i = 0; i < this.pieces.length; i++) {
                 this.pieces[i].update(deltaT/1000);
             }
+            for (let i = 0; i < this.cylinders.length; i++) {
+                this.cylinders[i].update(deltaT/1000);
+            }
         }
 
     }
@@ -264,7 +267,7 @@ XMLscene.prototype.display = function() {
             this.cylinders[i].display();
             this.popMatrix();
         }
-    
+
         this.popMatrix();
         this.popMatrix();
 

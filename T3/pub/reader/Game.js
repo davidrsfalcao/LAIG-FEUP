@@ -48,6 +48,19 @@ function getPiecesPlayer(player){
 
 }
 
+function getCylindersPlayer(player){
+    let res = [];
+
+    for(let i = 0; i< scene.cylinders.length; i++){
+
+        if (scene.cylinders[i].player == player){
+            res.push(scene.cylinders[i]);
+        }
+    }
+    return res;
+
+}
+
 function orderPieces(){
     let atualBoard = scene.board_matrix[scene.board_matrix.length-1];
     let player1_pieces = getPiecesPlayer(1);
@@ -95,6 +108,87 @@ function orderPieces(){
         player2_pieces[i].column = -1;
         player2_pieces[i].ang = Math.PI/2;
     }
+
+}
+
+function ordeCylinders(){
+    //TODO
+}
+
+function findCylinderLC(player,line, col){
+    let cils = getCylindersPlayer(player);
+
+    for (let i = 0; i < cils.length; i++) {
+
+        if((cils[i].line == line)&& (cils[i].column == col)){
+            return cils[i];
+        }
+    }
+    return null;
+}
+
+function findCylinderFree(player){
+    let cils = getCylindersPlayer(player);
+
+    for (let i = 0; i < cils.length; i++) {
+        if(!cils[i].inGame){
+            return cils[i];
+        }
+    }
+    return null;
+}
+
+
+
+function updateCylinders(){
+
+    let new_board_res = scene.board_res_matrix[scene.board_res_matrix.length-1];
+    let old_board_res = scene.board_res_matrix[scene.board_res_matrix.length-2];
+    let board = scene.board_matrix[scene.board_matrix.length-1];
+    let player = scene.player;
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if(new_board_res[i][j] != 0) {
+
+                let piece = board[i][j];
+                let cill;
+
+                if((new_board_res[i][j] != old_board_res[i][j]) && (old_board_res[i][j] != 0)){
+                    let cil1 = findCylinderLC(old_board_res[i][j], i+1, j+1);
+                    cil1.getOut();
+                    cill = findCylinderFree(new_board_res[i][j]);
+
+                }
+                else if((new_board_res[i][j] != old_board_res[i][j]) && (old_board_res[i][j] == 0)){
+                    cill = findCylinderFree(new_board_res[i][j]);
+                }
+                else {
+                    cill = findCylinderLC(old_board_res[i][j], i+1, j+1);
+                }
+
+                if(piece >= 100){
+                    if((cill.posL != i+1) || (cill.posC != j+1)){
+                        cill.addAnimation(i+1,j+1,i+1,j+1);
+                    }
+
+                }
+                else {
+                    let ang = getAnglePiece(piece);
+                    let dx = Math.cos(ang + Math.PI)/3;
+                    let dy = Math.sin(ang + Math.PI)/3;
+                    if((cill.posL != i+1+dx) || (cill.posC != j+1+dy)){
+                        cill.addAnimation(i+1,j+1,i+1+dx,j+1+dy);
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+
 
 }
 
@@ -150,6 +244,7 @@ function movePiece(){
     let column1 = request.column1;
 
     let board = scene.board_matrix[scene.board_matrix.length-1];
+    let old_board_res = scene.board_res_matrix[scene.board_res_matrix.length-2];
     let position = board[line1-1][column1-1];
     let out = false;
 
@@ -161,6 +256,7 @@ function movePiece(){
 
     for (let i = 0; i < scene.pieces.length; i++) {
         if((scene.pieces[i].line==line) && (scene.pieces[i].column==column)) {
+
             if(out){
                 out_pos = check_out_positons();
                 scene.pieces[i].inGame = false;
@@ -170,6 +266,8 @@ function movePiece(){
             break;
         }
     }
+
+    updateCylinders();
 
 }
 
