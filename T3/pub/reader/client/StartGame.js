@@ -20,4 +20,5 @@ StartGame.prototype.handleReply = function (data){
     console.log("Message: " + response.message);
     pushBoards(JSON.parse(response.argA), JSON.parse(response.argB));
     orderPieces();
+    orderCylinders();
 }

@@ -3,14 +3,14 @@
 % the bot choose a piece to move (pieces with possible movements)
 % bot_choose_piece(+ PLAYER, - LINE, - COLUMN)
 bot_choose_piece(PLAYER, LINE, COLUMN):-
-    nb_getval(bot_difficulty, LVL),
+    bot_difficulty(LVL),
+    get_all_possible_moves,
     possible_moves_player(PLAYER, MOVES),
     ( LVL == 1 ->
         bot_choose_piece_easy(LINE, COLUMN, MOVES)
         ;
         bot_choose_piece_hard(LINE, COLUMN, MOVES)
-    ),
-    sleep(1). % simulate human's time of reaction
+    ).
 
 % the bot choose a piece to move (LVL 1)
 bot_choose_piece_easy(LINE, COLUMN, MOVES):-
@@ -27,7 +27,8 @@ bot_choose_piece_hard(LINE, COLUMN, MOVES):-
     bot_choose_piece_hard(MOVES, 0),
     nb_getval(best_play, BEST),
     nth0(1, BEST, LINE),
-    nth0(2, BEST, COLUMN).
+    nth0(2, BEST, COLUMN),
+    assert(best_play(BEST)).
 
 % the bot choose a piece to move (LVL 2) (recursive)
 bot_choose_piece_hard(MOVES, INDEX):-
@@ -103,7 +104,8 @@ bot_choose_piece_hard(MOVES, INDEX):-
 % the bot choose a position to move a piece
 % bot_choose_position_to_mov(+ LINE_A, + COLUMN_A, - LINE1, - COLUMN1)
 bot_choose_position_to_mov(LINE_A, COLUMN_A, LINE1, COLUMN1):-
-    nb_getval(bot_difficulty, LVL),
+    bot_difficulty(LVL),
+    get_all_possible_moves,
     possible_moves_piece(LINE_A, COLUMN_A),
     nb_getval(list_movements_piece, MOVES),
     ( LVL == 1 ->
@@ -113,9 +115,10 @@ bot_choose_position_to_mov(LINE_A, COLUMN_A, LINE1, COLUMN1):-
         nth0(3, MOVE, LINE1),
         nth0(4, MOVE, COLUMN1)
         ;
-        nb_getval(best_play, BEST),
+        best_play(BEST),
         nth0(3, BEST, LINE1),
-        nth0(4, BEST, COLUMN1)
+        nth0(4, BEST, COLUMN1),
+        retract(best_play(BEST))
     ).
 
 % the bot choose a direction

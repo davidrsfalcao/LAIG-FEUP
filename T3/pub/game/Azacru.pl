@@ -35,16 +35,24 @@ start_mode(1, _):-
 start_mode(2, Difficulty):-
 	assert(player(1,'HUMAN')),
 	assert(player(2,'BOT')),
-	nb_setval(bot_difficulty, Difficulty).
+	assert(bot_difficulty(Difficulty)).
 
 % BOT VS BOT
 % Difficulty must be 1 for easy and 2 for hard mode
 start_mode(3, Difficulty):-
 	assert(player(1,'BOT')),
 	assert(player(2,'BOT')),
-	nb_setval(bot_difficulty, Difficulty).
+	assert(bot_difficulty(Difficulty)).
 
 get_moves_piece(Line, Column, Moves, NPlays, Message):-
+	possible_moves_piece(Line, Column),
+	nb_getval(list_movements_piece, Moves),
+	length(Moves, NPlays),
+	Message = "Piece selected". % Message
+
+get_moves_piece_bot(Moves, NPlays, Message):-
+	playing(PLAYER),
+	bot_choose_piece(PLAYER, Line, Column),
 	possible_moves_piece(Line, Column),
 	nb_getval(list_movements_piece, Moves),
 	length(Moves, NPlays),
@@ -99,3 +107,8 @@ move_piece_selected(LINE_A, COLUMN_A, LINE1, COLUMN1, NewBoard, NewBoardRes, Nex
 		;
 		playing(NextPlayer)
 	).
+
+move_piece_selected_bot(LINE_A, COLUMN_A, NewBoard, NewBoardRes, NextPlayer):-
+	bot_choose_position_to_mov(LINE_A, COLUMN_A, LINE1, COLUMN1),
+	move_piece_selected(LINE_A, COLUMN_A, LINE1, COLUMN1, NewBoard, NewBoardRes, Tmp),
+	NextPlayer=[Tmp,LINE1,COLUMN1].

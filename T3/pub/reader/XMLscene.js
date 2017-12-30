@@ -26,9 +26,18 @@ function XMLscene(interface) {
     this.cylinders = [];
     this.requests = [];
     this.player = 1;
-    this.selected_piece;
+    this.selected_piece = null;
 
     this.selected_scene = 1;
+    this.mode = 1;
+    this.difficulty = 1;
+    this.gameStarted = false;
+    this.bot_reaction = 2;
+    this.bot_choose_piece = false;
+    this.bot_move_piece = true;
+
+    this.play_elapsed_time = 0;
+
 
 
 }
@@ -173,6 +182,24 @@ XMLscene.prototype.update = function(currTime){
         this.timeElapsed += deltaT;
         if (this.graph.loadedOk && this.pause == false){
             this.graph.update( deltaT);
+            this.play_elapsed_time += deltaT/1000;
+
+            if(this.gameStarted){
+                if(this.players_type[this.player] == 'CPU'){
+                    if((this.play_elapsed_time >= this.bot_reaction) && !this.bot_choose_piece){
+                        this.bot_choose_piece = true;
+                        this.requests.push(new BotChoosePiece());
+                    }
+
+                    if((this.play_elapsed_time >= 2*this.bot_reaction) && !this.bot_move_piece){
+                        this.bot_move_piece = true;
+                        this.requests.push(new BotMovePiece(this.selected_piece.line, this.selected_piece.column));
+                    }
+
+                }
+            }
+
+
             for (let i = 0; i < this.pieces.length; i++) {
                 this.pieces[i].update(deltaT/1000);
             }
@@ -294,15 +321,15 @@ XMLscene.prototype.logPicking = function (){
 				{
 					var customId = this.pickResults[i][1];
 
-                    if (obj instanceof TrianglePiece && (obj.player == this.player) && (obj.inGame)){
+                    if (obj instanceof TrianglePiece && (obj.player == this.player) && (obj.inGame) && (this.players_type[this.player]=='Player')){
                         this.requests.push(new ChoosePiece(obj.line, obj.column));
                     }
-                    else if(obj instanceof Cell && (obj.selected)){
+                    else if(obj instanceof Cell && (obj.selected) && (this.players_type[this.player] == 'Player')){
                         this.requests.push(new MovePiece(this.selected_piece.line, this.selected_piece.column, obj.line, obj.column));
                     }
-                    clearCellSelection();
-                    //console.log(this.pickResults[i]);
-					//console.log("Picked object: " + obj + ", with pick id " + customId);
+                    if(this.players_type[this.player]=='Player'){
+                        clearCellSelection();
+                    }
 				}
 			}
 			this.pickResults.splice(0,this.pickResults.length);
@@ -324,8 +351,29 @@ XMLscene.prototype.updateShadders = function(currTime){
 }
 
 XMLscene.prototype.newgame = function(){
+    clearCellSelection();
+    this.mode = parseInt(this.mode);
+    this.difficulty = parseInt(this.difficulty);
     this.player = 1;
     this.board_matrix = [];
     this.board_res_matrix = [];
-    this.requests.push(new StartGame(1,1));
+    this.requests.push(new StartGame(this.mode,this.difficulty));
+
+
+    switch(this.mode) {
+        case 1:
+            this.players_type = {1: 'Player', 2: 'Player'};
+            break;
+
+        case 2:
+            this.players_type = {1: 'Player', 2: 'CPU'};
+            break;
+
+        case 3:
+            this.players_type = {1: 'CPU', 2: 'CPU'};
+            break;
+        default:
+
+    }
+    this.gameStarted = true;
 }
