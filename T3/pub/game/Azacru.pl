@@ -112,3 +112,14 @@ move_piece_selected_bot(LINE_A, COLUMN_A, NewBoard, NewBoardRes, NextPlayer):-
 	bot_choose_position_to_mov(LINE_A, COLUMN_A, LINE1, COLUMN1),
 	move_piece_selected(LINE_A, COLUMN_A, LINE1, COLUMN1, NewBoard, NewBoardRes, Tmp),
 	NextPlayer=[Tmp,LINE1,COLUMN1].
+
+undo(Board, Board_res, NextPlayer, _,Message):-
+	replace_board(Board),
+	replace_board_res(Board_res),
+	change_player,
+	(final ->
+		NextPlayer is 0
+		;
+		playing(NextPlayer)
+	),
+	Message = "Undo".

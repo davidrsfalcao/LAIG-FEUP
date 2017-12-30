@@ -122,3 +122,21 @@ board_res_to_matrix_row(I, J, [H|T]):-
     board_res(I,J, H),
     J1 is J+1,
     board_res_to_matrix_row(I, J1, T).
+
+replace_board_res(Board):-
+    clean_board_res,
+    replace_board_res(1, Board).
+
+replace_board_res(10,[]).
+
+replace_board_res(I,[H|T]):-
+    replace_board_res_row(I, 1, H),
+    I1 is I+1,
+    replace_board_res(I1, T).
+
+replace_board_res_row(_, 10, []).
+
+replace_board_res_row(I, J, [H|T]):-
+    assert(board_res(I,J, H)),
+    J1 is J+1,
+    replace_board_res_row(I, J1, T).

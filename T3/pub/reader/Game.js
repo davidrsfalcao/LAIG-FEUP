@@ -115,18 +115,13 @@ function orderCylinders(){
     let board_res = scene.board_res_matrix[scene.board_res_matrix.length-1];
     let board = scene.board_matrix[scene.board_matrix.length-1];
 
-    for(let i = 0; i < scene.cylinders.length; i++) {
-        scene.cylinders[i].inGame = false;
-    }
-
+    scene.cylinder = new PieceC(scene);
 
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if(board_res[i][j] != 0) {
-
                 let piece = board[i][j];
                 let cill = findCylinderFree(board_res[i][j]);
-
                 if(piece >= 100){
                     cill.setPosition(i+1,j+1,i+1,j+1);
 
@@ -138,22 +133,6 @@ function orderCylinders(){
                     cill.setPosition(i+1,j+1,i+1+dx,j+1+dy);
                 }
             }
-        }
-    }
-
-    let cilsp = getCylindersPlayer(1);
-
-    for (var i = 0; i < cilsp.length; i++) {
-        if(!cilsp.inGame){
-            cilsp[i].setOutPosition();
-        }
-    }
-
-    cilsp = getCylindersPlayer(2);
-
-    for (var i = 0; i < cilsp.length; i++) {
-        if(!cilsp.inGame){
-            cilsp[i].setOutPosition();
         }
     }
 

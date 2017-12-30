@@ -6,8 +6,7 @@ function XMLscene(interface) {
     CGFscene.call(this);
 
     this.interface = interface;
-
-    this.cameraChosen = 0;
+    this.backupCamera;
 
     this.lightValues = {};
     this.selectableValues = {};
@@ -37,6 +36,7 @@ function XMLscene(interface) {
     this.bot_move_piece = true;
 
     this.play_elapsed_time = 0;
+    this.play_limit_time = 15;
 
 
 
@@ -140,10 +140,7 @@ XMLscene.prototype.initLights = function() {
  * Initializes the scene cameras.
  */
 XMLscene.prototype.initCameras = function() {
-    this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 80),vec3.fromValues(0, 0, 0));
-    this.cameraTV = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, 1, 3),vec3.fromValues(0, -1, 3));
-    this.camera = this.cameraFree;
-
+    this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 80),vec3.fromValues(0, 0, 0));
 }
 
 /* Handler called when the graph is finally loaded.
@@ -313,7 +310,7 @@ XMLscene.prototype.display = function() {
 }
 
 XMLscene.prototype.logPicking = function (){
-	if (this.pickMode == false) {
+	if (this.pickMode == false && this.gameStarted) {
 		if (this.pickResults != null && this.pickResults.length > 0) {
 			for (var i=0; i< this.pickResults.length; i++) {
 				var obj = this.pickResults[i][0];
@@ -357,6 +354,7 @@ XMLscene.prototype.newgame = function(){
     this.player = 1;
     this.board_matrix = [];
     this.board_res_matrix = [];
+    this.requests = [];
     this.requests.push(new StartGame(this.mode,this.difficulty));
 
 
@@ -376,4 +374,16 @@ XMLscene.prototype.newgame = function(){
 
     }
     this.gameStarted = true;
+}
+
+XMLscene.prototype.undo = function(){
+
+    if(this.gameStarted && this.board_matrix.length > 1){
+        let board = this.board_matrix[this.board_matrix.length-2];
+        let board_res = this.board_res_matrix[this.board_res_matrix.length-2]
+        this.requests.push(new Undo(board,board_res));
+        this.board_matrix.splice(this.board_matrix.length-1,1);
+        this.board_res_matrix.splice(this.board_res_matrix.length-1,1);
+    }
+
 }
