@@ -21,4 +21,6 @@ StartGame.prototype.handleReply = function (data){
     pushBoards(JSON.parse(response.argA), JSON.parse(response.argB));
     orderPieces();
     changeCameraPosition();
+    orderCylinders();
+
 }

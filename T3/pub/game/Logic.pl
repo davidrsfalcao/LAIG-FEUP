@@ -4,6 +4,10 @@
 
 :-dynamic plays_left/1.
 
+:-dynamic bot_difficulty/1.
+
+:-dynamic best_play/1.
+
 % clean all player predicates
 clean_players:-
     retractall(player(_,_)),
@@ -23,6 +27,8 @@ clean_game_stuff:-
     clean_board,
     clean_board_res,
     retractall(playing(_)),
+    retractall(plays_left(_)),
+    retractall(bot_difficulty(_)),
     !.
 
 % plays the game. Manages the entire game

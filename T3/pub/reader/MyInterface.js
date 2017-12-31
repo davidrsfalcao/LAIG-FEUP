@@ -27,9 +27,11 @@ MyInterface.prototype.init = function(application) {
     group.open();
 
     group.add(this.scene, 'newgame').name('New Game');
+    group.add(this.scene, 'mode', { "Player vs Player": 1, "Player vs CPU": 2, "CPU vs CPU": 3}).name('Mode');
+    group.add(this.scene, 'difficulty', {"Easy": 1, "Hard": 2}).name('Difficulty');
 
     group.add(this.scene, 'selected_scene', { Winter: 1, Porto: 2}).name('Scene');
-
+    group.add(this.scene, 'undo').name('Undo');
     return true;
 };
 

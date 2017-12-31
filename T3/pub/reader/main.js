@@ -37,7 +37,11 @@ serialInclude(['../lib/CGF.js', 'MySceneGraph.js',
              './client/Client.js',
              './client/StartGame.js',
              './client/ChoosePiece.js',
+             './client/BotChoosePiece.js',
+             './client/BotMovePiece.js',
              './client/MovePiece.js',
+             './client/Undo.js',
+             './client/Pass.js',
              'Game.js',
 
 main=function()

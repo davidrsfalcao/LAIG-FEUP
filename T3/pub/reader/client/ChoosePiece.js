@@ -17,7 +17,6 @@ ChoosePiece.prototype.makeRequest = function()
 
 ChoosePiece.prototype.handleReply = function (data){
     let response=JSON.parse(data.target.response);
-    console.log("Message: " + response.message);
     selectCells(JSON.parse(response.argA));
-    
+
 }

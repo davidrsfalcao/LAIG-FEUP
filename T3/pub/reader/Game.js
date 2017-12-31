@@ -111,6 +111,7 @@ function orderPieces(){
 
 }
 
+
 function changeCameraPosition() {
     let position =  vec3.fromValues(-1.768616202287376, 21.9510910063982, 2.2161888433620334);
  //   let pos = vec3.fromValues(-10, 30, 10);
@@ -125,8 +126,32 @@ function changeCameraPosition() {
     //scene.camera.translate(trans);
 }
 
-function ordeCylinders(){
-    //TODO
+
+function orderCylinders(){
+    let board_res = scene.board_res_matrix[scene.board_res_matrix.length-1];
+    let board = scene.board_matrix[scene.board_matrix.length-1];
+
+    scene.cylinder = new PieceC(scene);
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if(board_res[i][j] != 0) {
+                let piece = board[i][j];
+                let cill = findCylinderFree(board_res[i][j]);
+                if(piece >= 100){
+                    cill.setPosition(i+1,j+1,i+1,j+1);
+
+                }
+                else {
+                    let ang = getAnglePiece(piece);
+                    let dx = Math.cos(ang + Math.PI)/3;
+                    let dy = Math.sin(ang + Math.PI)/3;
+                    cill.setPosition(i+1,j+1,i+1+dx,j+1+dy);
+                }
+            }
+        }
+    }
+
 }
 
 function findCylinderLC(player,line, col){
@@ -151,8 +176,6 @@ function findCylinderFree(player){
     }
     return null;
 }
-
-
 
 function updateCylinders(){
 
@@ -210,7 +233,7 @@ function clearCellSelection(){
     for (let i = 0; i < scene.cells.length; i++) {
         scene.cells[i].selected = false;
     }
-    scene.selected_piece = {};
+    scene.selected_piece = null;
 }
 
 function selectCells(moves){
@@ -234,10 +257,11 @@ function selectCells(moves){
     if(moves.length > 0){
         scene.selected_piece = {line: ll, column: cc};
     }
-
+    scene.bot_move_piece = false;
 }
 
 function change_player(player){
+    scene.play_elapsed_time = 0;
     scene.player = player;
     change_camera_player_view(player);
 }
@@ -254,6 +278,27 @@ function change_camera_player_view(player) {
         playerCamera.setPosition(position2);
     }
     scene.camera = playerCamera;
+    scene.selected_piece = null;
+    scene.bot_choose_piece = false;
+    scene.bot_move_piece = true;
+    scene.pass = false;
+    updateScore();
+
+    if(player == 1){
+        document.getElementById('player1').style.backgroundColor = "red";
+    }
+    else document.getElementById('player1').style.backgroundColor = "inherit";
+
+    if(player == 2){
+        document.getElementById('player2').style.backgroundColor = "blue";
+    }
+    else document.getElementById('player2').style.backgroundColor = "inherit";
+
+    if(player == 0){
+        scene.gameStarted = false;
+        document.getElementById('play_time').innerHTML = "END";
+    }
+
 }
 
 function movePiece(){
@@ -261,10 +306,20 @@ function movePiece(){
     let request;
 
     for(var i = scene.requests.length-1; i >= 0; i--) {
-        if(scene.requests[i] instanceof MovePiece){
-            request = scene.requests[i];
-            break;
+
+        if(scene.players_type[scene.player] == 'Player'){
+            if(scene.requests[i] instanceof MovePiece){
+                request = scene.requests[i];
+                break;
+            }
         }
+        else {
+            if(scene.requests[i] instanceof BotMovePiece){
+                request = scene.requests[i];
+                break;
+            }
+        }
+
     }
 
     let line = request.line;
@@ -297,6 +352,7 @@ function movePiece(){
     }
 
     updateCylinders();
+    clearCellSelection();
 
 }
 
@@ -345,4 +401,41 @@ function check_out_positons(){
     }
 
     return {line: line, column: column};
+}
+
+function upateMovementBot(line, column){
+    let request;
+    for(var i = scene.requests.length-1; i >= 0; i--) {
+        if(scene.requests[i] instanceof BotMovePiece){
+            request = scene.requests[i];
+            break;
+        }
+    }
+    request.line1 = line;
+    request.column1= column;
+
+}
+
+function updateScore(){
+
+    let score1 = 0;
+    let score2 = 0;
+
+    let board = scene.board_res_matrix[scene.board_res_matrix.length-1];
+
+    for (var i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            if(board[i][j] == 1){
+                score1++;
+            }
+            else if(board[i][j] == 2){
+                score2++;
+            }
+        }
+    }
+
+    document.getElementById('score1').innerHTML = score1;
+    document.getElementById('score2').innerHTML = score2;
+
+
 }

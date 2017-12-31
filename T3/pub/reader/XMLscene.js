@@ -6,8 +6,7 @@ function XMLscene(interface) {
     CGFscene.call(this);
 
     this.interface = interface;
-
-    this.cameraChosen = 0;
+    this.backupCamera;
 
     this.lightValues = {};
     this.selectableValues = {};
@@ -26,9 +25,20 @@ function XMLscene(interface) {
     this.cylinders = [];
     this.requests = [];
     this.player = 1;
-    this.selected_piece;
+    this.selected_piece = null;
 
     this.selected_scene = 1;
+    this.mode = 1;
+    this.difficulty = 1;
+    this.gameStarted = false;
+    this.bot_reaction = 2;
+    this.bot_choose_piece = false;
+    this.bot_move_piece = true;
+
+    this.play_elapsed_time = 0;
+    this.play_limit_time = 30;
+    this.pass = false;
+
 
 
 }
@@ -131,10 +141,10 @@ XMLscene.prototype.initLights = function() {
  * Initializes the scene cameras.
  */
 XMLscene.prototype.initCameras = function() {
+
     this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, -21, 83),vec3.fromValues(0, 0, 0));
     this.cameraTV = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, 1, 3),vec3.fromValues(0, -1, 3));
     this.camera = this.cameraFree;
-
 }
 
 /* Handler called when the graph is finally loaded.
@@ -173,6 +183,32 @@ XMLscene.prototype.update = function(currTime){
         this.timeElapsed += deltaT;
         if (this.graph.loadedOk && this.pause == false){
             this.graph.update( deltaT);
+
+            if(this.gameStarted){
+                this.play_elapsed_time += deltaT/1000;
+                let time_left = Math.round(this.play_limit_time-this.play_elapsed_time);
+                document.getElementById('play_time').innerHTML = time_left;
+
+                if(time_left <= 0 && !this.pass){
+                    this.requests.push(new Pass());
+                    this.pass = true;
+                }
+
+                if(this.players_type[this.player] == 'CPU'){
+                    if((this.play_elapsed_time >= this.bot_reaction) && !this.bot_choose_piece){
+                        this.bot_choose_piece = true;
+                        this.requests.push(new BotChoosePiece());
+                    }
+
+                    if((this.play_elapsed_time >= 2*this.bot_reaction) && !this.bot_move_piece){
+                        this.bot_move_piece = true;
+                        this.requests.push(new BotMovePiece(this.selected_piece.line, this.selected_piece.column));
+                    }
+
+                }
+            }
+
+
             for (let i = 0; i < this.pieces.length; i++) {
                 this.pieces[i].update(deltaT/1000);
             }
@@ -286,7 +322,7 @@ XMLscene.prototype.display = function() {
 }
 
 XMLscene.prototype.logPicking = function (){
-	if (this.pickMode == false) {
+	if (this.pickMode == false && this.gameStarted) {
 		if (this.pickResults != null && this.pickResults.length > 0) {
 			for (var i=0; i< this.pickResults.length; i++) {
 				var obj = this.pickResults[i][0];
@@ -294,15 +330,15 @@ XMLscene.prototype.logPicking = function (){
 				{
 					var customId = this.pickResults[i][1];
 
-                    if (obj instanceof TrianglePiece && (obj.player == this.player) && (obj.inGame)){
+                    if (obj instanceof TrianglePiece && (obj.player == this.player) && (obj.inGame) && (this.players_type[this.player]=='Player')){
                         this.requests.push(new ChoosePiece(obj.line, obj.column));
                     }
-                    else if(obj instanceof Cell && (obj.selected)){
+                    else if(obj instanceof Cell && (obj.selected) && (this.players_type[this.player] == 'Player')){
                         this.requests.push(new MovePiece(this.selected_piece.line, this.selected_piece.column, obj.line, obj.column));
                     }
-                    clearCellSelection();
-                    //console.log(this.pickResults[i]);
-					//console.log("Picked object: " + obj + ", with pick id " + customId);
+                    if(this.players_type[this.player]=='Player'){
+                        clearCellSelection();
+                    }
 				}
 			}
 			this.pickResults.splice(0,this.pickResults.length);
@@ -324,8 +360,45 @@ XMLscene.prototype.updateShadders = function(currTime){
 }
 
 XMLscene.prototype.newgame = function(){
+    clearCellSelection();
+    this.mode = parseInt(this.mode);
+    this.difficulty = parseInt(this.difficulty);
     this.player = 1;
     this.board_matrix = [];
     this.board_res_matrix = [];
-    this.requests.push(new StartGame(1,1));
+    this.requests = [];
+    this.requests.push(new StartGame(this.mode,this.difficulty));
+
+    switch(this.mode) {
+        case 1:
+            this.players_type = {1: 'Player', 2: 'Player'};
+            break;
+
+        case 2:
+            this.players_type = {1: 'Player', 2: 'CPU'};
+            break;
+
+        case 3:
+            this.players_type = {1: 'CPU', 2: 'CPU'};
+            break;
+        default:
+
+    }
+    this.gameStarted = true;
+    document.getElementById("score_board").style.visibility = "visible";
+    document.getElementById('player1').style.backgroundColor = "red";
+    document.getElementById('player2').style.backgroundColor = "inherit";
+
+}
+
+XMLscene.prototype.undo = function(){
+
+    if(this.gameStarted && this.board_matrix.length > 1){
+        let board = this.board_matrix[this.board_matrix.length-2];
+        let board_res = this.board_res_matrix[this.board_res_matrix.length-2]
+        this.requests.push(new Undo(board,board_res));
+        this.board_matrix.splice(this.board_matrix.length-1,1);
+        this.board_res_matrix.splice(this.board_res_matrix.length-1,1);
+    }
+
 }

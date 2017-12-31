@@ -111,3 +111,21 @@ CylinderPiece.prototype.getOut = function(){
     this.column = this.out_pos.column;
 
 }
+
+CylinderPiece.prototype.setPosition = function(line, column, posL, posC){
+    this.inGame = true;
+    this.line = line;
+    this.column = column;
+    this.posL = posL;
+    this.posC = posC;
+
+}
+
+CylinderPiece.prototype.setOutPosition = function(){
+    this.line = this.out_pos.line;
+    this.column = this.out_pos.column;
+    this.posL = this.out_pos.line;
+    this.posC = this.out_pos.column;
+    this.inGame = false;
+
+}

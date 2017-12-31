@@ -296,11 +296,28 @@ board_to_matrix(I,[H|T]):-
     I1 is I+1,
     board_to_matrix(I1, T).
 
-
 board_to_matrix_row(_, 10, []).
 board_to_matrix_row(I, J, [H|T]):-
-    %write('I: '), write(I), write('  J: '), write(J),nl,
     board(I,J, H1),
     translate(H1, H),
     J1 is J+1,
     board_to_matrix_row(I, J1, T).
+
+replace_board(Board):-
+    clean_board,
+    replace_board(1, Board).
+
+replace_board(10,[]).
+
+replace_board(I,[H|T]):-
+    replace_board_row(I, 1, H),
+    I1 is I+1,
+    replace_board(I1, T).
+
+replace_board_row(_, 10, []).
+
+replace_board_row(I, J, [H|T]):-
+    translate(H1, H),
+    assert(board(I,J, H1)),
+    J1 is J+1,
+    replace_board_row(I, J1, T).
