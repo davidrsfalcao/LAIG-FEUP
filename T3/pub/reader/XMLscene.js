@@ -39,6 +39,7 @@ function XMLscene(interface) {
     this.play_limit_time = 30;
     this.pass = false;
 
+    this.cameraAnimation = null; 
 
 
 }
@@ -142,9 +143,10 @@ XMLscene.prototype.initLights = function() {
  */
 XMLscene.prototype.initCameras = function() {
 
-    this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, -21, 83),vec3.fromValues(0, 0, 0));
-    this.cameraTV = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, 1, 3),vec3.fromValues(0, -1, 3));
-    this.camera = this.cameraFree;
+    this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, -21, 83),vec3.fromValues(0, 0, 0));
+    this.cam2 = new CGFcamera(0.4,0.1,500, vec3.fromValues(0.800000011920929, 23, 4.5), vec3.fromValues(0, 0, 0));
+    this.cam1 = new CGFcamera(0.4,0.1,500, vec3.fromValues(-0.800000011920929, 23, -4.5), vec3.fromValues(0, 0, 0));
+  
 }
 
 /* Handler called when the graph is finally loaded.
@@ -206,6 +208,7 @@ XMLscene.prototype.update = function(currTime){
                     }
 
                 }
+                
             }
 
 
