@@ -45,3 +45,10 @@ canvas {
     font-size: 20px;
     color: white;
 }
+
+.timer{
+    grid-area: b;
+    text-align: center;
+    font-size: 20px;
+    color:white;
+}

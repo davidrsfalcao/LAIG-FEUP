@@ -123,3 +123,12 @@ undo(Board, Board_res, NextPlayer, _,Message):-
 		playing(NextPlayer)
 	),
 	Message = "Undo".
+
+pass(NextPlayer, _,Message):-
+	change_player,
+	(final ->
+		NextPlayer is 0
+		;
+		playing(NextPlayer)
+	),
+	Message = "Pass".

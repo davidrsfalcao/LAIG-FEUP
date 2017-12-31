@@ -36,7 +36,8 @@ function XMLscene(interface) {
     this.bot_move_piece = true;
 
     this.play_elapsed_time = 0;
-    this.play_limit_time = 15;
+    this.play_limit_time = 30;
+    this.pass = false;
 
 
 
@@ -179,9 +180,17 @@ XMLscene.prototype.update = function(currTime){
         this.timeElapsed += deltaT;
         if (this.graph.loadedOk && this.pause == false){
             this.graph.update( deltaT);
-            this.play_elapsed_time += deltaT/1000;
 
             if(this.gameStarted){
+                this.play_elapsed_time += deltaT/1000;
+                let time_left = Math.round(this.play_limit_time-this.play_elapsed_time);
+                document.getElementById('play_time').innerHTML = time_left;
+
+                if(time_left <= 0 && !this.pass){
+                    this.requests.push(new Pass());
+                    this.pass = true;
+                }
+
                 if(this.players_type[this.player] == 'CPU'){
                     if((this.play_elapsed_time >= this.bot_reaction) && !this.bot_choose_piece){
                         this.bot_choose_piece = true;

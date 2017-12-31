@@ -250,6 +250,7 @@ function change_player(player){
     scene.selected_piece = null;
     scene.bot_choose_piece = false;
     scene.bot_move_piece = true;
+    scene.pass = false;
     updateScore();
 
     if(player == 1){
