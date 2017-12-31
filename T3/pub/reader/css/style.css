@@ -11,6 +11,7 @@ canvas {
 }
 
 .front{
+    visibility: hidden;
     position: fixed;
     margin-top: 5px;
     width: 40%;

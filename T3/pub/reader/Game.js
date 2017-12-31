@@ -264,7 +264,8 @@ function change_player(player){
     else document.getElementById('player2').style.backgroundColor = "inherit";
 
     if(player == 0){
-        this.gameStarted = false;
+        scene.gameStarted = false;
+        document.getElementById('play_time').innerHTML = "END";
     }
 }
 

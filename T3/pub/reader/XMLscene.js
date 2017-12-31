@@ -382,7 +382,10 @@ XMLscene.prototype.newgame = function(){
 
     }
     this.gameStarted = true;
+    document.getElementById("score_board").style.visibility = "visible";
     document.getElementById('player1').style.backgroundColor = "red";
+    document.getElementById('player2').style.backgroundColor = "inherit";
+
 }
 
 XMLscene.prototype.undo = function(){
