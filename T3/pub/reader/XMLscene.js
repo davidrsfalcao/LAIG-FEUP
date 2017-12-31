@@ -131,7 +131,7 @@ XMLscene.prototype.initLights = function() {
  * Initializes the scene cameras.
  */
 XMLscene.prototype.initCameras = function() {
-    this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 80),vec3.fromValues(0, 0, 0));
+    this.cameraFree = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, -21, 83),vec3.fromValues(0, 0, 0));
     this.cameraTV = new CGFcamera(0.4,0.1,500,vec3.fromValues(10, 1, 3),vec3.fromValues(0, -1, 3));
     this.camera = this.cameraFree;
 

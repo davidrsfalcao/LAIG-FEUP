@@ -111,6 +111,20 @@ function orderPieces(){
 
 }
 
+function changeCameraPosition() {
+    let position =  vec3.fromValues(-1.768616202287376, 21.9510910063982, 2.2161888433620334);
+ //   let pos = vec3.fromValues(-10, 30, 10);
+    let pos = vec3.fromValues(0.800000011920929, 23, -4.5);
+    scene.camera.setPosition(pos);
+  //  scene.camera.zoom(20);
+    //let trans = vec3.fromValues (5, 50, 0);
+    
+
+    let axis = new CGFaxis(scene, 1, 0.2);
+    //scene.camera.rotate(scene.axis, Math.PI/2);
+    //scene.camera.translate(trans);
+}
+
 function ordeCylinders(){
     //TODO
 }
@@ -225,6 +239,21 @@ function selectCells(moves){
 
 function change_player(player){
     scene.player = player;
+    change_camera_player_view(player);
+}
+
+function change_camera_player_view(player) {
+    let playerCamera = scene.camera;
+
+    let position2 =  vec3.fromValues(-0.800000011920929, 23, 4.5);
+    let position1 =  vec3.fromValues(0.800000011920929, 23, -4.5);
+    
+    if(player === 1) {
+        playerCamera.setPosition(position1);
+    } else {
+        playerCamera.setPosition(position2);
+    }
+    scene.camera = playerCamera;
 }
 
 function movePiece(){
