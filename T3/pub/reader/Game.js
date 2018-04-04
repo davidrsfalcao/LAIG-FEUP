@@ -117,7 +117,7 @@ function changeCameraPosition() {
 
     let pos = vec3.fromValues(-0.800000011920929, 23, -4.5);
     //scene.camera.setPosition(pos);
-    scene.camera = scene.cam1;
+    //scene.camera = scene.cam1;
 }
 
 
@@ -265,16 +265,16 @@ function change_camera_player_view(player) {
 
     let position2 =  vec3.fromValues(0.800000011920929, 23, 4.5);
     let position1 =  vec3.fromValues(-0.800000011920929, 23, -4.5);
-    
-    if(player === 1) {
-      //  playerCamera.setPosition(position1);
-      scene.camera = scene.cam1;
-    } else {
-        //playerCamera.setPosition(position2);
-        scene.camera = scene.cam2;
-    }
+
+    // if(player === 1) {
+    //   //  playerCamera.setPosition(position1);
+    //   scene.camera = scene.cam1;
+    // } else {
+    //     //playerCamera.setPosition(position2);
+    //     scene.camera = scene.cam2;
+    // }
    // scene.camera = playerCamera;
-    scene.interface.setActiveCamera(scene.camera);
+    //scene.interface.setActiveCamera(scene.camera);
 
     scene.selected_piece = null;
     scene.bot_choose_piece = false;
